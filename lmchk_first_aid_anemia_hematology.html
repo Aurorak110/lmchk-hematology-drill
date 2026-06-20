@@ -1,0 +1,461 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LMCHK 血液系统疾病｜贫血总论、缺铁性贫血、巨幼细胞性贫血、再生障碍性贫血、溶血性贫血</title>
+<style>
+:root{
+  --bg:#f7f8fb;--card:#ffffff;--ink:#151923;--muted:#5b6472;--line:#d9dee7;
+  --blue:#1f4e79;--blue2:#e8f1fb;--red:#8f1d2c;--red2:#fdecef;
+  --green:#246b48;--green2:#e9f6ef;--amber:#8a5a00;--amber2:#fff5da;
+  --purple:#563d7c;--purple2:#f0ebf8;--gray:#f2f4f7;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans SC","Microsoft YaHei",Arial,sans-serif;
+  line-height:1.52;font-size:15.5px;
+}
+header{
+  background:linear-gradient(120deg,#173b5c,#1f4e79 55%,#244b5f);
+  color:#fff;padding:28px 28px 22px;border-bottom:5px solid #d7e7f6;
+}
+header h1{margin:0 0 8px;font-size:26px;line-height:1.25}
+header p{margin:5px 0;color:#eaf2fb}
+main{max-width:1180px;margin:0 auto;padding:22px}
+.card{
+  background:var(--card);border:1px solid var(--line);border-radius:14px;
+  padding:18px 20px;margin:14px 0;box-shadow:0 1px 3px rgba(10,20,40,.05)
+}
+h2{font-size:22px;margin:10px 0 12px;color:var(--blue)}
+h3{font-size:18px;margin:8px 0 10px;color:#24364a}
+h4{font-size:16px;margin:6px 0;color:#2d3a4b}
+p{margin:7px 0}
+.small{font-size:13px;color:var(--muted)}
+.en{color:#48515f}
+.badge{display:inline-block;padding:2px 8px;border-radius:999px;background:var(--blue2);color:var(--blue);font-weight:700;font-size:12px;margin-right:6px}
+.badge.red{background:var(--red2);color:var(--red)}
+.badge.green{background:var(--green2);color:var(--green)}
+.badge.amber{background:var(--amber2);color:var(--amber)}
+.badge.purple{background:var(--purple2);color:var(--purple)}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+@media(max-width:850px){.grid{grid-template-columns:1fr} main{padding:12px} header{padding:22px 16px}}
+.kv{display:grid;grid-template-columns:150px 1fr;gap:8px;border-top:1px solid var(--line);padding:8px 0}
+.kv:first-child{border-top:0}
+.kv b{color:#23364a}
+ul,ol{margin:7px 0 7px 22px;padding:0}
+li{margin:4px 0}
+table{width:100%;border-collapse:collapse;margin:10px 0;background:#fff}
+th,td{border:1px solid var(--line);padding:8px 9px;vertical-align:top}
+th{background:#eef3f8;color:#1f3348;text-align:left}
+tr:nth-child(even) td{background:#fbfcfe}
+.note{border-left:5px solid var(--blue);background:var(--blue2);padding:10px 12px;border-radius:8px;margin:10px 0}
+.warn{border-left:5px solid var(--red);background:var(--red2);padding:10px 12px;border-radius:8px;margin:10px 0}
+.ok{border-left:5px solid var(--green);background:var(--green2);padding:10px 12px;border-radius:8px;margin:10px 0}
+.exam{border-left:5px solid var(--amber);background:var(--amber2);padding:10px 12px;border-radius:8px;margin:10px 0}
+details{border:1px solid var(--line);border-radius:12px;background:#fff;margin:12px 0;overflow:hidden}
+summary{cursor:pointer;padding:13px 16px;font-weight:800;color:#1f3348;background:#f5f7fa}
+details .inside{padding:14px 18px}
+hr{border:0;border-top:1px solid var(--line);margin:16px 0}
+.code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;background:#f3f5f8;padding:2px 5px;border-radius:5px}
+.toc a{display:inline-block;margin:3px 8px 3px 0;padding:5px 9px;border:1px solid var(--line);border-radius:999px;text-decoration:none;color:#1f4e79;background:#fff}
+footer{color:#5b6472;font-size:13px;padding:22px 0}
+</style>
+</head>
+<body>
+<header>
+  <h1>LMCHK｜血液系统疾病：贫血专题 Anemia Module</h1>
+  <p>范围 Scope：贫血总论 + 缺铁性贫血 + 巨幼细胞性贫血 + 再生障碍性贫血 + 溶血性贫血</p>
+  <p>教材基底 Core source：First Aid for the USMLE Step 1 2022，Hematology & Oncology—Pathology, Anemias, pp.425–431；内容为备考笔记式改写，不替代本地临床指引。</p>
+</header>
+
+<main>
+<section class="card toc">
+  <h2>使用方式 How to use</h2>
+  <p><b>结论：</b>LMCHK做贫血题，先不要背病名；先按 <span class="code">MCV → RPI/reticulocyte → smear → iron/B12/folate/hemolysis panel → Coombs</span> 建立路径。<span class="en">In LMCHK-style questions, classify first; name the disease second.</span></p>
+  <p>
+    <a href="#framework">总框架 Framework</a>
+    <a href="#general">贫血总论 General anemia</a>
+    <a href="#ida">缺铁性贫血 IDA</a>
+    <a href="#mega">巨幼细胞性贫血 Megaloblastic</a>
+    <a href="#aplastic">再生障碍性贫血 Aplastic</a>
+    <a href="#hemolytic">溶血性贫血 Hemolytic</a>
+    <a href="#summary">系统总结 Summary</a>
+    <a href="#thinking">临床思维 Clinical thinking</a>
+    <a href="#finaltable">最终表 Final table</a>
+  </p>
+  <div class="warn"><b>术语说明：</b>你写的“MBC/MCH”在贫血表格语境下最可能指 <b>MCV/MCH</b>。本文表格采用 <b>MCV/MCH</b>；若你确实想要其他指标，可把表头替换。</div>
+</section>
+
+<section id="framework" class="card">
+  <h2>一、总框架 Framework</h2>
+  <div class="grid">
+    <div class="note">
+      <h3>1. 按 MCV 先分层</h3>
+      <p><b>Microcytic, MCV &lt;80 fL：</b>血红蛋白受影响，常见为缺铁、慢性病、地中海贫血、铅中毒、铁粒幼细胞性贫血。<span class="en">Microcytosis usually means impaired heme or globin synthesis.</span></p>
+      <p><b>Normocytic, MCV 80–100 fL：</b>急性失血、溶血、慢性肾病、慢性炎症早期、再障。<span class="en">Normocytic anemia requires reticulocyte logic.</span></p>
+      <p><b>Macrocytic, MCV &gt;100 fL：</b>巨幼细胞性为DNA合成障碍；非巨幼多见酒精、肝病。<span class="en">Macrocytosis separates DNA-synthesis failure from nonmegaloblastic causes.</span></p>
+    </div>
+    <div class="ok">
+      <h3>2. 再看 RPI / 网织红细胞</h3>
+      <p><b>RPI &gt;3：</b>骨髓反应足，考虑出血或溶血。<span class="en">High RPI implies marrow compensation: bleeding or hemolysis.</span></p>
+      <p><b>RPI &lt;2：</b>骨髓反应不足，考虑营养缺乏、慢性炎症、肾病、骨髓衰竭。<span class="en">Low RPI implies underproduction or ineffective erythropoiesis.</span></p>
+      <p class="small">RPI = reticulocyte % × actual Hct/normal Hct ÷ maturation time.</p>
+    </div>
+  </div>
+  <div class="exam">
+    <b>LMCHK核心钩子：</b>贫血题常把“乏力、苍白、气短”写得很像，真正区分点是：MCV、RDW、铁代谢、血涂片、神经症状、黄疸/尿色、血小板/白细胞是否同时低、Coombs是否阳性。
+    <span class="en">The discriminators are laboratory and smear clues, not the nonspecific symptom of fatigue.</span>
+  </div>
+</section>
+
+<details id="general" open>
+<summary>二、贫血总论 General Anemia｜SOAP + DEF 14项</summary>
+<div class="inside">
+  <h3>SOAP</h3>
+  <div class="grid">
+    <div class="kv"><b>S 主观</b><span>乏力、气短、心悸、头晕/晕厥；询问失血、月经过多、黑便、饮食、妊娠、药物、黄疸/深色尿。<br><span class="en">Fatigue, dyspnea, palpitations, syncope; ask bleeding, diet, pregnancy, drugs, jaundice/dark urine.</span></span></div>
+    <div class="kv"><b>O 客观</b><span>苍白、心动过速、收缩期杂音、黄疸、脾大、匙状甲、舌炎、神经体征、瘀点/紫癜。<br><span class="en">Pallor, tachycardia, flow murmur, jaundice, splenomegaly, koilonychia, glossitis, neurologic signs, petechiae.</span></span></div>
+    <div class="kv"><b>A 评估</b><span>先判断严重程度和稳定性，再按 MCV + RPI + smear 归类。<br><span class="en">Assess stability first, then classify by MCV, reticulocyte response, and smear.</span></span></div>
+    <div class="kv"><b>P 计划</b><span>CBC+retic/RPI+血涂片；按方向加铁代谢、B12/folate、LDH/胆红素/结合珠蛋白、Coombs、肾肝甲功、骨髓检查。<br><span class="en">CBC, retic/RPI, smear; add iron studies, B12/folate, hemolysis panel, DAT, renal/liver/thyroid tests, marrow tests as indicated.</span></span></div>
+  </div>
+
+  <h3>DEF 14项</h3>
+  <ol>
+    <li><b>定义 Definition：</b>贫血是血红蛋白（Hb）、血细胞比容（Hct）或红细胞量低于年龄、性别、生理状态参考范围。<span class="en">Anemia is reduced hemoglobin, hematocrit, or red-cell mass relative to the expected reference range.</span></li>
+    <li><b>分类 Classification：</b>按 MCV 分小细胞、正细胞、大细胞；按RPI分生成不足与代偿性增生。<span class="en">Classify by MCV and reticulocyte response.</span></li>
+    <li><b>病因 Etiology：</b>失血、红细胞生成减少、红细胞成熟障碍、红细胞破坏增加。<span class="en">Blood loss, reduced production, defective maturation, or increased destruction.</span></li>
+    <li><b>病理生理 Pathophysiology：</b>Hb下降使动脉氧含量下降，组织缺氧刺激肾脏释放EPO，促骨髓红系增生。若骨髓可用原料和干细胞储备正常，网织红细胞上升；若铁、叶酸/B12、EPO、骨髓干细胞或炎症铁调控异常，则RPI低。MCV本质上反映“红细胞成熟哪个环节受阻”：血红蛋白合成不足时红细胞多次分裂后仍低Hb，形成小细胞低色素；DNA合成障碍时核成熟落后于胞质，形成大细胞和中性粒细胞核分叶过多；红细胞寿命缩短时骨髓以网织红细胞增多代偿，常表现正细胞或因网织红细胞较大而轻度大细胞。<br><span class="en">Reduced Hb lowers arterial oxygen content, triggering renal EPO. A normal marrow increases reticulocytes; substrate deficiency, renal EPO deficiency, inflammation, or marrow failure produces a low RPI. MCV reflects the blocked maturation step: heme/globin failure gives microcytic hypochromic cells; DNA-synthesis failure gives macrocytosis and hypersegmented neutrophils; hemolysis gives reticulocytosis.</span></li>
+    <li><b>临床表现 Symptoms：</b>乏力、运动耐量下降、气短、心悸、头晕；慢性贫血可轻症，急性贫血症状重。<span class="en">Fatigue, reduced exercise tolerance, dyspnea, palpitations, dizziness.</span></li>
+    <li><b>体征 Signs：</b>苍白、心动过速、流量性杂音；黄疸提示溶血；舌炎提示缺铁/巨幼；瘀点提示血小板低。<span class="en">Pallor, tachycardia, flow murmur; jaundice suggests hemolysis; petechiae suggests thrombocytopenia.</span></li>
+    <li><b>检查 Investigations：</b>CBC含MCV/MCH/RDW，网织红细胞/RPI，外周血涂片，铁代谢，B12/folate，同型半胱氨酸/MMA，溶血三联/四联，DAT/Coombs，必要时骨髓。<span class="en">CBC indices, reticulocytes, smear, iron studies, B12/folate, homocysteine/MMA, hemolysis panel, DAT, marrow when indicated.</span></li>
+    <li><b>诊断要点 Diagnostic key：</b>MCV只提供入口；RPI决定“生成不足 vs 破坏/丢失”；血涂片决定下一步。<span class="en">MCV is the entrance; RPI determines production vs destruction/loss; smear guides the next test.</span></li>
+    <li><b>鉴别 Differential：</b>小细胞重点鉴别IDA/ACD/地中海/铅/铁粒幼；大细胞鉴别B12/folate/酒精/肝病/MDS；正细胞鉴别失血/溶血/CKD/再障。<span class="en">Use pattern recognition by size and retic response.</span></li>
+    <li><b>并发症 Complications：</b>心肌缺氧、心衰恶化、妊娠不良结局、儿童发育影响；溶血可导致胆石、肾损伤。<span class="en">Cardiac strain, pregnancy risks, developmental effects, gallstones or renal injury in hemolysis.</span></li>
+    <li><b>治疗原则 Management：</b>不稳定先复苏和输血；稳定患者治疗病因，不把“输血”当作病因治疗。<span class="en">Stabilize first; then treat the cause rather than treating Hb alone.</span></li>
+    <li><b>监测 Monitoring：</b>Hb、MCV、RDW、retic反应；补铁后先看retic反应，再看Hb上升。<span class="en">Track Hb, indices, RDW, and reticulocyte response.</span></li>
+    <li><b>LMCHK陷阱 Exam traps：</b>成人男性缺铁不能只补铁；巨幼先排B12再给叶酸；全血细胞减少不是“单纯贫血”；Coombs阳性才支持免疫性溶血。<span class="en">Do not miss GI blood loss, B12 neurologic disease, pancytopenia, or immune hemolysis.</span></li>
+    <li><b>一句话 One-liner：</b>贫血不是一个诊断，是一个实验室入口。<span class="en">Anemia is not the final diagnosis; it is the entry point to a mechanism.</span></li>
+  </ol>
+</div>
+</details>
+
+<details id="ida" open>
+<summary>三、缺铁性贫血 Iron Deficiency Anemia, IDA｜SOAP + DEF 14项</summary>
+<div class="inside">
+  <h3>SOAP</h3>
+  <div class="grid">
+    <div class="kv"><b>S</b><span>乏力、气短、心悸；询问月经过多、黑便/便血、NSAIDs、胃切除/肠病、妊娠、饮食；异食癖。<br><span class="en">Ask menorrhagia, GI bleeding, NSAIDs, gastrectomy/malabsorption, pregnancy, diet, pica.</span></span></div>
+    <div class="kv"><b>O</b><span>苍白、结膜苍白、匙状甲（koilonychia）、舌炎、口角炎；可有Plummer–Vinson综合征。<br><span class="en">Pallor, koilonychia, glossitis, cheilosis; Plummer–Vinson syndrome.</span></span></div>
+    <div class="kv"><b>A</b><span>小细胞低色素 + ferritin低 + TIBC高 + RDW高 = IDA。<br><span class="en">Microcytic hypochromic anemia with low ferritin, high TIBC, and high RDW.</span></span></div>
+    <div class="kv"><b>P</b><span>找失血源 + 补铁；成人男性/绝经后女性优先排GI病变。<br><span class="en">Identify the bleeding source and replace iron; prioritize GI evaluation in men and postmenopausal women.</span></span></div>
+  </div>
+
+  <h3>DEF 14项</h3>
+  <ol>
+    <li><b>定义 Definition：</b>铁缺乏导致血红素合成不足的小细胞低色素性贫血。<span class="en">Microcytic hypochromic anemia caused by insufficient iron for heme synthesis.</span></li>
+    <li><b>流行 Epidemiology：</b>全球常见；育龄女性、妊娠、儿童、营养不足、慢性失血人群高发。<span class="en">Common in menstruating women, pregnancy, childhood, malnutrition, and chronic blood loss.</span></li>
+    <li><b>病因 Etiology：</b>慢性失血（GI、月经过多）、摄入不足、吸收障碍、胃肠手术、需求增加。<span class="en">Chronic blood loss, low intake, malabsorption, GI surgery, increased demand.</span></li>
+    <li><b>危险因素 Risk factors：</b>月经过多、消化性溃疡、结直肠癌、IBD、乳糜泻、妊娠、素食且摄入不足、PPI长期使用。<span class="en">Menorrhagia, peptic ulcer, colorectal cancer, IBD, celiac disease, pregnancy.</span></li>
+    <li><b>病理生理 Pathophysiology：</b>机体铁先以铁蛋白（ferritin）形式储存在肝、脾、骨髓和巨噬细胞。缺铁最早表现为储存铁下降，故ferritin先低；随后血清铁下降，转铁蛋白饱和度下降。肝脏为增加铁运输能力，上调转铁蛋白，表现为TIBC升高。铁不足使原卟啉不能有效结合铁形成血红素，游离红细胞原卟啉升高。由于Hb装填不足，红细胞在骨髓内为了达到较合适的胞内Hb浓度，会继续分裂，最终形成体积小、中心淡染扩大、MCH下降的低色素小红细胞。新生成细胞比旧细胞更小，导致RDW升高。与慢性病贫血不同，IDA是“真实缺铁”；慢性病贫血是IL-6诱导hepcidin上升，铁被锁在巨噬细胞和肠黏膜细胞内，ferritin常高、TIBC低。<br><span class="en">Iron depletion first lowers ferritin. Serum iron and transferrin saturation then fall, while hepatic transferrin production rises, increasing TIBC. Heme synthesis becomes limited; erythrocyte protoporphyrin accumulates. Poor hemoglobinization forces extra precursor divisions, producing small, pale cells with low MCH and high RDW. This differs from anemia of chronic disease, where IL-6 increases hepcidin, trapping iron in macrophages and lowering TIBC.</span></li>
+    <li><b>临床表现 Symptoms：</b>乏力、运动耐量下降、异食癖；严重可气短、心悸。<span class="en">Fatigue, reduced exercise tolerance, pica; dyspnea/palpitations if severe.</span></li>
+    <li><b>体征 Signs：</b>苍白、匙状甲、舌炎、口角炎；Plummer–Vinson = IDA + 食管蹼 + 吞咽困难。<span class="en">Pallor, koilonychia, glossitis, cheilosis; Plummer–Vinson triad.</span></li>
+    <li><b>检查 Investigations：</b>CBC：MCV↓、MCH↓、RDW↑；铁代谢：serum iron↓、ferritin↓、TIBC↑、transferrin saturation↓；涂片小细胞低色素。<span class="en">Low MCV/MCH, high RDW, low ferritin/iron/saturation, high TIBC.</span></li>
+    <li><b>诊断 Diagnostic key：</b>ferritin低最支持IDA；炎症状态下ferritin可能假正常/升高，应结合CRP和转铁蛋白饱和度。<span class="en">Low ferritin is the strongest routine clue, but inflammation can mask it.</span></li>
+    <li><b>鉴别 Differential：</b>ACD：铁低、TIBC低、ferritin高；地贫：MCV很低但RBC count常高、RDW常正常；铁粒幼：铁和ferritin高。<span class="en">Differentiate ACD, thalassemia, and sideroblastic anemia.</span></li>
+    <li><b>并发症 Complications：</b>心功能负担、妊娠不良结局、儿童认知发育影响；Plummer–Vinson与上消化道鳞癌风险相关。<span class="en">Cardiac strain, pregnancy risks, developmental effects.</span></li>
+    <li><b>治疗 Management：</b>一线为口服铁剂并处理病因。可用硫酸亚铁/富马酸亚铁/葡萄糖酸亚铁；与维C同服可促吸收，茶、钙、PPI、部分食物会影响吸收。不能耐受、吸收差、炎症性肠病/CKD、需快速补充者考虑静脉铁。血流动力学不稳定或严重症状性贫血时输血。<span class="en">First line is oral iron plus cause control; use IV iron when oral therapy fails or rapid repletion is needed; transfuse unstable or severely symptomatic patients.</span></li>
+    <li><b>监测 Monitoring：</b>1周左右可见网织红细胞反应，2–3周Hb上升；Hb正常后继续补铁约3个月以补足储备。<span class="en">Reticulocytes rise first; continue iron after Hb normalizes to replenish stores.</span></li>
+    <li><b>LMCHK陷阱：</b>成人男性和绝经后女性IDA = GI失血/肿瘤直到排除；单纯补铁会漏诊癌。<span class="en">Do not stop at iron replacement in an adult male or postmenopausal patient.</span></li>
+  </ol>
+</div>
+</details>
+
+<details id="mega" open>
+<summary>四、巨幼细胞性贫血 Megaloblastic Anemia｜SOAP + DEF 14项</summary>
+<div class="inside">
+  <h3>SOAP</h3>
+  <div class="grid">
+    <div class="kv"><b>S</b><span>乏力、舌痛；询问素食、胃切除、Crohn病、胰腺疾病、酒精、妊娠、抗叶酸/抗代谢药；询问麻木、步态不稳、认知改变。<br><span class="en">Ask diet, malabsorption, gastrectomy, Crohn disease, alcohol, pregnancy, antifolate drugs, neurologic symptoms.</span></span></div>
+    <div class="kv"><b>O</b><span>舌炎、苍白；B12缺乏可有振动觉/本体觉下降、痉挛性无力、共济失调、认知改变。<br><span class="en">Glossitis; B12 deficiency can cause dorsal column, corticospinal, and cognitive findings.</span></span></div>
+    <div class="kv"><b>A</b><span>MCV&gt;100 + macro-ovalocytes + hypersegmented neutrophils；B12：MMA↑+homocysteine↑；folate：homocysteine↑但MMA正常。<br><span class="en">Macrocytosis with hypersegmented neutrophils; MMA distinguishes B12 from folate deficiency.</span></span></div>
+    <div class="kv"><b>P</b><span>怀疑B12时先补B12，再补叶酸；同时找吸收障碍和药物原因。<br><span class="en">Replace B12 before folate when B12 deficiency is possible.</span></span></div>
+  </div>
+
+  <h3>DEF 14项</h3>
+  <ol>
+    <li><b>定义 Definition：</b>DNA合成受损导致核成熟迟缓、胞质成熟相对正常的大细胞性贫血。<span class="en">Macrocytic anemia due to impaired DNA synthesis with nuclear-cytoplasmic asynchrony.</span></li>
+    <li><b>病因 Etiology：</b>维生素B12缺乏、叶酸缺乏、抑制DNA合成药物（methotrexate、trimethoprim、phenytoin、hydroxyurea等）、少见orotic aciduria。<span class="en">B12/folate deficiency or drugs impairing DNA synthesis.</span></li>
+    <li><b>B12缺乏原因 B12 causes：</b>恶性贫血、胃切除、回肠/Crohn病、胰腺功能不足、严格素食、Diphyllobothrium latum。<span class="en">Pernicious anemia, gastrectomy, ileal disease, pancreatic insufficiency, vegan diet, fish tapeworm.</span></li>
+    <li><b>叶酸缺乏原因 Folate causes：</b>营养不良/酒精、妊娠、溶血导致需求增加、吸收不良、methotrexate/TMP/phenytoin等。<span class="en">Poor intake/alcohol, pregnancy, hemolysis, malabsorption, antifolate drugs.</span></li>
+    <li><b>病理生理 Pathophysiology：</b>叶酸以THF形式提供一碳单位，参与dTMP和嘌呤合成；缺乏时DNA复制变慢，快速分裂的骨髓和肠黏膜最先受影响。红系前体的细胞质可继续合成RNA和蛋白，但细胞核因DNA合成不足而成熟延迟，造成核-浆发育不平衡，形成巨幼变、macro-ovalocytes和hypersegmented neutrophils。无效造血使骨髓内红细胞前体凋亡增加，可出现LDH和间接胆红素升高，但RPI不一定高。维生素B12有两个关键反应：一是methionine synthase，把同型半胱氨酸转为蛋氨酸，并把methyl-THF再生为THF；B12缺乏会造成“methyl-folate trap”，功能性叶酸不足，从而巨幼变。二是methylmalonyl-CoA mutase；B12缺乏使MMA升高，异常脂肪酸进入髓鞘合成，导致后索、侧皮质脊髓束和脊髓小脑束损害。叶酸缺乏只升高同型半胱氨酸，不升高MMA，通常无神经症状。叶酸可纠正B12缺乏的贫血，却不能纠正神经损害，因此可能“掩盖贫血、放任神经恶化”。<br><span class="en">Folate/THF supplies one-carbon units for thymidylate and purine synthesis. Deficiency slows DNA replication in rapidly dividing tissues. Cytoplasmic maturation continues while nuclear maturation lags, producing macro-ovalocytes and hypersegmented neutrophils. B12 is required for methionine synthase and methylmalonyl-CoA mutase. B12 deficiency traps folate as methyl-THF and raises MMA, damaging myelin; folate deficiency raises homocysteine only and does not cause neurologic disease. Folate can correct the anemia of B12 deficiency while neurologic injury progresses.</span></li>
+    <li><b>临床表现 Symptoms：</b>乏力、舌痛、腹泻；B12可有麻木、步态不稳、记忆/认知改变。<span class="en">Fatigue, glossitis, diarrhea; B12 adds paresthesia, gait instability, cognitive change.</span></li>
+    <li><b>体征 Signs：</b>牛肉样舌、苍白；B12可有振动觉/位置觉下降、Babinski阳性、共济失调。<span class="en">Glossitis and pallor; B12 may produce neurologic signs.</span></li>
+    <li><b>检查 Investigations：</b>MCV↑、macro-ovalocytes、hypersegmented neutrophils；B12、folate、MMA、homocysteine；怀疑恶性贫血查抗内因子抗体。<span class="en">MCV, smear, B12/folate, MMA, homocysteine, anti-intrinsic factor antibodies.</span></li>
+    <li><b>诊断 Diagnostic key：</b>MMA↑ = B12；MMA正常 + homocysteine↑ = folate。<span class="en">High MMA points to B12 deficiency.</span></li>
+    <li><b>鉴别 Differential：</b>非巨幼性大细胞：酒精、肝病、甲减、MDS；无中性粒细胞核分叶过多更支持非巨幼。<span class="en">Nonmegaloblastic macrocytosis lacks hypersegmented neutrophils.</span></li>
+    <li><b>并发症 Complications：</b>B12神经损害可不可逆；妊娠叶酸缺乏增加神经管缺陷风险；高同型半胱氨酸促血栓风险。<span class="en">Potential irreversible neurologic injury and pregnancy complications.</span></li>
+    <li><b>治疗 Management：</b>B12缺乏：肌注或高剂量口服B12，恶性贫血通常长期/终身替代；叶酸缺乏：叶酸补充，但必须先排除或同时治疗B12缺乏。停用/替换致病药物，处理吸收障碍。<span class="en">Treat B12 deficiency before folate when uncertain; correct causes and medications.</span></li>
+    <li><b>监测 Monitoring：</b>网织红细胞反应、Hb、MCV；B12缺乏追踪神经症状。<span class="en">Monitor reticulocytes, Hb, MCV, and neurologic recovery.</span></li>
+    <li><b>LMCHK陷阱：</b>“贫血改善但神经恶化”是叶酸误治B12；“homocysteine都高，MMA只B12高”必须熟。<span class="en">Homocysteine is shared; MMA is B12-specific.</span></li>
+  </ol>
+</div>
+</details>
+
+<details id="aplastic" open>
+<summary>五、再生障碍性贫血 Aplastic Anemia｜SOAP + DEF 14项</summary>
+<div class="inside">
+  <h3>SOAP</h3>
+  <div class="grid">
+    <div class="kv"><b>S</b><span>贫血症状 + 反复感染 + 出血/瘀斑；询问药物、苯、放射、病毒性肝炎/HIV/EBV、家族史。<br><span class="en">Anemia plus infections plus bleeding; ask drugs, benzene, radiation, hepatitis/HIV/EBV, family history.</span></span></div>
+    <div class="kv"><b>O</b><span>苍白、发热/感染灶、瘀点、紫癜、黏膜出血；通常无显著肝脾大，若有需考虑其他骨髓病。<br><span class="en">Pallor, infection, petechiae, purpura, mucosal bleeding; marked hepatosplenomegaly suggests alternatives.</span></span></div>
+    <div class="kv"><b>A</b><span>全血细胞减少 + retic低 + 骨髓低细胞/脂肪化 = 再障。<br><span class="en">Pancytopenia, low reticulocytes, hypocellular fatty marrow.</span></span></div>
+    <div class="kv"><b>P</b><span>停致病因素；重症评估造血干细胞移植 vs ATG+cyclosporine；输血和抗感染支持。<br><span class="en">Remove cause; choose HSCT vs immunosuppression; provide transfusion and infection support.</span></span></div>
+  </div>
+
+  <h3>DEF 14项</h3>
+  <ol>
+    <li><b>定义 Definition：</b>造血干细胞失败或被破坏导致的骨髓衰竭综合征，表现为全血细胞减少。<span class="en">Bone marrow failure from hematopoietic stem-cell loss or destruction, causing pancytopenia.</span></li>
+    <li><b>流行 Epidemiology：</b>可见于任何年龄；年轻患者需考虑遗传性骨髓衰竭，成人多为获得性/免疫介导或药物毒性。<span class="en">Occurs at any age; inherited causes in young patients, acquired causes in adults.</span></li>
+    <li><b>病因 Etiology：</b>放射、病毒（EBV、HIV、肝炎病毒）、Fanconi anemia、特发性免疫介导、药物/毒物（苯、chloramphenicol、烷化剂、抗代谢药）。<span class="en">Radiation, viruses, Fanconi anemia, immune-mediated idiopathic disease, drugs/toxins.</span></li>
+    <li><b>危险因素 Risk factors：</b>化疗、苯暴露、近期肝炎、免疫疾病、DNA修复缺陷家族史。<span class="en">Chemotherapy, benzene, recent hepatitis, autoimmunity, DNA-repair syndromes.</span></li>
+    <li><b>病理生理 Pathophysiology：</b>再障的核心不是红细胞单系问题，而是多能造血干细胞池耗竭或被免疫破坏。红系、粒系、巨核系共同减少，所以同时出现贫血、白细胞减少和血小板减少。骨髓造血细胞显著减少，被脂肪替代；外周血细胞形态可相对正常，但数量低。由于肾脏感知贫血，EPO升高；但骨髓缺少可响应的红系前体，所以reticulocyte低。获得性再障常被认为与T细胞介导的造血干细胞抑制/破坏有关，因此免疫抑制有效。Fanconi anemia属于DNA修复缺陷，细胞对DNA交联损伤敏感，最终骨髓衰竭且恶性肿瘤风险升高。必须与“aplastic crisis”区分：后者常由parvovirus B19暂时抑制红系，通常是单纯贫血而不是全血细胞减少。<br><span class="en">Aplastic anemia is a stem-cell pool failure, not an isolated red-cell disorder. Erythroid, myeloid, and megakaryocytic lineages all decline, producing anemia, leukopenia, and thrombocytopenia. The marrow becomes hypocellular and fatty. EPO is high, but reticulocytes remain low because responsive progenitors are absent. Acquired disease is often T-cell mediated, explaining response to immunosuppression. Fanconi anemia is a DNA-repair disorder causing marrow failure. Distinguish aplastic anemia from parvovirus aplastic crisis, which is usually isolated red-cell arrest.</span></li>
+    <li><b>临床表现 Symptoms：</b>乏力、感染、发热、鼻/牙龈出血、月经过多、皮肤瘀点。<span class="en">Fatigue, infections, fever, mucosal bleeding, menorrhagia, petechiae.</span></li>
+    <li><b>体征 Signs：</b>苍白、瘀点/紫癜、感染灶；明显肝脾大提示白血病、淋巴瘤、骨髓浸润等。<span class="en">Pallor, petechiae/purpura, infection; hepatosplenomegaly suggests another diagnosis.</span></li>
+    <li><b>检查 Investigations：</b>CBC全血细胞减少，retic↓，EPO↑；骨髓活检低细胞、脂肪浸润；病毒、药物、PNH克隆、遗传性骨髓衰竭筛查视情况。<span class="en">Pancytopenia, low reticulocytes, high EPO, hypocellular fatty marrow.</span></li>
+    <li><b>诊断 Diagnostic key：</b>pancytopenia + hypocellular marrow + no malignant infiltration。<span class="en">Pancytopenia with hypocellular marrow and no replacement by malignancy.</span></li>
+    <li><b>鉴别 Differential：</b>急性白血病、MDS、骨髓纤维化/浸润、B12/folate缺乏、脾亢、药物性骨髓抑制、PNH。<span class="en">Differentiate leukemia, MDS, myelophthisis, megaloblastic anemia, hypersplenism, PNH.</span></li>
+    <li><b>并发症 Complications：</b>严重感染、出血、输血相关铁过载、克隆演变为MDS/AML、PNH关联。<span class="en">Severe infection, bleeding, iron overload, clonal evolution, PNH association.</span></li>
+    <li><b>治疗 Management：</b>停用致病药物/毒物；支持治疗包括红细胞/血小板输注、感染治疗。年轻且有HLA匹配供者的重症患者：异基因造血干细胞移植一线。无合适供者或年龄/合并症不适合移植：抗胸腺细胞球蛋白（ATG）+ cyclosporine，常加eltrombopag；可用G-CSF/GM-CSF等支持。<span class="en">Remove the cause; support with transfusions and infection control. Severe disease: matched allogeneic HSCT in suitable young patients; otherwise ATG plus cyclosporine, often with eltrombopag.</span></li>
+    <li><b>监测 Monitoring：</b>血细胞计数、感染/出血、输血负荷、铁蛋白、克隆演变。<span class="en">Monitor counts, infection/bleeding, transfusion burden, ferritin, clonal evolution.</span></li>
+    <li><b>LMCHK陷阱：</b>“贫血+白细胞低+血小板低”不要答缺铁；“正常形态细胞但数量全低”指向骨髓生成失败。<span class="en">Pancytopenia should trigger a marrow-failure pathway.</span></li>
+  </ol>
+</div>
+</details>
+
+<details id="hemolytic" open>
+<summary>六、溶血性贫血 Hemolytic Anemia｜SOAP + DEF 14项</summary>
+<div class="inside">
+  <h3>SOAP</h3>
+  <div class="grid">
+    <div class="kv"><b>S</b><span>乏力、黄疸、深色尿、背痛；询问感染、药物、蚕豆、寒冷暴露、输血、家族史、胆石、血栓、旅行/疟疾。<br><span class="en">Ask jaundice, dark urine, back pain, infections, drugs, fava beans, cold exposure, transfusion, family history, gallstones, thrombosis, travel.</span></span></div>
+    <div class="kv"><b>O</b><span>黄疸、脾大、胆石体征；MAHA可有神经症状/肾损伤/血小板低；SCD可有疼痛危象。<br><span class="en">Jaundice, splenomegaly, gallstones; MAHA may add neurologic signs, AKI, thrombocytopenia.</span></span></div>
+    <div class="kv"><b>A</b><span>retic↑ + LDH↑ + 间接胆红素↑ + haptoglobin↓ = 溶血；再用DAT和血涂片分型。<br><span class="en">Reticulocytosis, high LDH, high indirect bilirubin, low haptoglobin; then classify with DAT and smear.</span></span></div>
+    <div class="kv"><b>P</b><span>不稳定先输血/复苏；同时做DAT、涂片、溶血指标；治疗按病因：AIHA、G6PD、PNH、MAHA、SCD等不同。<br><span class="en">Stabilize first; obtain DAT, smear, hemolysis panel; treat by mechanism.</span></span></div>
+  </div>
+
+  <h3>DEF 14项</h3>
+  <ol>
+    <li><b>定义 Definition：</b>红细胞寿命缩短、破坏增加超过骨髓代偿能力所致贫血。<span class="en">Anemia due to shortened RBC survival and increased destruction beyond marrow compensation.</span></li>
+    <li><b>分类 Classification：</b>内源性（膜、酶、血红蛋白、PNH） vs 外源性（免疫、微血管、机械、感染）；血管内 vs 血管外。<span class="en">Intrinsic vs extrinsic; intravascular vs extravascular.</span></li>
+    <li><b>病因 Etiology：</b>遗传性球形红细胞增多症、PNH、G6PD、PK缺乏、镰状细胞病、AIHA、DIC/TTP/HUS/HELLP、机械瓣、疟疾/Babesia等。<span class="en">Membrane, enzyme, hemoglobin, immune, microangiopathic, mechanical, and infectious causes.</span></li>
+    <li><b>危险因素 Risk factors：</b>家族史、特定药物/氧化应激、感染、冷暴露、自身免疫病/CLL、妊娠HELLP、人工瓣、旅行。<span class="en">Family history, oxidant drugs, infections, cold exposure, autoimmunity/CLL, pregnancy, prosthetic valves, travel.</span></li>
+    <li><b>病理生理 Pathophysiology：</b>溶血的共同结果是血红蛋白分解增多。血红素代谢产生间接胆红素，超过肝处理能力时出现黄疸；胆红素进入肠道后尿胆原增加，长期可形成黑色素性胆石。骨髓若功能完整，会受EPO刺激出现网织红细胞增多，RPI升高。血管内溶血发生在循环中，常由补体或机械剪切造成；游离Hb先被haptoglobin结合，所以haptoglobin显著下降，超过结合能力后出现血红蛋白尿，肾小管重吸收铁后出现含铁血黄素尿，LDH明显升高，涂片可见schistocytes。血管外溶血主要在脾脏/肝脏巨噬细胞中进行，常见于IgG包被、膜缺陷或变形性下降的红细胞；表现为脾大、spherocytes、间接胆红素升高，通常无血红蛋白尿。DAT/直接Coombs检测红细胞表面的IgG或C3；阳性支持免疫性或同种免疫性溶血，阴性则转向G6PD、HS、PNH、MAHA、SCD等非免疫机制。<br><span class="en">Hemolysis increases heme breakdown and indirect bilirubin, causing jaundice and pigmented gallstones. A competent marrow responds with reticulocytosis and a high RPI. Intravascular hemolysis occurs within vessels, usually from complement or mechanical shearing; free Hb consumes haptoglobin, then causes hemoglobinuria and hemosiderinuria, with high LDH and often schistocytes. Extravascular hemolysis occurs in splenic/hepatic macrophages, typically from IgG opsonization, membrane defects, or reduced deformability; it causes splenomegaly, spherocytes, and bilirubin elevation without prominent hemoglobinuria. DAT detects IgG/C3 on RBCs: positive suggests immune hemolysis; negative points toward intrinsic, complement-regulatory, mechanical, or hemoglobinopathy causes.</span></li>
+    <li><b>临床表现 Symptoms：</b>乏力、黄疸、深色尿、背痛、腹痛；SCD疼痛危象，PNH晨尿红和血栓，冷凝集可有冷后肢端青紫疼痛。<span class="en">Fatigue, jaundice, dark urine, back pain; syndrome-specific clues are decisive.</span></li>
+    <li><b>体征 Signs：</b>黄疸、脾大、胆囊区症状；MAHA可有发热、神经症状、肾损伤、血小板低。<span class="en">Jaundice, splenomegaly, gallstones; MAHA may have fever, neurologic findings, AKI, thrombocytopenia.</span></li>
+    <li><b>检查 Investigations：</b>CBC/retic/RPI、LDH、间接胆红素、haptoglobin、尿Hb/含铁血黄素、DAT、血涂片、G6PD活性、Hb电泳、流式CD55/CD59、凝血/肾功能按需。<span class="en">CBC/retic, LDH, bilirubin, haptoglobin, urine Hb/hemosiderin, DAT, smear, G6PD assay, Hb electrophoresis, CD55/CD59, coagulation/renal tests.</span></li>
+    <li><b>诊断 Diagnostic key：</b>先确认溶血，再用“血管内/外 + Coombs + smear”定位。<span class="en">Confirm hemolysis, then localize with intravascular/extravascular pattern, DAT, and smear.</span></li>
+    <li><b>鉴别 Differential：</b>AIHA（Coombs+）、HS（spherocytes但Coombs−）、G6PD（bite cells/Heinz bodies）、PNH（Coombs−+血栓+CD55/59−）、MAHA（schistocytes+血小板低）、SCD（HbS）。<span class="en">DAT and smear are the core differentiators.</span></li>
+    <li><b>并发症 Complications：</b>胆石、叶酸消耗、急性肾损伤、血栓、危象、严重贫血休克。<span class="en">Gallstones, folate depletion, AKI, thrombosis, crises, severe anemia.</span></li>
+    <li><b>治疗 Management：</b>按机制治疗：warm AIHA用糖皮质激素一线，难治可rituximab/脾切；cold AIHA避免寒冷，rituximab；G6PD停触发因素和支持；PNH用C5抑制剂如eculizumab/ravulizumab并评估血栓；MAHA治疗原病，TTP需紧急血浆置换；HS可脾切；SCD用补液、镇痛、感染处理、hydroxyurea增加HbF，重症可输血/换血。<span class="en">Treatment is mechanism-specific: steroids for warm AIHA, cold avoidance/rituximab for cold AIHA, trigger avoidance for G6PD, C5 inhibition for PNH, plasma exchange for TTP, splenectomy for HS, and SCD crisis care plus hydroxyurea.</span></li>
+    <li><b>监测 Monitoring：</b>Hb、retic、LDH、胆红素、haptoglobin、尿色、肾功能、血栓/感染风险。<span class="en">Track hemolysis markers, renal function, thrombosis, and infection risks.</span></li>
+    <li><b>LMCHK陷阱：</b>新生儿黄疸要分DAT阳性ABO/Rh溶血 vs DAT阴性G6PD；schistocytes + 血小板低 + 肾/神经表现要想到TTP/HUS/DIC；Coombs阴性不排除严重溶血。<span class="en">DAT-negative hemolysis can still be life-threatening.</span></li>
+  </ol>
+
+  <h3>高频溶血亚型 High-yield subtypes</h3>
+  <table>
+    <thead><tr><th>亚型 Subtype</th><th>机制 Mechanism</th><th>关键线索 Key clues</th><th>一线/核心治疗 First-line/Core</th></tr></thead>
+    <tbody>
+      <tr><td>Hereditary spherocytosis 遗传性球形红细胞增多症</td><td>ankyrin/spectrin/band 3等膜骨架缺陷 → 脾清除</td><td>spherocytes、MCHC↑、osmotic fragility↑/EMA binding↓、Coombs−、脾大/胆石</td><td>叶酸支持；症状重或反复者脾切</td></tr>
+      <tr><td>PNH 阵发性睡眠性血红蛋白尿</td><td>PIGA突变 → GPI anchor缺失 → CD55/59缺失 → 补体介导血管内溶血</td><td>Coombs−、晨起红尿、pancytopenia、静脉血栓/Budd–Chiari、flow CD55/59−</td><td>C5抑制剂；血栓处理；重症考虑HSCT</td></tr>
+      <tr><td>G6PD deficiency</td><td>NADPH↓ → reduced glutathione↓ → 氧化应激下Hb变性</td><td>男孩/男性、感染/蚕豆/磺胺等后数日溶血、Heinz bodies、bite cells、Coombs−；急性期G6PD可假正常</td><td>避免触发因素、补液/输血支持；新生儿黄疸按胆红素阈值光疗</td></tr>
+      <tr><td>Pyruvate kinase deficiency</td><td>ATP↓ → RBC刚性↑ → 脾清除</td><td>新生儿/儿童慢性溶血，burr cells，Coombs−</td><td>支持、输血、叶酸；部分可脾切</td></tr>
+      <tr><td>Sickle cell anemia 镰状细胞病</td><td>β-globin Glu→Val；低氧/酸中毒时HbS聚合</td><td>疼痛危象、急性胸综合征、autosplenectomy、Howell–Jolly bodies、HbS↑</td><td>危象：补液+镇痛+氧/抗生素按需；预防：hydroxyurea↑HbF、疫苗/感染预防</td></tr>
+      <tr><td>Warm AIHA</td><td>IgG介导，多为血管外溶血</td><td>Coombs+、spherocytes；SLE/CLL/β-lactam/α-methyldopa</td><td>糖皮质激素一线；难治rituximab/脾切</td></tr>
+      <tr><td>Cold AIHA</td><td>IgM+补体，冷暴露后凝集</td><td>Coombs+、肢端青紫疼痛、Mycoplasma/EBV/CLL</td><td>避免寒冷；rituximab</td></tr>
+      <tr><td>MAHA 微血管病性溶血</td><td>微血栓/狭窄血管剪切RBC</td><td>schistocytes、LDH↑、血小板低；DIC/TTP/HUS/HELLP/高血压急症</td><td>治疗原病；TTP紧急血浆置换</td></tr>
+      <tr><td>Macroangiopathic/mechanical</td><td>人工瓣/主动脉瓣狭窄机械破坏</td><td>schistocytes、瓣膜病/术后线索</td><td>处理瓣膜/机械原因，支持输血</td></tr>
+      <tr><td>Infection-related</td><td>疟疾、Babesia等直接破坏RBC</td><td>旅行、发热周期、血涂片寄生虫</td><td>抗感染/抗寄生虫治疗</td></tr>
+    </tbody>
+  </table>
+</div>
+</details>
+
+<section id="summary" class="card">
+  <h2>七、知识点系统总结 Systematic Summary</h2>
+  <div class="grid">
+    <div>
+      <h3>1. 三条主轴</h3>
+      <p><span class="badge">MCV</span> 小细胞 = heme/globin；大细胞 = DNA；正细胞 = 早期/混合/溶血/骨髓/肾病。<span class="en">Microcytic: heme/globin; macrocytic: DNA; normocytic: mixed, marrow, renal, bleeding, or hemolysis.</span></p>
+      <p><span class="badge green">RPI</span> 高 = 骨髓能反应，想出血/溶血；低 = 原料、EPO、炎症或骨髓问题。<span class="en">High RPI means compensation; low RPI means underproduction.</span></p>
+      <p><span class="badge amber">Smear</span> hypersegmented neutrophils、spherocytes、schistocytes、bite cells、target cells 是出题人最常用“锁答案”线索。<span class="en">The smear often locks the answer.</span></p>
+    </div>
+    <div>
+      <h3>2. 必背实验室组合</h3>
+      <p><b>IDA：</b>iron↓ ferritin↓ TIBC↑ RDW↑ MCV/MCH↓。</p>
+      <p><b>ACD：</b>iron↓ ferritin↑ TIBC↓，由hepcidin介导。</p>
+      <p><b>B12：</b>homocysteine↑ + MMA↑ + 神经症状。</p>
+      <p><b>Folate：</b>homocysteine↑ + MMA正常 + 无神经症状。</p>
+      <p><b>Hemolysis：</b>retic↑ LDH↑ indirect bilirubin↑ haptoglobin↓。</p>
+      <p><b>Aplastic：</b>pancytopenia + retic↓ + hypocellular fatty marrow。</p>
+    </div>
+  </div>
+  <div class="exam">
+    <b>一条速记：</b>“小铁大DNA，正细看网织；黄疸问Coombs，三低看骨髓。”
+    <span class="en">Small = iron/heme; large = DNA; normal = retics; jaundice = DAT; three low counts = marrow.</span>
+  </div>
+</section>
+
+<section id="thinking" class="card">
+  <h2>八、临床思维规范 Clinical Reasoning Standard</h2>
+  <ol>
+    <li><b>先判断是否危险。</b>低血压、胸痛、晕厥、心衰、急性大量出血或严重症状性贫血先复苏/输血。<span class="en">Assess instability before refining the diagnosis.</span></li>
+    <li><b>确认是真贫血。</b>看Hb/Hct和基线，考虑妊娠/容量稀释/脱水影响。<span class="en">Confirm true anemia and interpret in clinical context.</span></li>
+    <li><b>MCV只负责分门，不负责定案。</b>混合性贫血可让MCV“正常”。<span class="en">MCV is a screening classifier, not a final diagnosis.</span></li>
+    <li><b>RPI决定方向。</b>RPI低走“生成不足/无效造血”；RPI高走“出血/溶血”。<span class="en">Reticulocyte response determines the diagnostic branch.</span></li>
+    <li><b>小细胞先查铁代谢。</b>IDA要找失血源；ACD看hepcidin模式；地贫看RBC count/Hb电泳/家族和种族。<span class="en">Iron studies are the first high-yield discriminator in microcytosis.</span></li>
+    <li><b>大细胞先看是否巨幼。</b>有hypersegmented neutrophils就查B12/folate；神经症状按B12处理。<span class="en">Hypersegmented neutrophils mean megaloblastic until proven otherwise.</span></li>
+    <li><b>pancytopenia不是单纯贫血。</b>需想到再障、白血病、MDS、骨髓浸润、B12/folate重度缺乏。<span class="en">Pancytopenia is a marrow/systemic problem.</span></li>
+    <li><b>溶血必须分免疫与非免疫。</b>DAT阳性走AIHA/alloimmune；DAT阴性看HS、G6PD、PNH、MAHA、SCD。<span class="en">DAT separates immune from nonimmune hemolysis.</span></li>
+    <li><b>schistocytes是急症信号。</b>若伴血小板低、AKI、神经症状，应快速排TTP/HUS/DIC/HELLP。<span class="en">Schistocytes with thrombocytopenia are urgent.</span></li>
+    <li><b>治疗按机制，不按病名硬背。</b>缺原料就补原料；免疫破坏就免疫抑制；补体失控就C5抑制；微血栓就处理血栓病理。<span class="en">Mechanism determines treatment.</span></li>
+  </ol>
+</section>
+
+<section id="finaltable" class="card">
+  <h2>九、最终交付表：疾病 × 关键鉴别点 × MCV/MCH × Coombs × 治疗一线</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>疾病 Disease</th>
+        <th>关键鉴别点 Key differentiator</th>
+        <th>MCV/MCH</th>
+        <th>Coombs / DAT</th>
+        <th>一线/核心治疗 First-line/Core treatment</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>缺铁性贫血 Iron deficiency anemia</td>
+        <td>Ferritin↓、TIBC↑、RDW↑；pica、koilonychia、Plummer–Vinson；成人男/绝经后女查GI失血</td>
+        <td>MCV↓；MCH↓</td>
+        <td>阴性 Negative</td>
+        <td>口服铁剂 + 寻找并处理失血源；不耐受/吸收差/需快速补充用IV iron；不稳定时输血</td>
+      </tr>
+      <tr>
+        <td>慢性病贫血 Anemia of chronic disease</td>
+        <td>炎症/CKD/恶性肿瘤；hepcidin↑；ferritin↑、TIBC↓</td>
+        <td>MCV正常或↓；MCH正常或↓</td>
+        <td>阴性 Negative</td>
+        <td>治疗基础病；CKD可考虑EPO；谨慎输血</td>
+      </tr>
+      <tr>
+        <td>地中海贫血 Thalassemia</td>
+        <td>MCV很低但RBC count常正常/高；target cells；家族/族群；Hb电泳</td>
+        <td>MCV↓↓；MCH↓</td>
+        <td>阴性 Negative</td>
+        <td>轻型观察；重型输血+铁螯合；遗传咨询</td>
+      </tr>
+      <tr>
+        <td>铅中毒/铁粒幼 Lead/Sideroblastic</td>
+        <td>Basophilic stippling；ring sideroblasts；铁粒幼常iron/ferritin↑</td>
+        <td>MCV↓或可变；MCH↓</td>
+        <td>阴性 Negative</td>
+        <td>铅：螯合；铁粒幼：去除病因，B6/pyridoxine按病因</td>
+      </tr>
+      <tr>
+        <td>B12缺乏性巨幼 Megaloblastic anemia—B12</td>
+        <td>Hypersegmented neutrophils；homocysteine↑、MMA↑；神经症状；恶性贫血/回肠病/胃切除</td>
+        <td>MCV↑；MCH常↑或正常，MCHC多正常</td>
+        <td>阴性 Negative</td>
+        <td>先补B12；恶性贫血通常长期替代；再处理病因</td>
+      </tr>
+      <tr>
+        <td>叶酸缺乏 Folate deficiency</td>
+        <td>Hypersegmented neutrophils；homocysteine↑、MMA正常；无神经症状；酒精/妊娠/MTX/TMP/phenytoin</td>
+        <td>MCV↑；MCH常↑或正常，MCHC多正常</td>
+        <td>阴性 Negative</td>
+        <td>确认/同时处理B12后补叶酸；停或替换致病药物</td>
+      </tr>
+      <tr>
+        <td>再生障碍性贫血 Aplastic anemia</td>
+        <td>Pancytopenia + retic↓ + hypocellular fatty marrow；正常形态但数量全低</td>
+        <td>MCV正常或↑；MCH多正常</td>
+        <td>阴性 Negative</td>
+        <td>停致病因素；重症年轻有供者HSCT；否则ATG+cyclosporine±eltrombopag；输血/抗感染支持</td>
+      </tr>
+      <tr>
+        <td>遗传性球形红细胞增多症 Hereditary spherocytosis</td>
+        <td>Spherocytes、MCHC↑、osmotic fragility↑/EMA binding↓、脾大、色素胆石</td>
+        <td>MCV正常或↓；MCHC↑</td>
+        <td>阴性 Negative</td>
+        <td>叶酸；中重度/反复并发症脾切</td>
+      </tr>
+      <tr>
+        <td>G6PD缺乏 G6PD deficiency</td>
+        <td>氧化触发后数日溶血；Heinz bodies、bite cells；急性期G6PD活性可假正常</td>
+        <td>多正细胞；MCH正常</td>
+        <td>阴性 Negative</td>
+        <td>避免触发因素；急性期支持、补液、必要时输血；新生儿黄疸按阈值光疗</td>
+      </tr>
+      <tr>
+        <td>PNH</td>
+        <td>Coombs阴性血管内溶血 + pancytopenia + 静脉血栓；CD55/CD59缺失</td>
+        <td>多正细胞；MCH正常</td>
+        <td>阴性 Negative</td>
+        <td>C5抑制剂（eculizumab/ravulizumab）；血栓处理；重症HSCT</td>
+      </tr>
+      <tr>
+        <td>温抗体AIHA Warm AIHA</td>
+        <td>IgG；血管外溶血；SLE/CLL/β-lactam/α-methyldopa；spherocytes</td>
+        <td>多正细胞；网织↑可使MCV轻↑</td>
+        <td>阳性 Positive</td>
+        <td>糖皮质激素一线；难治rituximab或脾切</td>
+      </tr>
+      <tr>
+        <td>冷凝集AIHA Cold AIHA</td>
+        <td>IgM+complement；冷暴露后肢端青紫疼痛；Mycoplasma/EBV/CLL</td>
+        <td>多正细胞；MCH多正常</td>
+        <td>阳性 Positive（常C3）</td>
+        <td>避免寒冷；rituximab</td>
+      </tr>
+      <tr>
+        <td>MAHA：TTP/HUS/DIC/HELLP等</td>
+        <td>Schistocytes/helmet cells；血小板低；AKI/神经症状/凝血异常按病因分</td>
+        <td>多正细胞；MCH正常</td>
+        <td>阴性 Negative</td>
+        <td>治疗原病；TTP紧急血浆置换+免疫治疗；DIC处理诱因和支持</td>
+      </tr>
+      <tr>
+        <td>机械性/大血管性 Macroangiopathic</td>
+        <td>人工瓣、主动脉瓣狭窄；schistocytes</td>
+        <td>多正细胞；MCH正常</td>
+        <td>阴性 Negative</td>
+        <td>处理瓣膜/机械原因；支持输血</td>
+      </tr>
+      <tr>
+        <td>镰状细胞病 Sickle cell anemia</td>
+        <td>HbS；疼痛危象、急性胸综合征、autosplenectomy、Salmonella骨髓炎；Hb electrophoresis</td>
+        <td>多正细胞；MCH正常</td>
+        <td>阴性 Negative</td>
+        <td>危象：补液、镇痛、氧/抗生素按需；预防：hydroxyurea↑HbF、疫苗；重症输血/换血</td>
+      </tr>
+      <tr>
+        <td>感染性溶血 Malaria/Babesia等</td>
+        <td>旅行/暴露史、发热、血涂片寄生虫</td>
+        <td>多正细胞；MCH正常</td>
+        <td>阴性 Negative</td>
+        <td>病原体特异性抗感染/抗寄生虫治疗</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<footer>
+  <p>版本：2026-06-20。来源说明：本笔记根据 First Aid 2022 血液肿瘤病理贫血章节进行结构化改写，并加入LMCHK答题导向。临床用药、输血阈值和本地流程应以所在机构及香港本地最新指引为准。</p>
+</footer>
+
+</main>
+</body>
+</html>
