@@ -1,0 +1,2997 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LMCHK · 血液系统真题库 · Hematology MCQ Drill with Reference Answers</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Noto+Serif+SC:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ─────────── Tokens ─────────── */
+:root {
+  --ink:        #0F1419;
+  --ink-soft:   #3D4451;
+  --ink-mute:   #6B7280;
+  --paper:      #FAF8F4;
+  --paper-warm: #F5F1E8;
+  --card:       #FFFFFF;
+  --line:       #E5E0D5;
+  --line-soft:  #F0EBE0;
+  --hl:         #FEF3C7;       /* highlighter yellow */
+  --red:        #B91C1C;       /* clinical red — wrong / due */
+  --red-soft:   #FEE2E2;
+  --green:      #166534;       /* clinical green — correct */
+  --green-soft: #DCFCE7;
+  --blue:       #1E40AF;       /* schedule blue */
+  --blue-soft:  #DBEAFE;
+  --gold:       #B45309;       /* 🔥 super-correction */
+  --box0:       #E5E0D5;
+  --box1:       #FCA5A5;
+  --box2:       #FCD34D;
+  --box3:       #93C5FD;
+  --box4:       #86EFAC;
+  --box5:       #166534;       /* graduated */
+  --shadow-1:   0 1px 2px rgba(15,20,25,.04), 0 1px 3px rgba(15,20,25,.06);
+  --shadow-2:   0 4px 12px rgba(15,20,25,.06), 0 2px 4px rgba(15,20,25,.04);
+  --r-sm: 4px; --r-md: 8px; --r-lg: 12px;
+  --f-display: 'Newsreader', 'Noto Serif SC', Georgia, serif;
+  --f-body:    'Inter', 'PingFang SC', system-ui, sans-serif;
+  --f-mono:    'IBM Plex Mono', 'SF Mono', Menlo, monospace;
+  --f-cn:      'Noto Serif SC', 'PingFang SC', 'Microsoft YaHei', serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { font-size: 16px; -webkit-font-smoothing: antialiased; }
+body {
+  font-family: var(--f-body);
+  background: var(--paper);
+  color: var(--ink);
+  line-height: 1.55;
+  min-height: 100vh;
+}
+
+button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+input, textarea, select { font-family: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; border-radius: 2px; }
+
+/* ─────────── Top bar ─────────── */
+.topbar {
+  background: var(--card);
+  border-bottom: 1px solid var(--line);
+  padding: 18px 28px;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 24px;
+  position: sticky; top: 0; z-index: 50;
+}
+.brand h1 {
+  font-family: var(--f-display);
+  font-weight: 600;
+  font-size: 24px;
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+}
+.brand h1 .zh { font-family: var(--f-cn); font-weight: 500; margin-right: 8px; }
+.brand .sub {
+  font-size: 12px;
+  color: var(--ink-mute);
+  font-family: var(--f-mono);
+  margin-top: 4px;
+  letter-spacing: 0.02em;
+}
+.top-actions { display: flex; align-items: center; gap: 12px; }
+.due-pill {
+  background: var(--red);
+  color: white;
+  font-family: var(--f-mono);
+  font-size: 12px;
+  font-weight: 500;
+  padding: 5px 10px;
+  border-radius: 999px;
+  letter-spacing: 0.02em;
+}
+.due-pill.zero { background: var(--green); }
+.mode-toggle {
+  display: inline-flex;
+  background: var(--paper-warm);
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  padding: 2px;
+  font-size: 13px;
+  font-weight: 500;
+}
+.mode-toggle button {
+  padding: 6px 14px;
+  border-radius: var(--r-sm);
+  color: var(--ink-mute);
+}
+.mode-toggle button.active { background: var(--card); color: var(--ink); box-shadow: var(--shadow-1); }
+
+/* ─────────── Reality banner ─────────── */
+.reality {
+  background: var(--paper-warm);
+  border-bottom: 1px solid var(--line);
+  padding: 14px 28px;
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  font-size: 13px;
+  line-height: 1.5;
+}
+.reality .icon { font-size: 18px; line-height: 1; padding-top: 1px; }
+.reality strong { font-family: var(--f-cn); font-weight: 600; letter-spacing: 0.02em; }
+.reality p { color: var(--ink-soft); margin-top: 2px; }
+.reality .pass-rate { color: var(--red); font-weight: 600; font-family: var(--f-mono); }
+
+/* ─────────── Layout ─────────── */
+.layout {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 0;
+  min-height: calc(100vh - 140px);
+}
+.sidebar {
+  background: var(--paper-warm);
+  border-right: 1px solid var(--line);
+  padding: 22px 20px;
+  overflow-y: auto;
+}
+.sidebar section { margin-bottom: 26px; }
+.sidebar h3 {
+  font-family: var(--f-mono);
+  text-transform: uppercase;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--ink-mute);
+  margin-bottom: 10px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--line);
+}
+
+/* Today stats */
+.today-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.stat-tile { background: var(--card); border: 1px solid var(--line); border-radius: var(--r-md); padding: 10px 12px; }
+.stat-tile .num { font-family: var(--f-display); font-size: 22px; font-weight: 600; line-height: 1; }
+.stat-tile .lbl { font-size: 11px; color: var(--ink-mute); margin-top: 3px; font-family: var(--f-mono); letter-spacing: 0.02em; }
+.stat-tile.alert .num { color: var(--red); }
+.stat-tile.good .num { color: var(--green); }
+
+/* Coverage bars */
+.cov-list { display: flex; flex-direction: column; gap: 6px; font-size: 12px; }
+.cov-row { display: grid; grid-template-columns: 1fr 30px; align-items: center; gap: 8px; }
+.cov-row .name { font-family: var(--f-cn); color: var(--ink-soft); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.cov-row .bar { grid-column: 1 / -1; height: 4px; background: var(--line-soft); border-radius: 2px; overflow: hidden; margin-top: 2px; }
+.cov-row .bar .fill { height: 100%; background: var(--green); }
+.cov-row .frac { font-family: var(--f-mono); font-size: 11px; color: var(--ink-mute); text-align: right; }
+
+/* Leitner rack — signature element */
+.rack-legend { display: flex; gap: 8px; font-size: 10px; margin-bottom: 8px; font-family: var(--f-mono); color: var(--ink-mute); }
+.rack-legend span { display: flex; align-items: center; gap: 3px; }
+.rack-legend i { width: 8px; height: 8px; border-radius: 2px; display: inline-block; }
+.rack {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 6px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  padding: 10px;
+}
+.rack-col {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  align-items: center;
+}
+.rack-col .col-head { font-family: var(--f-mono); font-size: 10px; color: var(--ink-mute); margin-bottom: 2px; }
+.rack-tile {
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 2px;
+  background: var(--box0);
+  cursor: pointer;
+  transition: transform 0.12s;
+  font-family: var(--f-mono);
+  font-size: 8px;
+  color: rgba(0,0,0,.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  padding: 0;
+}
+.rack-tile:hover { transform: scale(1.4); z-index: 2; position: relative; box-shadow: 0 2px 8px rgba(0,0,0,.2); }
+.rack-tile.b0 { background: var(--box0); }
+.rack-tile.b1 { background: var(--box1); }
+.rack-tile.b2 { background: var(--box2); }
+.rack-tile.b3 { background: var(--box3); }
+.rack-tile.b4 { background: var(--box4); }
+.rack-tile.b5 { background: var(--box5); color: rgba(255,255,255,.7); }
+.rack-tile.due { box-shadow: inset 0 0 0 2px var(--red); }
+.rack-tile.current { box-shadow: inset 0 0 0 2px var(--ink); }
+
+/* Filter chips */
+.filter-group { margin-bottom: 10px; }
+.filter-group summary {
+  font-size: 12px;
+  font-weight: 500;
+  padding: 4px 0;
+  color: var(--ink-soft);
+  cursor: pointer;
+  user-select: none;
+  font-family: var(--f-cn);
+}
+.filter-group[open] summary { color: var(--ink); }
+.chips { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 6px; }
+.chip {
+  font-family: var(--f-mono);
+  font-size: 10px;
+  padding: 3px 8px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--card);
+  color: var(--ink-soft);
+  transition: all 0.12s;
+}
+.chip.zh { font-family: var(--f-cn); font-size: 11px; }
+.chip:hover { border-color: var(--ink-mute); }
+.chip.on { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+
+/* Export buttons */
+.exports { display: flex; flex-direction: column; gap: 6px; }
+.exports button {
+  text-align: left;
+  padding: 8px 12px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--r-sm);
+  font-size: 12px;
+  font-family: var(--f-mono);
+  color: var(--ink-soft);
+  transition: all 0.12s;
+}
+.exports button:hover { background: var(--paper); color: var(--ink); }
+.exports button.danger { color: var(--red); }
+.exports button.danger:hover { background: var(--red-soft); }
+
+
+/* ─────────── Reference answer panel ─────────── */
+.answer-panel {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  padding: 14px 18px;
+  margin-bottom: 14px;
+}
+.answer-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+.answer-head .lbl {
+  font-family: var(--f-cn);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink-soft);
+}
+.answer-head small {
+  display: block;
+  font-family: var(--f-mono);
+  font-size: 10px;
+  color: var(--ink-mute);
+  font-weight: 400;
+  margin-top: 1px;
+}
+.answer-toggle {
+  padding: 7px 12px;
+  border: 1px solid var(--line);
+  border-radius: var(--r-sm);
+  background: var(--paper-warm);
+  font-size: 12px;
+  font-family: var(--f-cn);
+  color: var(--ink-soft);
+}
+.answer-toggle:hover { border-color: var(--ink-soft); color: var(--ink); background: var(--card); }
+.answer-body { border-top: 1px solid var(--line-soft); padding-top: 12px; font-family: var(--f-cn); }
+.answer-line { font-size: 14px; margin-bottom: 8px; }
+.answer-line strong { color: var(--green); font-family: var(--f-mono); }
+.answer-explain { font-size: 13px; line-height: 1.65; color: var(--ink-soft); }
+.answer-warn { font-size: 12px; line-height: 1.55; color: var(--gold); background: #FEF3C7; border: 1px solid #FCD34D; border-radius: var(--r-sm); padding: 8px 10px; margin-top: 10px; }
+.answer-confidence { font-family: var(--f-mono); font-size: 10px; color: var(--ink-mute); margin-top: 10px; letter-spacing: .02em; text-transform: uppercase; }
+.q-options button.opt.correct-ref { border-color: var(--green); background: var(--green-soft); }
+.q-options button.opt.correct-ref .letter { color: var(--green); }
+.q-options button.opt.wrong-pick { border-color: var(--red); background: var(--red-soft); }
+.q-options button.opt.wrong-pick .letter { color: var(--red); }
+.browse-ans {
+  font-family: var(--f-mono);
+  font-size: 10px;
+  color: var(--green);
+  border: 1px solid var(--green-soft);
+  border-radius: 3px;
+  padding: 1px 6px;
+  background: var(--green-soft);
+}
+
+/* ─────────── Reader ─────────── */
+.reader { padding: 32px 40px; max-width: 900px; }
+
+.q-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 18px;
+  font-family: var(--f-mono);
+  font-size: 12px;
+}
+.q-num {
+  background: var(--ink);
+  color: var(--paper);
+  padding: 3px 10px;
+  border-radius: var(--r-sm);
+  font-weight: 500;
+}
+.q-years { color: var(--ink-mute); }
+.q-years strong { color: var(--ink-soft); font-weight: 500; }
+.q-box-pill {
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+.q-box-pill.b0 { background: var(--box0); color: var(--ink-soft); }
+.q-box-pill.b1 { background: var(--box1); color: #7F1D1D; }
+.q-box-pill.b2 { background: var(--box2); color: #78350F; }
+.q-box-pill.b3 { background: var(--box3); color: #1E3A8A; }
+.q-box-pill.b4 { background: var(--box4); color: #14532D; }
+.q-box-pill.b5 { background: var(--box5); color: white; }
+.q-box-pill.due { box-shadow: inset 0 0 0 1px var(--red), 0 0 0 2px var(--red-soft); }
+.q-topics { display: flex; gap: 6px; flex-wrap: wrap; margin-left: auto; }
+.q-topics .tag {
+  font-family: var(--f-cn);
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--ink-mute);
+  padding: 2px 7px;
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  background: var(--card);
+}
+
+.q-stem {
+  font-family: var(--f-display);
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--ink);
+  margin-bottom: 22px;
+  padding: 20px 22px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  border-left: 3px solid var(--ink);
+}
+.q-stem em { font-style: italic; }
+
+.q-options { list-style: none; display: flex; flex-direction: column; gap: 8px; margin-bottom: 24px; }
+.q-options button.opt {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  width: 100%;
+  text-align: left;
+  padding: 14px 18px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  font-size: 15px;
+  line-height: 1.45;
+  color: var(--ink);
+  transition: all 0.12s;
+  font-family: var(--f-display);
+  font-weight: 400;
+}
+.q-options button.opt:hover { border-color: var(--ink-soft); background: var(--paper-warm); }
+.q-options button.opt .letter {
+  font-family: var(--f-mono);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink-mute);
+  min-width: 22px;
+  padding-top: 1px;
+}
+.q-options button.opt.picked {
+  border-color: var(--ink);
+  background: var(--hl);
+}
+.q-options button.opt.picked .letter { color: var(--ink); }
+
+/* Confidence row */
+.conf-row, .mark-row, .tag-row {
+  background: var(--paper-warm);
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  padding: 14px 18px;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+.conf-row .lbl, .mark-row .lbl, .tag-row .lbl {
+  font-family: var(--f-cn);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ink-soft);
+  min-width: 110px;
+}
+.conf-row .lbl small, .mark-row .lbl small, .tag-row .lbl small {
+  display: block;
+  font-family: var(--f-mono);
+  font-size: 10px;
+  color: var(--ink-mute);
+  font-weight: 400;
+  margin-top: 1px;
+  letter-spacing: 0.02em;
+}
+.conf-btn {
+  padding: 7px 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--r-sm);
+  background: var(--card);
+  font-size: 13px;
+  font-family: var(--f-cn);
+  color: var(--ink-soft);
+  transition: all 0.12s;
+}
+.conf-btn:hover { border-color: var(--ink-soft); }
+.conf-btn.on { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.conf-btn .ord { font-family: var(--f-mono); margin-right: 4px; }
+
+.mark-btn {
+  padding: 8px 18px;
+  border-radius: var(--r-sm);
+  font-size: 14px;
+  font-weight: 500;
+  border: 1px solid;
+  transition: all 0.12s;
+  font-family: var(--f-cn);
+}
+.mark-btn.correct { background: var(--green-soft); border-color: var(--green); color: var(--green); }
+.mark-btn.wrong { background: var(--red-soft); border-color: var(--red); color: var(--red); }
+.mark-btn:hover { transform: translateY(-1px); }
+.mark-btn .key { font-family: var(--f-mono); font-size: 10px; opacity: 0.6; margin-left: 6px; }
+
+.tag-row select {
+  padding: 6px 10px;
+  border: 1px solid var(--line);
+  border-radius: var(--r-sm);
+  background: var(--card);
+  font-size: 13px;
+  font-family: var(--f-cn);
+  color: var(--ink);
+}
+
+/* Super-correction flag */
+.super-flag {
+  background: linear-gradient(to right, #FEF3C7, #FED7AA);
+  border: 1px solid var(--gold);
+  border-radius: var(--r-md);
+  padding: 12px 18px;
+  margin-bottom: 14px;
+  font-size: 13px;
+  font-family: var(--f-cn);
+  color: var(--gold);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.super-flag .icon { font-size: 20px; }
+.super-flag strong { font-weight: 600; }
+
+/* Note */
+.note-box {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  padding: 12px 14px;
+  margin-bottom: 14px;
+}
+.note-box label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--f-mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--ink-mute);
+  margin-bottom: 8px;
+}
+.note-box label .helper { font-family: var(--f-cn); text-transform: none; letter-spacing: 0; font-size: 11px; }
+.note-box textarea {
+  width: 100%;
+  min-height: 60px;
+  border: none;
+  resize: vertical;
+  font-family: var(--f-cn);
+  font-size: 13px;
+  line-height: 1.5;
+  background: transparent;
+  color: var(--ink);
+}
+.note-box textarea:focus { outline: none; }
+.note-box .saved-tick {
+  font-family: var(--f-mono);
+  font-size: 10px;
+  color: var(--green);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.note-box .saved-tick.on { opacity: 1; }
+
+/* Actions row */
+.action-row {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  padding: 10px 14px;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.action-row .lbl {
+  font-family: var(--f-mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--ink-mute);
+}
+.action-btn {
+  padding: 6px 12px;
+  border: 1px solid var(--line);
+  border-radius: var(--r-sm);
+  background: var(--paper-warm);
+  font-size: 12px;
+  font-family: var(--f-cn);
+  color: var(--ink-soft);
+  transition: all 0.12s;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+.action-btn:hover { background: var(--card); border-color: var(--ink-soft); color: var(--ink); }
+.action-btn .icon { font-size: 13px; }
+
+/* Nav */
+.q-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+}
+.nav-btn {
+  padding: 9px 18px;
+  font-size: 13px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--r-sm);
+  color: var(--ink);
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.12s;
+}
+.nav-btn:hover { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.nav-btn.primary { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.nav-btn.primary:hover { background: var(--red); border-color: var(--red); }
+.nav-btn .key { font-family: var(--f-mono); font-size: 10px; opacity: 0.6; }
+.nav-btn:disabled { opacity: 0.35; cursor: not-allowed; }
+
+.history-strip {
+  font-family: var(--f-mono);
+  font-size: 11px;
+  color: var(--ink-mute);
+  padding: 8px 14px;
+  background: var(--paper-warm);
+  border-radius: var(--r-sm);
+  margin-bottom: 14px;
+  border-left: 2px solid var(--line);
+}
+.history-strip strong { color: var(--ink-soft); font-weight: 500; }
+.history-strip .attempt {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 1px 6px;
+  border-radius: 2px;
+}
+.history-strip .attempt.c { background: var(--green-soft); color: var(--green); }
+.history-strip .attempt.w { background: var(--red-soft); color: var(--red); }
+
+/* ─────────── Browse mode ─────────── */
+.browse-list { display: flex; flex-direction: column; gap: 12px; }
+.browse-item {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  padding: 16px 20px;
+  cursor: pointer;
+  transition: all 0.12s;
+}
+.browse-item:hover { border-color: var(--ink-soft); box-shadow: var(--shadow-1); }
+.browse-item-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+  font-family: var(--f-mono);
+  font-size: 11px;
+}
+.browse-item-stem {
+  font-family: var(--f-display);
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--ink);
+}
+.browse-item-stem.truncate {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Toast */
+.toast {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%) translateY(40px);
+  background: var(--ink);
+  color: var(--paper);
+  padding: 10px 18px;
+  border-radius: var(--r-md);
+  font-size: 13px;
+  font-family: var(--f-cn);
+  box-shadow: var(--shadow-2);
+  opacity: 0;
+  transition: all 0.3s;
+  z-index: 100;
+  pointer-events: none;
+}
+.toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
+
+/* Modal */
+.modal-bg {
+  position: fixed; inset: 0;
+  background: rgba(15,20,25,.4);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+  padding: 24px;
+}
+.modal-bg.show { display: flex; }
+.modal {
+  background: var(--card);
+  border-radius: var(--r-lg);
+  max-width: 640px;
+  width: 100%;
+  max-height: 85vh;
+  overflow-y: auto;
+  padding: 26px 28px;
+  box-shadow: var(--shadow-2);
+}
+.modal h2 { font-family: var(--f-display); font-size: 22px; margin-bottom: 14px; }
+.modal p, .modal li { font-size: 13px; line-height: 1.6; color: var(--ink-soft); font-family: var(--f-cn); margin-bottom: 8px; }
+.modal ul { padding-left: 18px; margin-bottom: 14px; }
+.modal .modal-close {
+  margin-top: 14px;
+  padding: 8px 18px;
+  background: var(--ink);
+  color: var(--paper);
+  border-radius: var(--r-sm);
+  font-size: 13px;
+}
+.modal pre { background: var(--paper-warm); padding: 10px 14px; border-radius: var(--r-sm); font-size: 12px; font-family: var(--f-mono); overflow-x: auto; margin: 8px 0; white-space: pre-wrap; }
+
+/* ─────────── Footer ─────────── */
+footer {
+  padding: 24px 28px;
+  text-align: center;
+  font-size: 11px;
+  font-family: var(--f-mono);
+  color: var(--ink-mute);
+  border-top: 1px solid var(--line);
+  background: var(--paper-warm);
+}
+
+/* ─────────── Empty state ─────────── */
+.empty {
+  text-align: center;
+  padding: 60px 20px;
+  font-family: var(--f-cn);
+  color: var(--ink-mute);
+}
+.empty h3 { font-family: var(--f-display); font-size: 20px; color: var(--ink); margin-bottom: 8px; }
+
+/* ─────────── Responsive ─────────── */
+@media (max-width: 960px) {
+  .layout { grid-template-columns: 1fr; }
+  .sidebar { border-right: none; border-bottom: 1px solid var(--line); max-height: 50vh; }
+  .reader { padding: 22px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition: none !important; animation: none !important; }
+}
+</style>
+</head>
+<body>
+
+<!-- ────── Top bar ────── -->
+<header class="topbar">
+  <div class="brand">
+    <h1><span class="zh">血液系统</span><span style="font-family:var(--f-display); font-style:italic; font-weight:500;">Hematology</span></h1>
+    <p class="sub">LMCHK · 168 MCQs · 2003–2022 · Adrian Lui M23 compilation</p>
+  </div>
+  <div class="top-actions">
+    <span id="due-pill" class="due-pill">— 道到期</span>
+    <div class="mode-toggle">
+      <button id="mode-drill" class="active">陪练 Drill</button>
+      <button id="mode-browse">浏览 Browse</button>
+    </div>
+    <button class="action-btn" id="help-btn"><span class="icon">?</span><span>说明</span></button>
+  </div>
+</header>
+
+<!-- ────── Reality banner ────── -->
+<div class="reality">
+  <span class="icon">📋</span>
+  <div>
+    <strong>诚实校准 Reality Check</strong>
+    <p>LMCHK 通过率 <span class="pass-rate">10–15%</span>。本工具：168 道真题 · Leitner 5 盒（当天/2/5/10/21 天）· 你自评对错（PDF 原文未含官方答案；本版加入非官方参考答案，需复核）。每题可一键复制为「11 步分析」prompt 拿去 Claude 深挖。<strong>长期大规模间隔重复请用 Anki/Obsidian SRS</strong>——本工具只做"高质量提取+反馈"这一环。</p>
+  </div>
+</div>
+
+<!-- ────── Main layout ────── -->
+<main class="layout">
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+
+    <section>
+      <h3>今日 Today</h3>
+      <div id="today-grid" class="today-grid"></div>
+    </section>
+
+    <section>
+      <h3>覆盖度 Coverage</h3>
+      <div id="cov-list" class="cov-list"></div>
+    </section>
+
+    <section>
+      <h3>Leitner 盒位 Rack</h3>
+      <div class="rack-legend">
+        <span><i style="background:var(--box0)"></i>0新</span>
+        <span><i style="background:var(--box1)"></i>1</span>
+        <span><i style="background:var(--box2)"></i>2</span>
+        <span><i style="background:var(--box3)"></i>3</span>
+        <span><i style="background:var(--box4)"></i>4</span>
+        <span><i style="background:var(--box5)"></i>5毕业</span>
+      </div>
+      <div id="rack" class="rack"></div>
+    </section>
+
+    <section>
+      <h3>筛选 Filters</h3>
+      <details class="filter-group" open>
+        <summary>年份 Year</summary>
+        <div id="year-chips" class="chips"></div>
+      </details>
+      <details class="filter-group">
+        <summary>主题 Topic</summary>
+        <div id="topic-chips" class="chips"></div>
+      </details>
+      <details class="filter-group">
+        <summary>盒位 Box</summary>
+        <div id="box-chips" class="chips"></div>
+      </details>
+      <details class="filter-group">
+        <summary>状态 Status</summary>
+        <div id="status-chips" class="chips"></div>
+      </details>
+      <button id="reset-filters" class="action-btn" style="margin-top:8px; width:100%; justify-content:center;">清除筛选 Clear</button>
+    </section>
+
+    <section>
+      <h3>导出 Export → Obsidian</h3>
+      <div class="exports">
+        <button id="exp-mistakes">📕 错题本.md</button>
+        <button id="exp-vocab">📗 医学单词.md</button>
+        <button id="exp-ledger">📘 学习账本.md</button>
+        <button id="exp-due">📙 今日到期清单.md</button>
+        <button id="reset-all" class="danger">⚠️ 重置所有进度</button>
+      </div>
+    </section>
+
+  </aside>
+
+  <!-- Reader -->
+  <article class="reader">
+
+    <!-- DRILL VIEW -->
+    <div id="drill-view">
+      <div id="drill-content"></div>
+    </div>
+
+    <!-- BROWSE VIEW -->
+    <div id="browse-view" hidden>
+      <div id="browse-content" class="browse-list"></div>
+    </div>
+
+  </article>
+
+</main>
+
+<footer>
+  168 questions · parsed from <em>Med (Q)</em> by Adrian Lui (M23) · LMCHK past papers 2003–2022 ·
+  data lives in your browser <code>localStorage</code> ·
+  <span style="color:var(--ink-soft)">"不掌握不放过 · 广度优先于深度 · 真题大于自编题"</span>
+</footer>
+
+<!-- Toast -->
+<div id="toast" class="toast">已保存</div>
+
+<!-- Help modal -->
+<div id="help-modal" class="modal-bg" onclick="if(event.target===this)this.classList.remove('show')">
+  <div class="modal">
+    <h2>使用说明 How this works</h2>
+
+    <p><strong>这是什么？</strong></p>
+    <p>2003–2022 年 LMCHK 内科考试中 168 道血液 / 免疫 / 肿瘤真题的离线题库。严格遵循 <code>lmchk-clinical-study</code> 技能的学习引擎规则。</p>
+
+    <p><strong>为什么标注为“非官方参考答案”？</strong></p>
+    <p>Adrian Lui 的 PDF 编译只含题干、不含答案。技能铁律 #2 是"<strong>不可编造医学事实</strong>" — 本版加入的是基于标准考点整理的参考答案与短解析，不等同于官方 answer key。遇到题干残缺、选项转录不完整或低置信度题，界面会提示需复核；最终以官方答案、教材和指南为准。</p>
+
+    <p><strong>Leitner 5 盒怎么走？</strong></p>
+    <ul>
+      <li><b>Box 0</b> 新题（未做过）</li>
+      <li><b>Box 1</b> → 2 天后到期</li>
+      <li><b>Box 2</b> → 5 天后到期</li>
+      <li><b>Box 3</b> → 10 天后到期</li>
+      <li><b>Box 4</b> → 21 天后到期</li>
+      <li><b>Box 5</b> 毕业 ✓</li>
+      <li>答对 → 升盒，答错 → 跌回 Box 1</li>
+      <li>"<strong>跨多个日期连续答对才毕业</strong>"——不掌握不放过</li>
+    </ul>
+
+    <p><strong>每题的流程</strong></p>
+    <ul>
+      <li>选 A–E（也可用键盘 1/2/3/4/5）</li>
+      <li>报信心 ① 蒙的 / ② 不太确定 / ③ 很确定</li>
+      <li>自评 ✓ 对 / ✗ 错（键盘 Y / N）</li>
+      <li>答错时标错因（知识缺失 / 概念混淆 / 题干误读 / 推理断链 / 粗心）</li>
+      <li>信心 ③ 但答错 = 🔥 <strong>超校正黄金时刻</strong>——账本最高优先级</li>
+      <li>笔记区记录官方答案、单词收割、临床珍珠</li>
+    </ul>
+
+    <p><strong>键盘快捷键</strong></p>
+    <pre>1–5  选 A–E      ←→ 上下题      Y/N 自评对错
+0    随机一题      ?   打开本说明    Esc 关闭弹窗</pre>
+
+    <p><strong>诚实承认边界</strong></p>
+    <p>本工具擅长：单题深挖、自评闭环、错因归类、医学单词收割。本工具<strong>不擅长</strong>大规模长期跨考点的间隔重复调度——那是 <strong>Anki / Obsidian SRS</strong> 的活。把毕业的题导成 .md 喂回 Obsidian 永久存档。</p>
+
+    <button class="modal-close" onclick="document.getElementById('help-modal').classList.remove('show')">明白了 Got it</button>
+  </div>
+</div>
+
+<!-- ────────────────────────────────── -->
+<!-- ────────── App logic ─────────── -->
+<!-- ────────────────────────────────── -->
+<script>
+const QUESTIONS = [{"num": 1, "year_info": "2003 MCQ37", "years": ["2003"], "stem": "Typical cytogenetic abnormalities are commonly found in the following conditions except:", "options": {"A": "Follicular lymphoma", "B": "Chronic myeloid leukaemia", "C": "Burkitt’s lymphoma", "D": "Acute promyelocytic leukaemia", "E": "Aplastic anaemia"}, "topics": ["Anaemia/Thalassaemia", "Acute Leukaemia", "Chronic Leukaemia/MPN", "Lymphoma"]}, {"num": 2, "year_info": "2003 MCQ38", "years": ["2003"], "stem": "A 28 year-old married woman was referred from an obstetrician. She had two previous spontaneous abortions. Investigations showed a haemoglobin of 13.1 g/dL, white cell count 5.2 × 109/L, platelet count 67 × 109, a normal prothrombin time but a prolonged activated partial thromboplastin time of 45.1 sec. The most likely explanation for the blood results is:", "options": {"A": "Haemophilia A", "B": "Haemophilia B", "C": "von Willebrand’s disease", "D": "Anti-phospholipid antibody syndrome", "E": "Protein C deficiency"}, "topics": ["Coagulation/Bleeding"]}, {"num": 3, "year_info": "2003 MCQ39", "years": ["2003"], "stem": "The following statement on low molecular weight heparin is correct:", "options": {"A": "It is useful for prevention of deep vein thrombosis but not for treatment", "B": "It has a shorter half-life in the serum than the conventional unfractionated heparin", "C": "When it is used, monitoring by coagulation test is not necessary", "D": "Comparing with conventional unfractionated heparin, it has a lower anti-Xa to anti-IIa activity ratio", "E": "It is produced by recombinant DNA technology"}, "topics": ["Coagulation/Bleeding", "Thrombosis/VTE"]}, {"num": 4, "year_info": "2003 MCQ40, 2013 MCQ36", "years": ["2003", "2013"], "stem": "In beta thalassaemia major,", "options": {"A": "Untransfused haemoglobin level is typically between 8 to 10 g/dL", "B": "Splenectomy is usually required only after reaching adulthood", "C": "Iron chelation is not required in childhood", "D": "The majority of the haemoglobin produced by the patient is haemoglobin A2", "E": "Iron overload is the commonest cause of death"}, "topics": ["Anaemia/Thalassaemia"]}, {"num": 5, "year_info": "2003 MCQ41", "years": ["2003"], "stem": "A 32 years old man was incidentally found to have an 8cm splenomegaly. His haemoglobin was 14 g/dL, white cell count 33 × 109/l and platelet count 800 × 109/l. The neutrophil alkaline phosphatase score was zero. The most likely diagnosis is:", "options": {"A": "Chronic myeloid leukaemia", "B": "Essential thrombocythaemia", "C": "Myelodysplastic syndrome", "D": "Chronic myelomonocytic leukaemia", "E": "Chronic lymphocytic leukaemia"}, "topics": ["Chronic Leukaemia/MPN", "MDS", "Coagulation/Bleeding", "Splenomegaly/LN"]}, {"num": 6, "year_info": "2003 MCQ42, 2009 MCQ43, 2010 MCQ41", "years": ["2003", "2009", "2010"], "stem": "An 50 years old man was found to have a haemoglobin of 8.5 g/dl. Peripheral blood film showed macrocytosis. Which of the followings is not a cause of macrocytosis?", "options": {"A": "Hypothyroidism", "B": "Reticulocytosis", "C": "Lead poisoning", "D": "Myelodysplastic syndrome", "E": "Alcoholism"}, "topics": ["Anaemia/Thalassaemia", "MDS"]}, {"num": 7, "year_info": "2003 MCQ43", "years": ["2003"], "stem": "A 65 years old lady was incidentally found to have a platelet count of 35 × 109/L. There was no clinical bleeding. Which of the following statements is incorrect?", "options": {"A": "Platelet transfusion is not indicated", "B": "A bone marrow with increased megakaryocytes is diagnostic of immune thrombocytopenia", "C": "Myelodysplastic syndrome is a possibility", "D": "A blood film examination is useful", "E": "Steroid is an effective treatment for immune thrombocytopenia"}, "topics": ["MDS", "Coagulation/Bleeding", "Transfusion"]}, {"num": 8, "year_info": "2003 MCQ44", "years": ["2003"], "stem": "A 40-year-old woman had a pre-employment medical check-up. Her prothrombin time was 10 seconds, and her activated partial thromboplastin time was 40 seconds. The most likely diagnosis is:", "options": {"A": "Para-haemophilia", "B": "Haemophilia C", "C": "Low grade disseminated intravascular coagulation", "D": "von Willebrand disease", "E": "Haemophilia A"}, "topics": ["Coagulation/Bleeding"]}, {"num": 9, "year_info": "2003 MCQ88", "years": ["2003"], "stem": "Which of the following statements concerning lymphocyte maturation is true:", "options": {"A": "Immature B cells express membrane IgM and IgD", "B": "The pluripotent stem cell is one of the most abundant cell types in the bone marrow", "C": "Light chain genes are usually rearranged before heavy chain genes", "D": "Formation of memory B cells takes place during B cell proliferation in the bone marrow", "E": "Development of B cells in the bone marrow involves mainly antigen-dependent maturation"}, "topics": ["Immunology/Autoimmune"]}, {"num": 10, "year_info": "2005 MCQ9", "years": ["2005"], "stem": "Which of the followings is X-linked inheritance?", "options": {"A": "Factor IX deficiency", "B": "Factor X deficiency", "C": "Von Willebrand disease"}, "topics": ["Coagulation/Bleeding"]}, {"num": 11, "year_info": "2005 MCQ10", "years": ["2005"], "stem": "Fresh frozen plasma contains which of the followings?", "options": {"A": "Lupus anticoagulant", "B": "Antithrombin III", "C": "Anti-Rhesus D Ig"}, "topics": ["Coagulation/Bleeding", "Transfusion", "Immunology/Autoimmune"]}, {"num": 12, "year_info": "2006 MCQ8", "years": ["2006"], "stem": "Which of the following antibiotics affects warfarin metabolism and need careful INR monitoring?", "options": {"A": "Amoxicillin", "B": "Trimethoprim", "C": "Nitrofurantoin", "D": "Ciproxin", "E": "Clarithromycin"}, "topics": ["Coagulation/Bleeding"]}, {"num": 13, "year_info": "2006 MCQ76", "years": ["2006"], "stem": "Which is true for cancer?", "options": {"A": "NPC can manifest as bullous pemphigoid on skin", "B": "Arsenic keratosis is associated with TCM use", "C": "Paget’s disease of bone is from Paget’s of breast"}, "topics": ["General Haematology"]}, {"num": 14, "year_info": "2006 MCQ?34", "years": ["2006"], "stem": "Megaloblastic anaemia", "options": {"A": "Diet deficiency is a common cause in Hong Kong", "B": "Anti-intrinsic factor and parietal cell diagnostic for pernicious anaemia", "C": "Schilling test useful diagnostic test for pernicious anaemia"}, "topics": ["Anaemia/Thalassaemia"]}, {"num": 15, "year_info": "2006 MCQ?35, 2009 MCQ39", "years": ["2006", "2009"], "stem": "A 35-year-old female with gum bleeding. CBC: Hb normal, WBC normal, platelet low. PT 11, APTT 38. What is the most likely cause?", "options": {"A": "Anti-phospholipid syndrome", "B": "von Willebrand disease", "C": "Protein C deficiency", "D": "Protein S deficiency", "E": "TTP"}, "topics": ["Coagulation/Bleeding"]}, {"num": 16, "year_info": "2006 MCQ?36", "years": ["2006"], "stem": "A lady with anaemia, blood film showed polychromasia with ?, reticulocyte 8.8%. Which is unlikely?", "options": {"A": "Hereditary spherocytosis", "B": "Thalassemia", "C": "Chronic blood loss", "D": "TTP", "E": "Chronic renal failure"}, "topics": ["Anaemia/Thalassaemia", "Coagulation/Bleeding"]}, {"num": 17, "year_info": "2006 MCQ?37", "years": ["2006"], "stem": "Which is not a cause of haemolytic anaemia?", "options": {"A": "Aplastic anaemia", "B": "G6PD deficiency", "C": "Hereditary spherocytosis", "D": "Thalassaemia", "E": "TTP"}, "topics": ["Anaemia/Thalassaemia", "Coagulation/Bleeding"]}, {"num": 18, "year_info": "2006 MCQ?38, 2008 MCQ3", "years": ["2006", "2008"], "stem": "A 30-year-old is suspected to have severe iron deficiency anaemia. Which is the least likely cause?", "options": {"A": "Multiparity", "B": "Uterine fibroid", "C": "Haemorrhoid", "D": "Recurrent haematuria", "E": "Peptic ulcer"}, "topics": ["Anaemia/Thalassaemia"]}, {"num": 19, "year_info": "2006 MCQ?39", "years": ["2006"], "stem": "50/M 6 cm spleen found incidentally on exam. Which is least likely?", "options": {"A": "Multiple myeloma", "B": "CML", "C": "Myelofibrosis", "D": "NHL", "E": "Hb H disease"}, "topics": ["Anaemia/Thalassaemia", "Chronic Leukaemia/MPN", "Myeloma/Paraprotein"]}, {"num": 20, "year_info": "2006 MCQ?40", "years": ["2006"], "stem": "Young man after antibiotics injection developed SOB, pruritus, pre-syncope. What will you give?", "options": {"A": "Hydrocortisone", "B": "Diphenhydramine", "C": "Epinephrine", "D": "Nebulized salbutamol", "E": "CPR"}, "topics": ["General Haematology"]}, {"num": 21, "year_info": "2007 MCQ37", "years": ["2007"], "stem": "Which of the following does not cause thrombosis?", "options": {"A": "Factor V Leiden mutation", "B": "Paroxysmal nocturnal haematuria", "C": "OC pills", "D": "Lupus anticoagulant", "E": "Acquired factor VIII inhibitor"}, "topics": ["Coagulation/Bleeding", "Immunology/Autoimmune"]}, {"num": 22, "year_info": "2007 MCQ38", "years": ["2007"], "stem": "In haemophilia A:", "options": {"A": "The APTT is usually around 40–50 in severe case without transfusion", "B": "Thrombin time is normal", "C": "The prothrombin time is usually around 15–18(?) in severe case", "D": "Patients have von Willebrand factors less than normal in 50% of the patients"}, "topics": ["Coagulation/Bleeding", "Transfusion"]}, {"num": 23, "year_info": "2007 MCQ39", "years": ["2007"], "stem": "In autoimmune haemolytic anaemia:", "options": {"A": "Reticulocyte count is usually low", "B": "Direct antiglobulin test is positive", "C": "80% associated with thrombocytopenia", "D": "Beta blocker is a well known association", "E": "Bone marrow red cell precursors are usually suppressed"}, "topics": ["Anaemia/Thalassaemia", "Coagulation/Bleeding"]}, {"num": 24, "year_info": "2007 MCQ40", "years": ["2007"], "stem": "A 30+-year-old lady was found to have severe pancytopenia and was diagnosed to be aplastic anaemia. Which of the following is least effective?", "options": {"A": "Corticosteroid", "B": "Anti-thymocyte antibody", "C": "Cyclosporin", "D": "Allogenic bone marrow transplant", "E": "Plasmapheresis"}, "topics": ["Anaemia/Thalassaemia"]}, {"num": 25, "year_info": "2007 MCQ41", "years": ["2007"], "stem": "32/M. Splenomegaly 12 cm. Blood results: Hb 12, WCC 133, platelet 840. Neutrophil alkaline phosphatase score 0. What is the diagnosis?", "options": {"A": "Polycythemia rubra vera", "B": "Chronic myeloid leukaemia", "C": "Essential thrombocythemia", "D": "Chronic myelomonocytic leukaemia", "E": "Myelofibrosis"}, "topics": ["Chronic Leukaemia/MPN", "Coagulation/Bleeding", "Splenomegaly/LN"]}, {"num": 26, "year_info": "2007 MCQ42", "years": ["2007"], "stem": "Regarding DIC, the followings are true except:", "options": {"A": "APT and APTT are increased/prolonged", "B": "Thrombin time is increased", "C": "D-dimer level is increased", "D": "Reticulocytosis", "E": "Fibrinogen levels are increased"}, "topics": ["Coagulation/Bleeding"]}, {"num": 27, "year_info": "2007 MCQ43", "years": ["2007"], "stem": "Regarding malignant lymphomas:", "options": {"A": "20% of those diagnosed in Hong Kong are Hodgkin’s type", "B": "20% of those diagnosed in Hong Kong are T-cell type", "C": "Diffuse B-cell type are most common histology", "D": "50 childhood cases in Hong Kong each year", "E": "40% of patients are treated with bone marrow transplantation"}, "topics": ["Lymphoma", "Oncology/Solid Tumour"]}, {"num": 28, "year_info": "2007 MCQ44", "years": ["2007"], "stem": "Which of the following is commonly found in anaemia associated with rheumatoid arthritis?", "options": {"A": "Hb is lower than 100g/L (or 10 g/dL)", "B": "Hypochromic microcytic anaemia", "C": "Bone marrow iron is normal or increased", "D": "Respond to folic acid", "E": "Respond to iron"}, "topics": ["Anaemia/Thalassaemia"]}, {"num": 29, "year_info": "2007 MCQ45, 2013 MCQ63", "years": ["2007", "2013"], "stem": "Which of the following is the commonest food allergen to cause atopic dermatitis in children <3 years in Hong Kong?", "options": {"A": "Soy", "B": "Egg", "C": "Peanuts", "D": "Shrimp", "E": "Wheat"}, "topics": ["Immunology/Autoimmune"]}, {"num": 30, "year_info": "2008 MCQ35", "years": ["2008"], "stem": "34/M, dapsone for leprosy for 8 weeks. Lab results Hb 7.8 MCV 110 WBC 11 Platelet 240 Reticulocyte 10% Vitamin B normal Folate low No G6PD deficiency. Blood film: Heinz body.", "options": {"A": "Red cell aplasia", "B": "Malabsorption", "C": "Pernicious anaemia", "D": "Drug-induced haemolysis", "E": "MDS"}, "topics": ["Anaemia/Thalassaemia", "MDS", "Coagulation/Bleeding"]}, {"num": 31, "year_info": "2008 MCQ37", "years": ["2008"], "stem": "A 40-year-old lady presented with thrombocytopenia was found to have Hb 19 g/dL. Which of the following is least compatible with the diagnosis of polycythaemia rubra vera?", "options": {"A": "Splenomegaly of 6cm", "B": "Low erythropoietin level", "C": "High white cell count", "D": "Severe thrombocytopenia", "E": "Philadelphia chromosome negative"}, "topics": ["Chronic Leukaemia/MPN", "Coagulation/Bleeding", "Splenomegaly/LN"]}, {"num": 32, "year_info": "2008 MCQ39", "years": ["2008"], "stem": "A 25-year-old lady admitted to AED with the diagnosis of suspected paracetamol overdose. PT 11 sec, APTT >110 sec. What is the cause?", "options": {"A": "Impaired hepatic function", "B": "Heparin contamination", "C": "Haemophilia A carrier"}, "topics": ["Coagulation/Bleeding"]}, {"num": 33, "year_info": "2008 MCQ45", "years": ["2008"], "stem": "A patient attends your clinic with sudden onset of rash, breathing difficulty stridor after taking some medication. Your immediate action is:", "options": {"A": "Hydrocortisone", "B": "IM epinephrine"}, "topics": ["General Haematology"]}, {"num": 34, "year_info": "2008 MCQ76", "years": ["2008"], "stem": "An asymptomatic 36-year-old lady is found to have hypochromatic microcytic anaemia with a haemoglobin count of 10 g/dL in a health check-up. What is the most appropriate investigation?", "options": {"A": "Bone marrow biopsy", "B": "Haemoglobin pattern", "C": "Serum B12", "D": "Serum ferritin", "E": "Stool for occult blood"}, "topics": ["Anaemia/Thalassaemia"]}, {"num": 35, "year_info": "2008 MCQ??", "years": ["2008"], "stem": "Bone marrow biopsy is NOT used in diagnosing the following:", "options": {"A": "Aplastic anaemia", "B": "HbH disease", "C": "Follicular lymphoma", "D": "Multiple myeloma", "E": "AML"}, "topics": ["Anaemia/Thalassaemia", "Acute Leukaemia", "Lymphoma", "Myeloma/Paraprotein"]}, {"num": 36, "year_info": "2009 MCQ13", "years": ["2009"], "stem": "A 44-year-old woman with recurrent deep vein thrombosis is on long term warfarin treatment. She had been on a stable dose of 4.5 mg daily for several months. Her INR was usually 2.5–3.0, but during a routine check, it was found to be 7.2. She had no symptoms of bleeding. Which of the following is TRUE?", "options": {"A": "Aspirin taken together with warfarin can increased INR significantly", "B": "Food and drinks (e.g. cranberry juice) can influence INR", "C": "It is likely that the patient had taken a lower dose than her normal dose in error", "D": "Drugs such as rifampicin, carbamazepine, and phenytoin can inhibit the cytochrome enzymes involved in warfarin metabolism", "E": "Erythromycin and ciprofloxacin have significant pharmacodynamic interactions with warfarin"}, "topics": ["Coagulation/Bleeding", "Thrombosis/VTE"]}, {"num": 37, "year_info": "2009 MCQ38", "years": ["2009"], "stem": "85/M DVT. Which of the following statement is correct?", "options": {"A": "A well known hereditary defect is usually found", "B": "More common in Chinese than in Caucasians", "C": "Heparin is not indicated", "D": "Warfarin treatment is lifelong", "E": "Underlying malignancy is a possible cause"}, "topics": ["Coagulation/Bleeding", "Thrombosis/VTE", "Oncology/Solid Tumour"]}, {"num": 38, "year_info": "2009 MCQ40", "years": ["2009"], "stem": "What will be found in severe autoimmune haemolytic anaemia?", "options": {"A": "Tea-coloured urine", "B": "Raised conjugated bilirubin", "C": "Urine haemosiderin", "D": "Circulating normoblast", "E": "Methaemalbuminaemia"}, "topics": ["Anaemia/Thalassaemia"]}, {"num": 39, "year_info": "2009 MCQ44", "years": ["2009"], "stem": "25/F in checkup. Found raised WCC, raised platelet. P/E found splenomegaly of 8 cm below umbilicus. What is the cause?", "options": {"A": "ALL", "B": "APL", "C": "AML", "D": "CML", "E": "Hodgkin’s lymphoma"}, "topics": ["Acute Leukaemia", "Chronic Leukaemia/MPN", "Lymphoma", "Coagulation/Bleeding", "Splenomegaly/LN"]}, {"num": 40, "year_info": "2009 MCQ46", "years": ["2009"], "stem": "62/M with SOB + fatigue. Investigated for microcytic anaemia. OGD and sigmoidoscopy were normal. Improved with a course of ferrous sulphate 1 year ago. Symptoms worsen. Stool for occult blood was positive for once but the subsequent one was negative. What is the diagnosis?", "options": {"A": "Beta thalassaemia", "B": "Haemolytic anaemia", "C": "Multiple myeloma", "D": "Aplastic anaemia"}, "topics": ["Anaemia/Thalassaemia", "Myeloma/Paraprotein"]}, {"num": 41, "year_info": "2009 MCQ47", "years": ["2009"], "stem": "A 35-year-old lady, recent onset of tiredness with increasing frequency and severity in these two weeks. Hb 4.6, icteric. Which of the followings would be the best diagnostic investigation?", "options": {"A": "Anti cardiolipin antibody", "B": "Bence Jones protein", "C": "Direct Coombs’ test", "D": "Serum haptoglobin"}, "topics": ["Myeloma/Paraprotein"]}, {"num": 42, "year_info": "2010 MCQ40", "years": ["2010"], "stem": "Which condition will benefit from erythropoietin replacement most?", "options": {"A": "Hb H disease", "B": "Red cell aplasia", "C": "Chronic renal failure"}, "topics": ["Anaemia/Thalassaemia"]}, {"num": 43, "year_info": "2010 MCQ42", "years": ["2010"], "stem": "3x/F induction chemotherapy for AML. Now high swinging fever, neutropenia (0.3). What of the followings is NOT correct?", "options": {"A": "CXR is always essential", "B": "Empirical antibiotics after taken all relevant samples for (?culture, swab etc)", "C": "IV high dose antibiotics is better than oral", "D": "If empiric antibiotics fail, antifungals may be needed", "E": "G-CSF should be given immediately"}, "topics": ["Acute Leukaemia", "Oncology/Solid Tumour"]}, {"num": 44, "year_info": "2010 MCQ44", "years": ["2010"], "stem": "70/M presented with bone pain and diagnosed multiple myeloma with multiple lytic bone lesion. Which of the followings is correct?", "options": {"A": "He will benefit from bisphosphonate treatment", "B": "He will benefit from allo-HSCT", "C": "He has cryoglobulinemia", "D": "He has autoimmune hemolytic anemia", "E": "He has raised IgE"}, "topics": ["Anaemia/Thalassaemia", "Myeloma/Paraprotein", "Immunology/Autoimmune"]}, {"num": 45, "year_info": "2010 MCQ46", "years": ["2010"], "stem": "Mother is Rhesus negative, father is Rhesus positive. Which of the followings is correct?", "options": {"A": "First child will have haemolytic disease of newborn", "B": "Second child will have haemolytic disease of newborn", "C": "If second child does not have haemolytic disease of newborn, children after that will not have it", "D": "First child may be Rhesus negative", "E": "Amniocentesis should be done for the child to find out his Rhesus blood group to prevent haemolytic disease of newborn"}, "topics": ["Transfusion"]}, {"num": 46, "year_info": "2010 MCQ??", "years": ["2010"], "stem": "A 40-year-old female with chronic myeloid leukaemia. Treated with bone marrow transplant 6 months ago. Successful engraftment. She is blood group O. The donor is blood group AB. Which of the followings is correct?", "options": {"A": "She has anti-A antibody", "B": "She has anti-B antibody", "C": "She cannot receive any red cell transfusion from now on for the rest of her life", "D": "She remains blood group O", "E": "She can accept blood in group AB"}, "topics": ["Chronic Leukaemia/MPN", "Transfusion"]}, {"num": 47, "year_info": "2011 MCQ39", "years": ["2011"], "stem": "Newly diagnosed leukaemia with elevated WBC. Physical examination found swollen gum. Which of the followings is the most likely?", "options": {"A": "ALL", "B": "CML", "C": "APL", "D": "Acute monocytic leukaemia", "E": "Chronic myelomonocytic leukaemia"}, "topics": ["Chronic Leukaemia/MPN"]}, {"num": 48, "year_info": "2011 MCQ41", "years": ["2011"], "stem": "78/M with past history of DM, complains of dizziness. Blood results as follows: Hb 6.5, WBC normal, Cr 180, A/G ratio 32/72. What is the likely diagnosis?", "options": {"A": "DM nephropathy", "B": "Variceal bleeding from underlying cirrhosis", "C": "AML", "D": "Multiple myeloma"}, "topics": ["Acute Leukaemia", "Myeloma/Paraprotein", "Coagulation/Bleeding"]}, {"num": 49, "year_info": "2011 MCQ42", "years": ["2011"], "stem": "30/F with newly diagnosed aplastic anaemia, received 6 packs of red cells (?platelet) transfusion. Soon after completion of transfusion, she developed shortness of breath, and oxygen desaturation. What is the likely diagnosis?", "options": {"A": "AMI", "B": "Pulmonary embolism", "C": "Transfusion-related acute lung injury", "D": "Sepsis", "E": "Acute haemolytic transfusion reaction"}, "topics": ["Anaemia/Thalassaemia", "Coagulation/Bleeding", "Thrombosis/VTE", "Transfusion"]}, {"num": 50, "year_info": "2011 MCQ43, 2018# MCQ46", "years": ["2011", "2018"], "stem": "A 30-year-old woman was seen in obstetric clinic to investigate for recurrent miscarriages. Laboratory reports: Haemoglobin level (Hb): 13.4 g/dL (Reference: 13-16 g/dL) White Cell Count: 5.5 x 109/L (Reference: 4-10 x 109/L) Platelet Count: 350 x 109/L (Reference: 150-400 x 109/L) Liver and renal function tests: Normal Prothrombin time (PT): 12 seconds (Reference: 11-13 seconds) Activated Partial Thromboplastin Time (APTT): 65 seconds (Reference: 30-40 seconds) Which of the following laboratory test is most important for making a diagnosis?", "options": {"A": "Factor VIII level", "B": "Factor IX level", "C": "Factor XII level", "D": "Lupus anticoagulant", "E": "Von Willebrand factor level"}, "topics": ["Coagulation/Bleeding", "Immunology/Autoimmune"]}, {"num": 51, "year_info": "2011 MCQ44", "years": ["2011"], "stem": "A 30-year-old man with history of depression attempted suicide by ingesting a pack of rodenticide. Which of the following investigations is important to monitor the complication?", "options": {"A": "Fibrinogen level", "B": "Serum creatinine level", "C": "Liver enzymes", "D": "Serum methaemoglobin", "E": "Prothrombin time"}, "topics": ["Coagulation/Bleeding"]}, {"num": 52, "year_info": "2011 MCQ45", "years": ["2011"], "stem": "45/F came to A&E cyanosed. Took 20 tablets of dapsone after a fight with husband. SaO2 remained at 93% despite being given 100% oxygen. Which of the following is diagnostic?", "options": {"A": "Serum carboxyhaemoglobin", "B": "Plasma dapsone level", "C": "Serum methaemoglobin", "D": "Arterial blood gas"}, "topics": ["General Haematology"]}, {"num": 53, "year_info": "2011 MCQ60, 2012 MCQ16", "years": ["2011", "2012"], "stem": "44/M, focal segmental glomerulosclerosis ESRF on CAPD for 4 years. Hb dropped from 12 to 8 despite erythropoietin injection. MCV & MCH normal. No evidence of iron deficiency anaemia or hyperparathyroidism. What is the most likely cause?", "options": {"A": "Chronic GI bleeding", "B": "Thalassaemia", "C": "Acute leukaemia", "D": "Autoimmune haemolytic anaemia", "E": "Anti-erythropoietin antibody"}, "topics": ["Anaemia/Thalassaemia", "Coagulation/Bleeding"]}, {"num": 54, "year_info": "2012 MCQ12", "years": ["2012"], "stem": "In review of blood film, Howell Jolly bodies is associated with:", "options": {"A": "Cardiac failure", "B": "Renal failure", "C": "Splenectomy", "D": "Lead toxicity"}, "topics": ["General Haematology"]}, {"num": 55, "year_info": "2012 MCQ13", "years": ["2012"], "stem": "86/F, 2 weeks of fever, rib pain and confusion. CXR showed pneumonia and multiple fractures of ribs. HyperCa, renal impairment and Hb = 8 g/dL. What investigations would you order?", "options": {"A": "Bone marrow exam", "B": "Bone scan", "C": "Renal biopsy", "D": "Echocardiogram", "E": "Bone density study"}, "topics": ["General Haematology"]}, {"num": 56, "year_info": "2012 MCQ14", "years": ["2012"], "stem": "A 25-year-old lady with prolonged bleeding after dental extraction. Prolonged APTT but normal PT. What is the diagnosis?", "options": {"A": "Haemophilia A", "B": "Christmas disease", "C": "Von Willebrand disease", "D": "Anti-phospholipid syndrome", "E": "Chronic liver disease"}, "topics": ["Coagulation/Bleeding"]}, {"num": 57, "year_info": "2012 MCQ15", "years": ["2012"], "stem": "A 60-year-old woman with good past health presented with dizziness and unsteady gait for 3 months. Also accompanied with sore tongue and numbness in feet. The blood test results are as follows: Hb 3.4, WBC 0.7, platelet 17. Blood film: macro-ovalocyte LDH 2600, total bilirubin 130. What is the most likely diagnosis?", "options": {"A": "Pernicious anaemia", "B": "Cerebral malaria", "C": "Acute leukaemia with CNS involvement", "D": "Metastatic carcinoma with CNS involvement", "E": "Autoimmune haemolytic anaemia"}, "topics": ["Anaemia/Thalassaemia", "Coagulation/Bleeding", "Oncology/Solid Tumour"]}, {"num": 58, "year_info": "2013 MCQ35, 2014 MCQ40, 2021 MCQ48", "years": ["2013", "2014", "2021"], "stem": "32/M, good past health, has polycythaemia vera. What is the management?", "options": {"A": "Venesection", "B": "Venesection + warfarin", "C": "Venesection + aspirin", "D": "Venesection + aspirin + hydroxyurea", "E": "Venesection + aspirin + anagrelide"}, "topics": ["Chronic Leukaemia/MPN", "Coagulation/Bleeding"]}, {"num": 59, "year_info": "2013 MCQ37", "years": ["2013"], "stem": "In CML chronic phase, what will be seen?", "options": {"A": "Eosinophilia", "B": "Lymphocytosis", "C": "Leucopenia", "D": "Microcytosis", "E": "Reticulocytosis"}, "topics": ["Anaemia/Thalassaemia", "Chronic Leukaemia/MPN"]}, {"num": 60, "year_info": "2013 MCQ38", "years": ["2013"], "stem": "What is the commonest genetic defect / mutation in Hong Kong alpha thalassaemia carrier?", "options": {"A": "Deletion of two of the genes on one chromosome 16", "B": "Deletion of one gene on one chromosome 16", "C": "Inversion of two genes", "D": "Point mutation in alpha-1", "E": "Point mutation in alpha-2"}, "topics": ["Anaemia/Thalassaemia"]}, {"num": 61, "year_info": "2013 MCQ40", "years": ["2013"], "stem": "A patient had stage III Hodgkin’s lymphoma 12 years ago treated with combination chemotherapy, now presenting with pancytopenia. What is the most likely diagnosis?", "options": {"A": "Relapse", "B": "Transformation in B cell lymphoma", "C": "Aplastic anaemia", "D": "Myelodysplastic syndrome"}, "topics": ["Anaemia/Thalassaemia", "MDS", "Lymphoma", "Oncology/Solid Tumour"]}, {"num": 62, "year_info": "2013 MCQ41", "years": ["2013"], "stem": "A 70-year-old patient had a GI surgery in China 2 years ago. He came to Hong Kong and complained of tiredness. He was found to be pancytopenic with peripheral smear showing macro-ovalocytes and a high LDH. Bilirubin was raised. What is the most useful investigation?", "options": {"A": "Vitamin B12 level", "B": "Bone marrow biopsy", "C": "CT abdomen", "D": "Measurement of trace elements"}, "topics": ["Anaemia/Thalassaemia"]}, {"num": 63, "year_info": "2013 MCQ42", "years": ["2013"], "stem": "IgM excess. What is the expected bone marrow finding?", "options": {"A": "Plasma cell infiltration", "B": "Lymphoplasmacytic cell infiltration"}, "topics": ["Immunology/Autoimmune"]}, {"num": 64, "year_info": "2013 MCQ43", "years": ["2013"], "stem": "Which of the followings is not a finding in CML?", "options": {"A": "Basophilia", "B": "Eosinophilia", "C": "Neutrophilia", "D": "Lymphocytosis", "E": "Myelocytes"}, "topics": ["Chronic Leukaemia/MPN"]}, {"num": 65, "year_info": "2013 MCQ44", "years": ["2013"], "stem": "Which of the followings is suggestive of haemolysis?", "options": {"A": "Spherocytosis", "B": "High haptoglobin", "C": "Low methaemalbumin", "D": "Low LDH"}, "topics": ["General Haematology"]}, {"num": 66, "year_info": "2014 MCQ38", "years": ["2014"], "stem": "88/M, history of IHD on aspirin, presented with 2-week history of poor appetite, weight loss, and unilateral leg swelling. Ultrasound Doppler showed DVT. Which of the followings is the most likely?", "options": {"A": "Aspirin toxicity", "B": "Haemophilia", "C": "Hereditary protein C deficiency", "D": "Thrombotic thrombocytopenic purpura", "E": "Underlying malignancy"}, "topics": ["Coagulation/Bleeding", "Thrombosis/VTE", "Oncology/Solid Tumour"]}, {"num": 67, "year_info": "2014 MCQ44", "years": ["2014"], "stem": "A 49-year-old woman who had AML has undergone allogenic stem cell transplantation last month. She presented with non-pruritic macular rash over palms, soles, and trunk. What is the cause?", "options": {"A": "Acute graft versus host disease", "B": "Acute neutrophilic dermatosis", "C": "CMV infection", "D": "Allergic to medication", "E": "Leukemic cells infiltration"}, "topics": ["Acute Leukaemia", "Immunology/Autoimmune"]}, {"num": 68, "year_info": "2014 MCQ46", "years": ["2014"], "stem": "A 33-year-old man presents with recent onset of intermittent fever, night sweats and a left neck swelling. Physical examination showed generalized painless rubbery lymphadenopathy. Which of the following is the most appropriate next investigation?", "options": {"A": "Bone marrow examination", "B": "CT scan", "C": "PET scan", "D": "Fine needle aspiration of the lymph node", "E": "Excisional biopsy of the lymph node"}, "topics": ["Splenomegaly/LN"]}, {"num": 69, "year_info": "2014 MCQ47", "years": ["2014"], "stem": "A patient presented with myeloproliferative disease. JAK2 mutation is being checked. JAK2 mutation checking is most useful in:", "options": {"A": "Polycythemia rubra vera", "B": "Chronic myeloid leukemia", "C": "Essential thrombocythemia", "D": "Primary myelofibrosis", "E": "Myelodysplastic syndrome"}, "topics": ["Chronic Leukaemia/MPN", "MDS"]}, {"num": 70, "year_info": "2014 MCQ48, 2022 MCQ47", "years": ["2014", "2022"], "stem": "An old man blood picture shows normal Hb, normal platelet counts but WCC 15 (80% lymphocyte predominance). Peripheral blood smear shows abundant small mature lymphocytes. What is the most likely cause?", "options": {"A": "Tuberculosis", "B": "Infectious mononucleosis", "C": "CLL", "D": "CML"}, "topics": ["Chronic Leukaemia/MPN", "Coagulation/Bleeding"]}, {"num": 71, "year_info": "2014 MCQ89", "years": ["2014"], "stem": "What is the reason for a prolongation of APTT upon 1:1 mixing of a normal person’s blood plasma to that of a patient with acquired hemophilia A?", "options": {"A": "Coagulation factors of different people interacting with each other resulting in abnormal coagulability.", "B": "There are inhibitors inside the plasma of the normal person inhibiting the patient’s clotting factor from action", "C": "There are inhibitors inside the plasma of the patient inhibiting the normal person’s clotting factor from acting", "D": "The blood plasma of the patient has been excessively diluted resulting in low coagulability", "E": "The blood plasma of the normal person has been excessively diluted resulting in low coagulability"}, "topics": ["Coagulation/Bleeding"]}, {"num": 72, "year_info": "2014 MCQ??", "years": ["2014"], "stem": "A man with chest pain was found to have multiple rib fractures. Blood smear shows rouleaux formation. What is the most appropriate next step to do?", "options": {"A": "Bone marrow examination", "B": "Bone scan", "C": "Skeletal survey", "D": "Renal biopsy"}, "topics": ["General Haematology"]}, {"num": 73, "year_info": "2015 MCQ25, 2019# MCQ28, 2020## MCQ31", "years": ["2015", "2019", "2020"], "stem": "A 75-year-old man presented with fresh melaena. He has recently been started on warfarin for stroke prophylaxis as he was diagnosed to have atrial fibrillation. His vital signs were stable but his INR was found to be >5 on admission. Which of the following can rapidly reverse his bleeding tendency?", "options": {"A": "Fresh frozen plasma", "B": "Intravenous vitamin K", "C": "Platelet concentrate", "D": "Recombinant factor VIIa", "E": "Stop warfarin and change to heparin"}, "topics": ["Coagulation/Bleeding", "Transfusion"]}, {"num": 74, "year_info": "2015 MCQ35, 2021 MCQ44", "years": ["2015", "2021"], "stem": "A 48-year-old man with history of acute myeloid leukaemia in his first clinical remission was admitted for allogenic haemopoietic stem cell transplantation. On day 28 after infusing the haemopoietic stem cells, he developed generalized tonic-clonic convulsion. A non-contrast CT brain showed mildly hyperdensity over bilateral occipital lobes. The rest was unremarkable. P/E: BP 170/90 mmHg. His platelet count was 110 × 109/L. Clotting profile was normal. Which of the following is the likely diagnosis?", "options": {"A": "Acute graft-versus-host disease", "B": "Intracerebral haemorrhage due to thrombocytopenia", "C": "Leukaemic infiltration of the central nervous system", "D": "Malignant hypertension", "E": "Posterior reversible encephalopathy syndrome caused by cyclosporin"}, "topics": ["Acute Leukaemia", "Coagulation/Bleeding", "Oncology/Solid Tumour"]}, {"num": 75, "year_info": "2015 MCQ36", "years": ["2015"], "stem": "52/F presented with abdominal distention. P/E: mild pallor, splenomegaly 4 cm below the costal margin. Blood test Hb 9.8 g/dL MCV 96 fL Platelet 900 × 109/L WBC 120 × 109/L (myeloblast 1%, promyelocyte 1%, myelocyte 35%, metamyelocyte 15%, granulocyte 45%, lymphocyte 1%, monocyte 1%, eosinophil 1%, basophil 2%) What is the diagnosis?", "options": {"A": "Acute myeloid leukaemia", "B": "Chronic myelomonocytic leukaemia", "C": "Chronic myeloid leukaemia", "D": "Essential thrombocythaemia", "E": "Myelodysplastic syndrome"}, "topics": ["Acute Leukaemia", "Chronic Leukaemia/MPN", "MDS", "Coagulation/Bleeding", "Splenomegaly/LN"]}, {"num": 76, "year_info": "2015 MCQ37", "years": ["2015"], "stem": "23/M presented with severe aplastic anaemia. Which of the following is the appropriate treatment?", "options": {"A": "Allogeneic bone marrow transplant if matched sibling donor is available", "B": "Anti-thymocyte globulin + cyclosporin A", "C": "Corticosteroid", "D": "Iron chelating therapy", "E": "Rituximab"}, "topics": ["Anaemia/Thalassaemia"]}, {"num": 77, "year_info": "2015 MCQ38", "years": ["2015"], "stem": "A 50-year-old man, good past health. Examination shows pallor and jaundice. Investigation results Hb 6.6 g/dL MCV 103 fL WBC 6.3 × 109/L Platelet 150 × 109/L Lactate dehydrogenase 600 IU/L [118–221] Blood film shows polychromasia, spherocytes and nucleated red blood cells. What is the next step of investigation?", "options": {"A": "Bone marrow examination", "B": "Direct Coombs’ test", "C": "Familial and genetic testing", "D": "Osmotic fragility test", "E": "Vitamin B12 level"}, "topics": ["Anaemia/Thalassaemia", "Coagulation/Bleeding"]}, {"num": 78, "year_info": "2015 MCQ39", "years": ["2015"], "stem": "80/F, with good past health, present with spontaneous bleeding/bruises in the trunk and thigh. Investigation results Hb 8.0 g/dL WBC 6.9 × 109/L Platelet 170 × 109/L APTT 80 s [27–39] PT 12s [9–13.5] What] [is the next step of investigation?", "options": {"A": "Factor V inhibitor", "B": "Factor VIII inhibitor", "C": "Lupus anticoagulant", "D": "Platelet aggregation", "E": "Von Willebrand factor"}, "topics": ["Coagulation/Bleeding", "Immunology/Autoimmune"]}, {"num": 79, "year_info": "2015 MCQ40", "years": ["2015"], "stem": "A 50-year-old man with a known history of HIV patient presents with fever for 3 months. He had dark urine for 5 days. Physical exam showed pallor and jaundice. Investigation results Hb 6.0 g/dL WBC 6.9 × 109/L Platelet 17 × 109/L APTT 28s [27-39] PT 11s [9-13.5] LDH 1700 IU/L [118-221] Blood film showed red cell fragments. What is the likely cause for his dark urine?", "options": {"A": "Bleeding tendency due to thrombocytopenia", "B": "HIV infection causing cystitis", "C": "Urinary tract infection", "D": "Haemoglobulinuria from intravascular haemolysis", "E": "Hyperbilirubinuria due to biliary tract stones"}, "topics": ["Coagulation/Bleeding", "Immunology/Autoimmune"]}, {"num": 80, "year_info": "2015 MCQ41", "years": ["2015"], "stem": "A 25-year-old lady with PT 18s (normal: 9–13.5s) and APTT 80s (normal: 20–34s). What is the most likely diagnosis?", "options": {"A": "Hemophilia A", "B": "Hemophilia B", "C": "Heparin contamination", "D": "SLE", "E": "Warfarin use"}, "topics": ["Coagulation/Bleeding", "Immunology/Autoimmune"]}, {"num": 81, "year_info": "2015 MCQ42", "years": ["2015"], "stem": "A 70-year-old woman has a blood result showing lymphocytosis of 10 × 109/L. Which of the following is an appropriate diagnosis?", "options": {"A": "Chronic lymphocytic leukaemia", "B": "CMV infection", "C": "Infectious mononucleosis", "D": "Pertussis", "E": "Tuberculosis"}, "topics": ["Chronic Leukaemia/MPN"]}, {"num": 82, "year_info": "2015 MCQ43", "years": ["2015"], "stem": "A 70-year-old lady presents with sore tongue and malaise. Investigation results Hb 7 g/dL MCV 125 fL WBC 3.4 × 109/L Platelet 145 × 109/L Reticulocyte count 1% Next step of investigation would be:", "options": {"A": "Autoimmune marker", "B": "Clotting profile (PT and APTT)", "C": "JAK2 V615F mutation", "D": "Serum vitamin B12 and folate", "E": "Serum thyroid function test"}, "topics": ["Anaemia/Thalassaemia", "Chronic Leukaemia/MPN", "Coagulation/Bleeding"]}, {"num": 83, "year_info": "2015 MCQ44, 2019 MCQ64", "years": ["2015", "2019"], "stem": "Mr Chan is a 68-year-old Chinese man with apparently good past health. He presents to you with malaise and bone pain for three weeks. Physical examination shows pallor, no fever, no ankle oedema, and a blood pressure reading of 130/84 mmHg. Urinalysis shows 1+ proteinuria and no red cell or white cell. Investigations show: haemoglobin 8.0 g/dL white cell count 7.2x109/L platelet count 160x109/L sodium 139 mmol/L potassium 4.4 mmol/L random glucose 4.8 mmol/L serum creatinine 140 µmol/L (normal range 67-109 µmol/L) albumin 32 g/L (normal range 39-50 g/L) globulin 46 g/L (normal range 26-40 g/L) adjusted calcium 2.76 mmol/L (normal range 2.24-2.63 mmol/L) phosphate 0.96 mmol/L (normal range 0.88-1.45 mmol/L) 24-hr urine protein 0.88 g Ultrasound of kidneys shows normal findings. Which one of the following is the most appropriate investigation at this stage?", "options": {"A": "Check anti-cardiolipin antibody", "B": "Check anti-glomerular basement membrane antibody", "C": "Check anti-nuclear antibody", "D": "Check serum protein immunoelectrophoresis", "E": "Check urine anion gap"}, "topics": ["Coagulation/Bleeding"]}, {"num": 84, "year_info": "2015 MCQ89", "years": ["2015"], "stem": "Memory B cells express which of the following cell surface markers?", "options": {"A": "CD3", "B": "CD4", "C": "CD16", "D": "CD27", "E": "CD56"}, "topics": ["Immunology/Autoimmune"]}, {"num": 85, "year_info": "2016 MCQ42", "years": ["2016"], "stem": "Which of the following is present in pernicious anaemia?", "options": {"A": "Eosinophilia", "B": "Lymphocytosis", "C": "Pancytopenia", "D": "Reticulocytosis", "E": "Thrombocythaemia"}, "topics": ["Anaemia/Thalassaemia"]}, {"num": 86, "year_info": "2016 MCQ43", "years": ["2016"], "stem": "40/F delivered a baby two weeks ago and required transfusion. Now complained of malaise for 2 days. Investigation results: Hb 8 WBC 10 Platelet 310 BLR 90 LDH 890 LFT normal Which is the most relevant next step of investigation?", "options": {"A": "ADAMTS13 activity", "B": "Direct antiglobulin test", "C": "Hepatitis serology", "D": "USG uterus", "E": "Urine for haemosiderin"}, "topics": ["Coagulation/Bleeding", "Transfusion"]}, {"num": 87, "year_info": "2016 MCQ48, 2018## MCQ49, 2019# MCQ43", "years": ["2016", "2018", "2019"], "stem": "A 80-year-old man with severe aplastic anaemia was clinically admitted for a scheduled weekly platelet transfusion. He developed acute onset of shortness of breath and fever, 30 minutes after commencement of transfusion. Investigations: Chest X-ray: Bilateral pulmonary infiltrations (Previous X-ray taken 3 days ago was normal) Echocardiogram: Normal left ventricular ejection fraction. What is the most likely diagnosis?", "options": {"A": "Congestive heart failure", "B": "Hospital acquired pneumonia", "C": "Pulmonary embolism", "D": "Transfusion-associated graft-versus-host disease", "E": "Transfusion-related acute lung injury"}, "topics": ["Anaemia/Thalassaemia", "Coagulation/Bleeding", "Thrombosis/VTE", "Transfusion"]}, {"num": 88, "year_info": "2016 MCQ88, 2018## MCQ88, 2020# MCQ88", "years": ["2016", "2018", "2020"], "stem": "Which of the following molecules is involved in the effector mechanism of type I hypersensitivity reaction?", "options": {"A": "Histamine", "B": "Immunoglobulin Fc receptor", "C": "Interleukin 2", "D": "Major Histocompatibility antigen", "E": "T cell receptor"}, "topics": ["Immunology/Autoimmune"]}, {"num": 89, "year_info": "2016 MCQ??, 2021 MCQ37", "years": ["2016", "2021"], "stem": "81 year old patient history of hypertension, DM, gout and AF, admit for ischemic stroke. He is on metformin, amlodipine and warfarin and there is a recent new drug added. His usual INR is 2. At admission his INR is 1.3 despite good drug compliance. Which of the following drug is most likely added?", "options": {"A": "Amiodarone", "B": "Carbamazepine", "C": "Ciprofloxacin", "D": "Clarithromycin", "E": "Metronidazole"}, "topics": ["Coagulation/Bleeding"]}, {"num": 90, "year_info": "2016 MCQ??", "years": ["2016"], "stem": "A patient has 900 × 109/L platelet, Hb a bit low (?12 g/dL), white cells normal. Also felt some pain in fingers. What is the first thing you do?", "options": {"A": "Peripheral blood smear", "B": "Serum immunoglobulin", "C": "JAK2 V617F mutation", "D": "Serum erythropoietin", "E": "Radioactive phosphorus"}, "topics": ["Chronic Leukaemia/MPN", "Coagulation/Bleeding", "Immunology/Autoimmune"]}, {"num": 91, "year_info": "2016 MCQ??", "years": ["2016"], "stem": "An old lady was admitted. Have multiple rib fracture, hypercalcaemia, anaemia, and renal failure. What is your investigation of diagnostic value?", "options": {"A": "Bone marrow biopsy", "B": "Bone scan", "C": "Renal biopsy", "D": "PET CT", "E": "Echocardiogram"}, "topics": ["General Haematology"]}, {"num": 92, "year_info": "2016 MCQ??", "years": ["2016"], "stem": "A patient was admitted with bilateral cervical lymphadenopathy, splenomegaly to 3 cm below costal margin. Leucocytosis (WBC up to 180) with anaemia and thrombocytopenia(?). Blood smear showed smear cell. Checked, CD7 and CD20 present. But some other CD (and something else) is not present. (FMC is negative.)", "options": {"A": "CLL", "B": "CML", "C": "CMML", "D": "Follicular lymphoma in leukemic phase", "E": "Mantle cell lymphoma in leukemic phase"}, "topics": ["Chronic Leukaemia/MPN", "Lymphoma", "Coagulation/Bleeding", "Splenomegaly/LN"]}, {"num": 93, "year_info": "2016 MCQ??", "years": ["2016"], "stem": "Pregnant at 18th gestational week woman with incidental isolated thrombocytopenia. Blood smear normal no clumps. Platelet count 80, What to do next?", "options": {"A": "Observe every 4 weeks", "B": "IVIG"}, "topics": ["Coagulation/Bleeding"]}, {"num": 94, "year_info": "2016 MCQ??", "years": ["2016"], "stem": "An old man with spontaneous bruising and back pain. PT 10 seconds APTT 60 seconds What is the diagnosis?", "options": {"A": "Acquired factor VIII inhibitor", "B": "Acquired factor IX inhibitor", "C": "Factor XI deficiency", "D": "Haemophilia A", "E": "Haemophilia B"}, "topics": ["Coagulation/Bleeding"]}, {"num": 95, "year_info": "2016 MCQ??, 2018## MCQ43", "years": ["2016", "2018"], "stem": "In a 35-year-old man with asymptomatic bilateral hilar lymphadenopathy and a mediastinal lymph node biopsy that shows non-caseating epitheloid granuloma with multinucleated giant cells, which of the following is the most appropriate diagnosis?", "options": {"A": "Candidiasis", "B": "Hodgkin lymphoma", "C": "Sarcoidosis", "D": "Toxoplasmosis", "E": "Tuberculosis"}, "topics": ["Lymphoma", "Splenomegaly/LN"]}, {"num": 96, "year_info": "2016 MCQ??", "years": ["2016"], "stem": "Monitoring of dabigatran.", "options": {"A": "INR", "B": "RFT", "C": "ALP", "D": "Clotting profile", "E": "CBC"}, "topics": ["Coagulation/Bleeding"]}, {"num": 97, "year_info": "2017 MCQ10", "years": ["2017"], "stem": "Warfarin does not cause which of the following:", "options": {"A": "Prolonged QTc", "B": "Skin necrosis", "C": "Increase bleeding tendency", "D": "Metabolised by cytochrome P450", "E": "Teratogenic"}, "topics": ["Coagulation/Bleeding"]}, {"num": 98, "year_info": "2017 MCQ12", "years": ["2017"], "stem": "Which drug is NOT used in metastatic breast cancer?", "options": {"A": "Anastrozole", "B": "Docetaxel", "C": "Rituximab", "D": "Tamoxifen", "E": "Trastuzumab"}, "topics": ["General Haematology"]}, {"num": 99, "year_info": "2017 MCQ28, 2022 MCQ42", "years": ["2017", "2022"], "stem": "Patient requires transfusion. Which of the following is done in the hospital blood bank?", "options": {"A": "ABO typing of the donor’s red blood cell", "B": "Check for clinically significant antibodies in donor’s serum", "C": "Check for clinically significant antibodies in recipient’s serum", "D": "Mix the donor serum against recipient red blood cells", "E": "Mix the recipient serum against donor’s red blood cells"}, "topics": ["Transfusion"]}, {"num": 100, "year_info": "2017 MCQ32", "years": ["2017"], "stem": "A 25-year-old male with a history of disseminated non-seminomatous testicular cancer presented with malaise. Below is his blood results: K 6.8, high urea, high creatinine, low corrected calcium, high phosphate, LDH 2000. What is the cause of his condition?", "options": {"A": "Lab error", "B": "Poisoning", "C": "Tumour lysis syndrome", "D": "Paraneoplastic", "E": "Acute renal failure"}, "topics": ["Oncology/Solid Tumour"]}, {"num": 101, "year_info": "2017 MCQ33", "years": ["2017"], "stem": "Regarding venous thromboembolism, which is true?", "options": {"A": "Age < 60 is not a risk", "B": "Homozygous protein S mutation is a common cause", "C": "Lymphoma is the most commonly associated cancer", "D": "Higher risk after orthopaedic surgery than general surgical operation", "E": "There is difference in incidence based on gender"}, "topics": ["Lymphoma", "Coagulation/Bleeding", "Thrombosis/VTE"]}, {"num": 102, "year_info": "2017 MCQ34", "years": ["2017"], "stem": "A 20-year-old woman presented to the clinic for pre-marital evaluation. Her mother and 2 elder sisters had long history of anaemia. Investigation results: Hb 10.5 MCV 65 WBC 5 × 109/L Platelet 300 × 109/L PBS showed hypochromic microcytic red cells and presence of target cells. Iron profile is normal. What is the next most relevant investigation?", "options": {"A": "HbA1c", "B": "HbA2", "C": "HbC", "D": "HbE", "E": "HbS"}, "topics": ["Anaemia/Thalassaemia", "Coagulation/Bleeding"]}, {"num": 103, "year_info": "2017 MCQ35", "years": ["2017"], "stem": "In myelofibrosis, what will be found in peripheral blood smear?", "options": {"A": "Pencil cells", "B": "Tear drop cells", "C": "Pseudo-Pelger-Huet anomaly", "D": "Giant platelets"}, "topics": ["Chronic Leukaemia/MPN", "Coagulation/Bleeding"]}, {"num": 104, "year_info": "2017 MCQ36", "years": ["2017"], "stem": "Essential thrombocytosis treated with aspirin and hydroxyurea. 8 days later, platelet is normalized but MCV increases from 89 to 102 fL. What is the cause?", "options": {"A": "Aspirin", "B": "Hydroxyurea", "C": "Hypothyroidism", "D": "Progression to acute leukaemia", "E": "Progression to myelofibrosis"}, "topics": ["Chronic Leukaemia/MPN", "Coagulation/Bleeding"]}, {"num": 105, "year_info": "2017 MCQ37", "years": ["2017"], "stem": "A 23-year-old woman with asymptomatic immune thrombocytopenia (platelet 76 × 109). Which of the following is the best treatment?", "options": {"A": "Eltrombopag", "B": "Corticosteroid", "C": "IVIG", "D": "No treatment"}, "topics": ["Coagulation/Bleeding"]}, {"num": 106, "year_info": "2017 MCQ38", "years": ["2017"], "stem": "Which of the following mutation is diagnostic?", "options": {"A": "BCR/ABL in chronic myeloid leukaemia", "B": "JAK V617F in polycythaemia vera", "C": "PML/RARA in AML", "D": "p53 in acute myelomonocytic leukaemia", "E": "RAS in CLL"}, "topics": ["Acute Leukaemia", "Chronic Leukaemia/MPN"]}, {"num": 107, "year_info": "2017 MCQ63", "years": ["2017"], "stem": "Combined variable immunodeficiency is associated with:", "options": {"A": "C3 level (…)", "B": "CD4+ T cell level 350", "C": "Negative nitroblue tetrazolium test", "D": "IgG level 1.5 g/L", "E": "Undetectable B lymphocyte level in peripheral blood"}, "topics": ["Immunology/Autoimmune"]}, {"num": 108, "year_info": "2017 MCQ76", "years": ["2017"], "stem": "An old lady with melaena and lower limb bruising. Hb 9, MCV 65, WCC 4, platelet 8. Something wrong with the kidneys. What investigation should be ordered?", "options": {"A": "Bone marrow", "B": "FOBT", "C": "Vitamin B12", "D": "Prothrombin time", "E": "CT abdomen"}, "topics": ["Anaemia/Thalassaemia", "Coagulation/Bleeding"]}, {"num": 109, "year_info": "2018 MCQ41", "years": ["2018"], "stem": "A man with mid-stomach cancer, treated by resection. Later complained on weakness, PE found glossitis. Blood test found macrocytosis, hypersegmented neutrophils and slight thrombocytopenia. Which of the following is most likely cause?", "options": {"A": "Vitamin B12 deficiency", "B": "Iron deficiency anaemia"}, "topics": ["Anaemia/Thalassaemia", "Coagulation/Bleeding"]}, {"num": 110, "year_info": "2018 MCQ42", "years": ["2018"], "stem": "A 55-year-old lady complained of a painless left neck swelling for 2 months. She was otherwise asymptomatic. Complete blood picture showed Hb of 12g/dL, MCV 89, WCC: 6.3 and platelet 355 x 109/L with normal renal function tests. What would you do?", "options": {"A": "Biopsy of the neck lump", "B": "Blood smear", "C": "Bone marrow biopsy", "D": "Computed tomography of thorax", "E": "Platelet function"}, "topics": ["Coagulation/Bleeding"]}, {"num": 111, "year_info": "2018 MCQ43", "years": ["2018"], "stem": "A question about a 8x woman with chest pain and fever. Chest radiograph showed multiple rib fracture. Investigations shows, pancytopenia and raised creatinine. Peripheral blood smear showed rouleaux formation. What is the best next step?", "options": {"A": "Bone scan", "B": "CD4/8 lymphocyte subset counts", "C": "Whole body PET", "D": "Urine and serum protein electrophoresis"}, "topics": ["Immunology/Autoimmune"]}, {"num": 112, "year_info": "2018 MCQ44", "years": ["2018"], "stem": "67/F with non-small cell lung cancer, swelling of left leg after 1st cycle of chemotherapy (cisplatin + docetaxel), which of the following is the most likely diagnosis?", "options": {"A": "Cellulitis", "B": "Rupture of baker cyst", "C": "Tumour lysis syndrome", "D": "Deep vein thrombosis", "E": "Rhabdomyolysis"}, "topics": ["Thrombosis/VTE", "Oncology/Solid Tumour"]}, {"num": 113, "year_info": "2018 MCQ45", "years": ["2018"], "stem": "32-year-old woman has incidental finding of hypochromic microcytic anemia. She was asymptomatic all along. Hemoglobin profile shows the following: HbA 95% HbA2 4% (high) HbF 1% (high) What is the diagnosis?", "options": {"A": "Alpha-thalassemia trait", "B": "Beta-thalassemia trait", "C": "Haemoglobin H disease", "D": "Iron deficiency anemia", "E": "Sickle cell trait"}, "topics": ["Anaemia/Thalassaemia"]}, {"num": 114, "year_info": "2018 MCQ46", "years": ["2018"], "stem": "A 30-year-old woman complained of menorrhagia and easy bruising in recent three months. Investigations: Haemoglobin level (Hb): 12.4 g/dL (Reference: 12-15 g/dL) White Cell Count: 7.5 x 109/L (Reference: 4-10 x 109/L) Platelet Count: 250 x 109/L (Reference: 150-400 x 109/L) Prothrombin time (PT): 12 seconds (Reference: 11-13 seconds) Activated Partial Thromboplastin Time (APTT): 65 seconds (Reference: 30-40 seconds) What is the most likely diagnosis?", "options": {"A": "Anti-phospholipid Syndrome", "B": "Factor XII Deficiency", "C": "Haemophilia A", "D": "Haemophilia B", "E": "Von Willebrand’s Disease"}, "topics": ["Coagulation/Bleeding"]}, {"num": 115, "year_info": "2018 MCQ47", "years": ["2018"], "stem": "Woman presents with anemia. Blood results show microcytic anemia. Hb low, WBC normal, platelet 750 x109/L. Peripheral blood smear shows pencil cells.", "options": {"A": "Anaemia of chronic disease", "B": "Iron deficiency anemia", "C": "Primary myelofibrosis", "D": "Essential thrombocytosis"}, "topics": ["Anaemia/Thalassaemia", "Chronic Leukaemia/MPN", "Coagulation/Bleeding"]}, {"num": 116, "year_info": "2018 MCQ48", "years": ["2018"], "stem": "30/M, good past health, presented with left upper quadrant discomfort for 3 months. Pre-marital checkup, PE showed splenomegaly Investigation results (reference range given) Hb: 12 WBC: 105.5 (high) Platelet: 640 (high) Blood smear: neutrophil 55%, myelocytes 20%, basophils 10%, 5% blasts Most likely diagnosis:", "options": {"A": "Acute myeloid leukaemia", "B": "Chronic myeloid leukaemia", "C": "Chronic neutrophilic leukemia", "D": "Essential thrombocythemia", "E": "Lymphoma with splenic involvement"}, "topics": ["Acute Leukaemia", "Chronic Leukaemia/MPN", "Lymphoma", "Coagulation/Bleeding", "Splenomegaly/LN"]}, {"num": 117, "year_info": "2018 MCQ49", "years": ["2018"], "stem": "Platelet concentrates used in ordinary transfusion practice", "options": {"A": "Are ABO-matched with the recipient", "B": "Are isolated by donor cytapheresis", "C": "Are kept at 4°C", "D": "Are not HLA-matched with the recipient", "E": "Cause sepsis in about 1% of cases"}, "topics": ["Coagulation/Bleeding", "Transfusion"]}, {"num": 118, "year_info": "2018 MCQ50", "years": ["2018"], "stem": "Woman presents with shortness of breath on walking upstairs. MCV 70, Hb5, WCC 6 Plt 600, reticulocyte 1%. What is your further management?", "options": {"A": "Check autoimmune markers", "B": "Check JAK2 V617F mutation", "C": "Thyroid function", "D": "Clotting profile", "E": "Per rectal exam, iron profile, fecal occult blood test"}, "topics": ["Chronic Leukaemia/MPN"]}, {"num": 119, "year_info": "2018 MCQ88, 2020 MCQ88", "years": ["2018", "2020"], "stem": "A 46-year-old man, who was suffering from abdominal pain, was found to have : Normal Range Hb 10.9 g/dL 13.3 – 17.1 plasma iron 5 mmol/L 5 – 28 ferritin 660 pmol/L 25 – 275 TIBC 28 mmol/L 41 – 77 MCV was normal. What is the most likely diagnosis?", "options": {"A": "Anaemia of chronic disease", "B": "Hereditary haemochromatosis", "C": "Lead poisoning", "D": "Recent blood loss", "E": "Thalassemia minor"}, "topics": ["Anaemia/Thalassaemia"]}, {"num": 120, "year_info": "2018# MCQ43", "years": ["2018"], "stem": "A 40-year-old woman with good past health complained of gum and nose bleeding in recent three days. Investigation results: Haemoglobin: 11 g/dL White blood cell count: 4 x 109/L Platelet count: 3 x 109/L Blood film: Genuine thrombocytopenia. Normal differentials Bone marrow examination: Unremarkable. Normal megakaryocytes What is the best treatment for her?", "options": {"A": "Azathioprine", "B": "Corticosteroids", "C": "Cyclosporine", "D": "Splenectomy", "E": "Thrombopoietin agonist"}, "topics": ["Coagulation/Bleeding"]}, {"num": 121, "year_info": "2018# MCQ49", "years": ["2018"], "stem": "A 35-year-old man presented with fever, epistaxis and generalized bruising. Blood tests showed the followings : Haemoglobin 7.0g/dL (normal:13–15g/dL) WBC 1 x109/L (normal: 4 -10 x109/L) Platelet 26 x109/L (normal 150 – 350 x109/L) PT 20 seconds (normal: 10 -14 sec) APTT 60 seconds (normal: 22 -33 sec) Fibrinogen 0.8 g/L (normal 1.5 – 4 g/L) Blood film examination showed circulating blasts with multiple Auer rods. What is the likely diagnosis?", "options": {"A": "Acute lymphoblastic leukaemia", "B": "Acute promyelocytic leukaemia", "C": "Aplastic anaemia", "D": "Disseminated intravascular coagulopathy due to sepsis", "E": "Thrombotic thrombocytopenic purpura"}, "topics": ["Anaemia/Thalassaemia", "Acute Leukaemia", "Coagulation/Bleeding"]}, {"num": 122, "year_info": "2018# MCQ88", "years": ["2018"], "stem": "Common variable immunodeficiency can be treated by:", "options": {"A": "Anti-cytokine biological agents", "B": "Bone marrow transplantation", "C": "Enzyme replacement therapy", "D": "Intravenous immunoglobulin replacement therapy", "E": "Pneumococcal vaccine"}, "topics": ["Immunology/Autoimmune"]}, {"num": 123, "year_info": "2018## MCQ46", "years": ["2018"], "stem": "Which of the following occurs in myelodysplastic syndrome?", "options": {"A": "Erythrocytosis", "B": "Lymphocytosis", "C": "Pancytopenia", "D": "Polychromasia", "E": "Thrombocythaemia"}, "topics": ["MDS"]}, {"num": 124, "year_info": "2018## MCQ58, 2020## MCQ58", "years": ["2018", "2020"], "stem": "A 25-year-old lupus patient was noted to have anemia with haemoglobin low at 9 gm/dl during her recent follow up. Reticulocyte count and serum LDH were checked to be elevated. Coomb’s test was checked to be positive. Which of the following investigation results was likely to be present?", "options": {"A": "Decreased serum ferritin level", "B": "Decreased serum haptoglobin level", "C": "Decreased serum methaemalbumin level", "D": "Microcytosis", "E": "Positive stool occult blood"}, "topics": ["Anaemia/Thalassaemia", "Immunology/Autoimmune"]}, {"num": 125, "year_info": "2019 MCQ41", "years": ["2019"], "stem": "After splenectomy,", "options": {"A": "Extramedullary hematopoiesis is prevented", "B": "Nucleated red blood cells are found in the circulation", "C": "Tetracycline prophylaxis is indicated", "D": "Lymphocyte count is increased", "E": "Pneumococcal vaccine is indicated"}, "topics": ["General Haematology"]}, {"num": 126, "year_info": "2019 MCQ42", "years": ["2019"], "stem": "Massive splenomegaly is usually found in patient with", "options": {"A": "Idiopathic thrombocytopenic purpura", "B": "Acute myeloid leukaemia", "C": "Chronic lymphocytic leukaemia", "D": "Myelofibrosis", "E": "Hodgkin lymphoma"}, "topics": ["Acute Leukaemia", "Chronic Leukaemia/MPN", "Lymphoma", "Coagulation/Bleeding", "Splenomegaly/LN"]}, {"num": 127, "year_info": "2019 MCQ43", "years": ["2019"], "stem": "CLL patient with low Hb, normal WBC, platelet, high bilirubin, high LDH. Peripheral blood smear spherocytes. What is the test to confirm the diagnosis?", "options": {"A": "Iron profile", "B": "Hb pattern", "C": "Direct anti-globulin test"}, "topics": ["Chronic Leukaemia/MPN", "Coagulation/Bleeding"]}, {"num": 128, "year_info": "2019 MCQ44", "years": ["2019"], "stem": "A 60-year-old man is newly diagnosed with AL amyloidosis. Clotting profile: PT 19s, APTT 43s. What is the most likely cause?", "options": {"A": "Acquired Factor X deficiency", "B": "Acquired Factor XI deficiency", "C": "Acquired von Willebrand disease", "D": "Liver failure due to amyloidosis", "E": "Ig light chain deposition interfere with clotting profile"}, "topics": ["Myeloma/Paraprotein", "Coagulation/Bleeding"]}, {"num": 129, "year_info": "2019 MCQ45", "years": ["2019"], "stem": "A 30-year-old woman complained of worsening menorrhagia in recent three months. There were bruises over the legs. Investigations: Haemoglobin: 11.4 g/dL (Reference: 12-15 g/dL) Mean Corpuscular Volume: 90 fL (Reference: 80-96 fL) White Cell Count: 6.5 x 109/L (Reference: 4-10 x 109/L) Platelet Count: 8 x 109/L (Reference: 150-400 x 109/L) Blood smear: Normal differential counts. No platelet clump. What is the most appropriate treatment for this condition?", "options": {"A": "Corticosteroid", "B": "Cyclosporine", "C": "Platelet transfusion", "D": "Rituximab", "E": "Thrombopoietin mimetics"}, "topics": ["Coagulation/Bleeding", "Transfusion"]}, {"num": 130, "year_info": "2019 MCQ46", "years": ["2019"], "stem": "History of aplastic anemia, require frequent platelet transfusion, but developed recurrent fever after transfusion every time, but no SOB or anaphylaxis. What to give to prevent?", "options": {"A": "Antibiotics", "B": "HLA-matching", "C": "Irradiated products", "D": "Leukocyte reduction", "E": "Anti-histamine before transfusion"}, "topics": ["Anaemia/Thalassaemia", "Coagulation/Bleeding", "Transfusion", "Immunology/Autoimmune"]}, {"num": 131, "year_info": "2019 MCQ47", "years": ["2019"], "stem": "In a patient with B-cell lymphoma, which of the followings is a useful treatment?", "options": {"A": "Adalimumab", "B": "Daratumomab", "C": "Rituximab", "D": "Siltuximab", "E": "Tocilizumab"}, "topics": ["Lymphoma"]}, {"num": 132, "year_info": "2019 MCQ48", "years": ["2019"], "stem": "Patient with stage 4 HCC, joined study for new immunotherapy Nivolumab (anti-PD1 anti- programmed cell death-1). After 4 weeks, presented with severe PR bleeding. What is the reason?", "options": {"A": "Bacterial infection", "B": "Immune related colitis due to anti-PD1", "C": "Ischemic colitis", "D": "Ulcerative colitis"}, "topics": ["Coagulation/Bleeding"]}, {"num": 133, "year_info": "2019 MCQ50, 2020## MCQ46", "years": ["2019", "2020"], "stem": "A 68-year-old lady complained of painful left leg swelling 2 days after laparoscopic cholecystectomy. CBP showed: Normal Range Haemoglobin 12 g/dL 11.5 – 14.8 MCV 89 fL 82.0 – 95.5 WBC 6.3 x 109/L 3.89 – 9.93 Platelet 355 x 109/L 167 – 396 Normal renal function tests. What would you do?", "options": {"A": "Blood smear", "B": "Computed tomography of leg", "C": "Computed tomography of thorax", "D": "Doppler ultrasound of leg", "E": "Platelet function test"}, "topics": ["Coagulation/Bleeding"]}, {"num": 134, "year_info": "2019 MCQ58", "years": ["2019"], "stem": "History of breast cancer, with chemotherapy. Present with SOB and fever 38.x. Ix ANC 0.3. What is the most likely diagnosis?", "options": {"A": "Neutropenic sepsis", "B": "URTI", "C": "UTI"}, "topics": ["Oncology/Solid Tumour"]}, {"num": 135, "year_info": "2019# MCQ37", "years": ["2019"], "stem": "An 88-year-old woman had atrial fibrillation and old ischaemic stroke. She was on a stable dose of Warfarin for few years. Recently, she was diagnosed to have pulmonary tuberculosis and was started on anti-tuberculosis therapy. During a follow-up visit, she was found to have a suboptimal INR level. She had good drug compliance. Which of the following drugs is most likely to give rise to this sub-therapeutic level of INR?", "options": {"A": "Ethambutol", "B": "Isoniazid", "C": "Pyrazinamide", "D": "Pyridoxine", "E": "Rifampicin"}, "topics": ["Coagulation/Bleeding"]}, {"num": 136, "year_info": "2019# MCQ46", "years": ["2019"], "stem": "A 70-year-old man was admitted to hospital because of exertional dyspnoea and malaise. Physical examination showed that he was pale and jaundiced. Lymphadenopathy and hepatosplenomegaly were absent. Blood tests showed the followings Haemoglobin level 7g/dL (normal: 13-18) WBC 2 x109/L (normal: 4-11) Platelet count 50 x109/L (normal: 150-400) Bilirubin 80 µmol/L (normal: <17) LDH 1800 u/L (normal: 140-280) What was the likely diagnosis?", "options": {"A": "Aplastic anaemia", "B": "Autoimmune haemolytic anaemia", "C": "Haemoglobin H disease", "D": "Pernicious anaemia", "E": "Refractory anaemia"}, "topics": ["Anaemia/Thalassaemia", "Coagulation/Bleeding", "Splenomegaly/LN"]}, {"num": 137, "year_info": "2019# MCQ49", "years": ["2019"], "stem": "A 78-year-old woman presented with fever. Chest x-ray showed left lower lobe pneumonia. Complete blood count showed : Anemia: 7.8g/dL (normal: 11.5-16.5) Platelet: 50 x 109/L (normal: 150-400) Leukocyte: 2 x 109/L (normal: 4-11) What is the most important investigation?", "options": {"A": "Bone density study", "B": "Bone marrow", "C": "Bone scan", "D": "Bronchoscopy", "E": "CD4/CD8 lymphocyte subset analysis"}, "topics": ["Coagulation/Bleeding", "Immunology/Autoimmune"]}, {"num": 138, "year_info": "2020 MCQ41", "years": ["2020"], "stem": "Elderly man, completely asymptomatic patient. Went for routine check up. Hb low normal WCC 36 Neutrophil normal Lymphocyte 29.5 Ca normal Creatinine 140 mildly elevated Serum electrophoresis shows weak monoclonal band", "options": {"A": "AML", "B": "ALL", "C": "CLL", "D": "Myelofibrosis", "E": "Monoclonal gammopathy of unknown significance"}, "topics": ["Acute Leukaemia", "Chronic Leukaemia/MPN", "Myeloma/Paraprotein"]}, {"num": 139, "year_info": "2020 MCQ42", "years": ["2020"], "stem": "70/F, has just undergone ortho surgery for OA knee. 4 days later she presented with chest pain and SOB. On PE, temp 37.5 SaO2 86% and there was no leg swelling. Chest auscultation was normal. Troponin level: 70 (normal <14). CXR clear and ECG shows sinus tachycardia of 120 bpm and a new RBBB. What is the most likely diagnosis?", "options": {"A": "Acute pericarditis", "B": "AMI", "C": "PE"}, "topics": ["General Haematology"]}, {"num": 140, "year_info": "2020 MCQ43", "years": ["2020"], "stem": "A 75-year-old man with diabetic nephropathy, ischaemic heart disease and chronic lymphocytic leukaemia was admitted for blood transfusion. Three units of packed cells were ordered. He developed acute onset of shortness of breath upon completion of the second unit of blood transfusion. Investigation: Chest x-ray: Bilateral pulmonary infiltrations What is the most likely diagnosis?", "options": {"A": "Congestive heart failure", "B": "Hospital acquired pneumonia", "C": "Leukaemic infiltrate of the lungs", "D": "Pulmonary embolism", "E": "Transfusion-related acute lung injury"}, "topics": ["Chronic Leukaemia/MPN", "Thrombosis/VTE", "Transfusion"]}, {"num": 141, "year_info": "2020 MCQ44", "years": ["2020"], "stem": "M/60 newly diagnosed with stage 4 diffuse B-cell lymphoma was started on rituximab and chemotherapy. On day 3, he started to have chest discomfort, hypotension and tachycardia. Blood biochemistry shows the following: - Raised creatinine, urea, potassium, phosphate, urate, LDH - Decreased calcium Which of the following is correct?", "options": {"A": "Allergic to treatment drugs", "B": "Congestive heart failure", "C": "Fluid overload", "D": "Pulmonary embolism", "E": "Tumour lysis syndrome"}, "topics": ["Lymphoma", "Thrombosis/VTE", "Oncology/Solid Tumour", "Immunology/Autoimmune"]}, {"num": 142, "year_info": "2020 MCQ45", "years": ["2020"], "stem": "Patient with known adenocarcinoma of the lung, recently developed anuria. Investigations: Creatinine 130 Bilirubin 50 ALT ~500 AST ~600 CXR showed a left lung mass with a globular heart and mild lung haziness. Most likely diagnosis?", "options": {"A": "MI", "B": "Pericardial tamponade", "C": "Pneumonia", "D": "Pulmonary embolism", "E": "SVCO"}, "topics": ["Thrombosis/VTE", "Oncology/Solid Tumour"]}, {"num": 143, "year_info": "2020 MCQ46", "years": ["2020"], "stem": "Which of the following is found in autoimmune haemolytic anaemia?", "options": {"A": "Indirect hyperbilirubinaemia", "B": "Iron deficiency", "C": "Massive splenomegaly", "D": "Severe macrocytosis", "E": "Urinary bile"}, "topics": ["Anaemia/Thalassaemia", "Splenomegaly/LN"]}, {"num": 144, "year_info": "2020 MCQ47", "years": ["2020"], "stem": "4x year old man with hypercholesterolemia presented with chest pain. Hb 15.3 WBC 9.3 PLT 9xx", "options": {"A": "Essential thrombocythaemia", "B": "Leukemia", "C": "Myelofibrosis", "D": "Polycythemia vera", "E": "Reactive thrombocytosis due to MI"}, "topics": ["Chronic Leukaemia/MPN"]}, {"num": 145, "year_info": "2020 MCQ48", "years": ["2020"], "stem": "50/M, very obese, cannot feel liver and spleen. Hb 18.x WCC normal PLT normal Most likely diagnosis?", "options": {"A": "Myelofibrosis", "B": "Essential thrombocythemia", "C": "Polycythemia vera", "D": "Secondary erythrocytosis due to emphysema", "E": "Secondary erythrocytosis due to OSA"}, "topics": ["Chronic Leukaemia/MPN"]}, {"num": 146, "year_info": "2020 MCQ49", "years": ["2020"], "stem": "A 64-year-old male has recently been diagnosed with stage 3B non-small cell lung cancer. He has an ECOG (Eastern Cooperative Oncology Group) performance status of 0. He presented acutely to the Emergency Department with upper limb swelling, conjunctival suffusion, stridor and significant dyspnoea. What is the most appropriate diagnosis matched with treatment strategy?", "options": {"A": "Cardiac tamponade, observation", "B": "Pulmonary embolism, surgical endarterectomy", "C": "Pulmonary embolism, therapeutic anti-coagulation", "D": "Superior vena cava syndrome, biopsy +/- surgical stent insertion", "E": "Superior vena cava syndrome, immediate radiotherapy"}, "topics": ["Coagulation/Bleeding", "Thrombosis/VTE", "Oncology/Solid Tumour"]}, {"num": 147, "year_info": "2020 MCQ50", "years": ["2020"], "stem": "Which one of the following mutations are most commonly seen in lung adenocarcinoma in Asian?", "options": {"A": "EGFR", "B": "EML4-ALK", "C": "HER2", "D": "p53", "E": "ROS1"}, "topics": ["Oncology/Solid Tumour"]}, {"num": 148, "year_info": "2020 MCQ51", "years": ["2020"], "stem": "Boy with well known history of peanut allergy, presented with urticaria and dyspnoea. Most appropriate treatment?", "options": {"A": "IM adrenaline", "B": "IV hydrocortisone", "C": "O2 with salbutamol"}, "topics": ["Immunology/Autoimmune"]}, {"num": 149, "year_info": "2020# MCQ40", "years": ["2020"], "stem": "The following condition does NOT increase the risk of thrombosis.", "options": {"A": "Acquired factor VIII inhibitor", "B": "Factor V Leiden mutation", "C": "Nephrotic syndrome", "D": "Oral contraceptive", "E": "Paroxysmal nocturnal haemoglobinuria"}, "topics": ["Coagulation/Bleeding"]}, {"num": 150, "year_info": "2020# MCQ43", "years": ["2020"], "stem": "A 55-year-old man has chronic anaemia requiring frequent transfusion. Treatment with erythropoietin is most effective in which of the following conditions:", "options": {"A": "Aplastic anaemia", "B": "Chronic renal failure", "C": "Haemoglobin H disease", "D": "Iron deficiency anaemia", "E": "Pure red cell aplasia"}, "topics": ["Anaemia/Thalassaemia", "Transfusion"]}, {"num": 151, "year_info": "2020# MCQ46", "years": ["2020"], "stem": "Which of the following is true in haemophilia A?", "options": {"A": "About 5% of patients are females", "B": "Factor VIII is deficient", "C": "Haematopoietic stem cell transplantation may be curative", "D": "Platelet function test is abnormal", "E": "Von Willebrand factor is deficient"}, "topics": ["Coagulation/Bleeding"]}, {"num": 152, "year_info": "2020# MCQ49", "years": ["2020"], "stem": "A 45-year-old man with good past health was referred to your clinic for incidental finding of raised platelet count. He was completely asymptomatic and physical examination showed no abnormality. His complete blood picture was as follows Normal Range Haemoglobin 14.3 g/dL 11.5 – 14.8 MCV 88 fL 82.0 – 95.5 WBC 11 x10 /L 9 3.89 – 9.93 (Neutrophil 8.5 2.01 – 7.42 Lymphocyte 2.0 1.06 – 3.61 Monocyte) 0.5 0.26 – 0.85 Platelet 880 x109/L 167 – 396 Which of the following diagnoses is most compatible with the above clinical picture and blood test results?", "options": {"A": "Acute megakaryocytic leukaemia", "B": "Chronic lymphocytic leukaemia", "C": "Chronic myelomonocytic leukaemia", "D": "Essential thrombocythaemia", "E": "Thrombocytosis due to iron deficiency anaemia"}, "topics": ["Anaemia/Thalassaemia", "Chronic Leukaemia/MPN", "Coagulation/Bleeding"]}, {"num": 153, "year_info": "2020## MCQ43", "years": ["2020"], "stem": "In a 25-year-old woman with a prothrombin time of 18 seconds (Normal Range: 10.9 – 13.6), and an activated partial thromboplastin time of 80 seconds (Normal Range: 25.1 – 33.9), which of the following is the most appropriate diagnosis?", "options": {"A": "Haemophilia A", "B": "Haemophilia B", "C": "Heparin contamination", "D": "Systemic lupus erythematosus", "E": "Warfarin therapy"}, "topics": ["Coagulation/Bleeding", "Immunology/Autoimmune"]}, {"num": 154, "year_info": "2020## MCQ49", "years": ["2020"], "stem": "Which of the following is a differential diagnosis of splenomegaly of 15 cm below the costal margin?", "options": {"A": "Autoimmune haemolytic anaemia", "B": "Hereditary spherocytosis", "C": "Marfan syndrome", "D": "Myelofibrosis", "E": "Sickle cell anaemia"}, "topics": ["Anaemia/Thalassaemia", "Chronic Leukaemia/MPN", "Splenomegaly/LN"]}, {"num": 155, "year_info": "2021 MCQ46", "years": ["2021"], "stem": "Which of the following are features of hemolytic anemia?", "options": {"A": "Decrease bilirubin", "B": "Decrease haptoglobin", "C": "Decrease LDH", "D": "Decrease methaemoglobin"}, "topics": ["Anaemia/Thalassaemia"]}, {"num": 156, "year_info": "2021 MCQ47", "years": ["2021"], "stem": "60 year old man experiences malaise recently. Mild lymphadenopathy and hepatosplenomegaly. WBC high (40% neutrophil, 60% lymphocyte). Hb low, presence of smear cells. Platelet low.", "options": {"A": "AML", "B": "ALL", "C": "CML", "D": "CLL"}, "topics": ["Acute Leukaemia", "Chronic Leukaemia/MPN", "Coagulation/Bleeding", "Splenomegaly/LN"]}, {"num": 157, "year_info": "2021 MCQ49", "years": ["2021"], "stem": "Female prolong APTT, normal PT. Clinically completely normal. Which factor deficient?", "options": {"A": "7", "B": "8", "C": "11", "D": "12"}, "topics": ["Coagulation/Bleeding"]}, {"num": 158, "year_info": "2021 MCQ50", "years": ["2021"], "stem": "66 year old male, pale, present with SOB on exertion. No hepatosplenomegaly. Labs show low Hb, normal MCV, high Creatinine, adjusted calcium normal. IgM high 6500mg/dL. IgG 800 (slightly lower than range given: 860 - xx), IgA normal. SPEP monoclonal IgM/kappa. What is the most likely diagnosis?", "options": {"A": "IgM monoclonal gammopathy with unknown significance", "B": "IgM MM", "C": "Primary amyloidosis", "D": "Waldenstrom macroglobulinemia"}, "topics": ["Myeloma/Paraprotein", "Immunology/Autoimmune", "Splenomegaly/LN"]}, {"num": 159, "year_info": "2021 MCQ55", "years": ["2021"], "stem": "28/M presented with several episodes of anaphylaxis after meal, diagnosed with food dependent exercise induced anaphylaxis. What of the following investigation most suitable in finding the culprit allergen?", "options": {"A": "Intradermal test", "B": "Skin patch", "C": "Skin prick", "D": "Specific food IgG food panel"}, "topics": ["Immunology/Autoimmune"]}, {"num": 160, "year_info": "2021 MCQ??", "years": ["2021"], "stem": "A 70-year-old man was admitted to hospital because of exertional dyspnoea and malaise. Physical examination showed that he was pale and jaundiced. Lymphadenopathy and hepatosplenomegaly were absent. Blood tests showed the followings Haemoglobin level 7g/dL (normal: 13-18) MCV 101 fL WBC 2 x109/L (normal: 4-11) Platelet count 50 x109/L (normal: 150-400) Bilirubin 80 µmol/L (normal: <17) LDH 1800 u/L (normal: 140-280) Peripheral BS: spherocytosis, polychromasia What was the likely diagnosis?", "options": {"A": "Aplastic anaemia", "B": "Autoimmune haemolytic anaemia", "C": "Haemoglobin H disease", "D": "Pernicious anaemia"}, "topics": ["Anaemia/Thalassaemia", "Coagulation/Bleeding", "Splenomegaly/LN"]}, {"num": 161, "year_info": "2022 MCQ40", "years": ["2022"], "stem": "40 years old female presenting with fever, pallor, petechiae. No other physical signs Blood test: Hb 9.6 WCC 11.1 Plt 15 PT APTT normal Bilirubin 60 LDH 1500 PBS: schistocytes Most likely diagnosis?", "options": {"A": "APML", "B": "DIC", "C": "Evan’s syndrome", "D": "TTP"}, "topics": ["Acute Leukaemia", "Coagulation/Bleeding"]}, {"num": 162, "year_info": "2022 MCQ41", "years": ["2022"], "stem": "Pancytopenia (Hb 7, WBC 1.1, Plt 60), CA breast 8 years ago underwent mastectomy and adjuvant chemo. Mild macrocytosis, hypogranular neutrophils.", "options": {"A": "Pernicious anaemia", "B": "Recurrent CA breast with BM metastasis", "C": "Myelodysplastic syndrome", "D": "ALL"}, "topics": ["Anaemia/Thalassaemia", "MDS", "Oncology/Solid Tumour"]}, {"num": 163, "year_info": "2022 MCQ43", "years": ["2022"], "stem": "RA patient for 3 years, low TIBC 30 (normal 50) and serum iron 4 (normal range >5), low MCV 70, anaemic Hb 8.4 WBC 5.5 Plt 550.", "options": {"A": "Acute GI blood loss", "B": "Iron deficiency anemia", "C": "Anemia of chronic illness", "D": "Hemolytic anemia"}, "topics": ["Anaemia/Thalassaemia"]}, {"num": 164, "year_info": "2022 MCQ44", "years": ["2022"], "stem": "White cell count 123.6, Hb low 11.4, platelet high 550, splenomegaly. Karyotyping: 47, XY, +8, t(9:22). What treatment?", "options": {"A": "Arsenic trioxide", "B": "Interferon alpha", "C": "JAK2 inhibitor, e.g. ruxolitinib", "D": "Tyrosine kinase inhibitor, e.g. nilotinib"}, "topics": ["Chronic Leukaemia/MPN", "Coagulation/Bleeding", "Splenomegaly/LN"]}, {"num": 165, "year_info": "2022 MCQ45", "years": ["2022"], "stem": "30/F with isolated increase in APTT normal PT. Mixing study 1:1 does not decrease APTT. Which of the following is the diagnosis?", "options": {"A": "Antiphospholipid syndrome", "B": "Disseminated intravascular coagulation", "C": "Haemophilia A", "D": "Haemophilia B"}, "topics": ["Coagulation/Bleeding"]}, {"num": 166, "year_info": "2022 MCQ46", "years": ["2022"], "stem": "40/F good past health complained of SOB for 3 months. Pale with a tinge of jaundice, other PE normal. Blood test: Hb 5.6 low MCV 100 high WBC 6 normal Platelet 150 slightly low Blood smear shows polychromasia, nucleated red cell, spherocytosis. Which is the next diagnostic test?", "options": {"A": "DAT", "B": "Eosin 5 maleimide test", "C": "Reticulocyte count", "D": "Vitamin B12"}, "topics": ["Anaemia/Thalassaemia", "Coagulation/Bleeding"]}, {"num": 167, "year_info": "2022 MCQ49", "years": ["2022"], "stem": "28/M student recurrent infection since 2 years ago. With chronic sinusitis and 6 episodes of pneumonia with hospitalization. Cough with yellowish green sputum. Lost 12% of weight during these 2 years. CXR showed bronchietactic picture. Sputum cultured pneumococcus. CBC normal. IgG 80? (normal 200+) IgM 50? (normal 100+) IgA <5 (normal 20+).", "options": {"A": "Cilia malfunction", "B": "CVID", "C": "HIV", "D": "XLA"}, "topics": ["Immunology/Autoimmune"]}, {"num": 168, "year_info": "2022 MCQ53", "years": ["2022"], "stem": "Woman chronic spontaneous urticaria with breakthrough urticaria not controlled by 4 tablets of cetirizine. What can be added?", "options": {"A": "Chlorpheniramine", "B": "Omalizumab", "C": "Corticosteroids", "D": "Rituximab"}, "topics": ["Immunology/Autoimmune"]}];
+const ANSWERS = {
+  "1": {
+    "answer": "E",
+    "confidence": "high",
+    "explanation": "典型染色体/细胞遗传异常常见于滤泡淋巴瘤 t(14;18)、CML t(9;22)、Burkitt t(8;14)、APL t(15;17)。再生障碍性贫血（aplastic anaemia）是骨髓衰竭综合征，不以典型克隆性细胞遗传异常作为常规特征。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Aplastic anaemia"
+  },
+  "2": {
+    "answer": "D",
+    "confidence": "high",
+    "explanation": "反复流产、血小板减少、PT 正常而 APTT 延长，最符合抗磷脂抗体综合征（antiphospholipid syndrome）。狼疮抗凝物可使体外 APTT 延长，但体内表现为血栓/妊娠丢失倾向。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Anti-phospholipid antibody syndrome"
+  },
+  "3": {
+    "answer": "C",
+    "confidence": "high",
+    "explanation": "低分子肝素（LMWH）药代动力学较可预测，常规使用通常不需要用 APTT 等凝血试验监测；特殊情况可测 anti-Xa。它可用于预防和治疗 VTE，半衰期较普通肝素长，anti-Xa/anti-IIa 比值更高。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "When it is used, monitoring by coagulation test is not necessary"
+  },
+  "4": {
+    "answer": "E",
+    "confidence": "high",
+    "explanation": "β 地中海贫血重型（beta thalassaemia major）长期输血后铁过载会导致心肌病、内分泌损害和死亡，是关键预后问题。HbA 产生减少，主要不是 HbA2；儿童期即需输血和铁螯合。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Iron overload is the commonest cause of death"
+  },
+  "5": {
+    "answer": "A",
+    "confidence": "high",
+    "explanation": "显著白细胞和血小板升高、脾大、NAP/LAP 评分为 0 是慢性粒细胞白血病（CML）的经典线索。ET 不应有明显粒细胞左移和低 LAP 的组合。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Chronic myeloid leukaemia"
+  },
+  "6": {
+    "answer": "C",
+    "confidence": "high",
+    "explanation": "铅中毒（lead poisoning）典型导致小细胞低色素性贫血和嗜碱性点彩，不是常见大细胞增多原因。甲减、网织红细胞增多、MDS、酒精均可导致宏细胞增多。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Lead poisoning"
+  },
+  "7": {
+    "answer": "B",
+    "confidence": "high",
+    "explanation": "ITP 是排除性诊断，骨髓巨核细胞增多只能支持外周破坏，不能“诊断性”确认 ITP。老年孤立血小板减少需排除 MDS，血涂片有价值，无出血时不常规输血小板。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "A bone marrow with increased megakaryocytes is diagnostic of immune thrombocytopenia"
+  },
+  "8": {
+    "answer": "B",
+    "confidence": "medium",
+    "explanation": "女性、无症状体检发现孤立 APTT 轻度延长，选项中最符合因子 XI 缺乏（haemophilia C），可轻症或无症状且 PT 正常。vWD 更常有黏膜出血；血友病 A 多为男性且有出血史。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Haemophilia C"
+  },
+  "9": {
+    "answer": "A",
+    "confidence": "low",
+    "explanation": "此题原文用词可能不严谨。成熟初始 B 细胞可表达膜 IgM 和 IgD；严格说 immature B cell 主要表达 IgM。其余选项更明确错误：造血干细胞稀少、重链先于轻链重排、记忆 B 细胞在外周生发中心形成、骨髓内 B 发育主要抗原非依赖。",
+    "needs_review": true,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Immature B cells express membrane IgM and IgD"
+  },
+  "10": {
+    "answer": "A",
+    "confidence": "high",
+    "explanation": "Factor IX 缺乏即血友病 B（Christmas disease），为 X 连锁隐性遗传。Factor X 缺乏多为常染色体遗传，vWD 多为常染色体显性。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Factor IX deficiency"
+  },
+  "11": {
+    "answer": "B",
+    "confidence": "high",
+    "explanation": "新鲜冰冻血浆（FFP）含多种凝血因子及抗凝蛋白，包括 antithrombin III。它不含 lupus anticoagulant 作为治疗成分，也不是抗 D 免疫球蛋白制剂。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Antithrombin III"
+  },
+  "12": {
+    "answer": "E",
+    "confidence": "medium",
+    "explanation": "大环内酯类如 clarithromycin 可抑制华法林代谢并升高 INR，需要严密监测。Ciprofloxacin 也可相互作用，但本题若单选，clarithromycin 是更典型答案。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Clarithromycin"
+  },
+  "13": {
+    "answer": "B",
+    "confidence": "medium",
+    "explanation": "砷角化病（arsenic keratosis）与长期砷暴露有关，传统中药制剂污染或含砷制剂可为来源之一。其他选项把不同疾病实体错误关联。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Arsenic keratosis is associated with TCM use"
+  },
+  "14": {
+    "answer": "B",
+    "confidence": "medium",
+    "explanation": "恶性贫血（pernicious anaemia）常与抗内因子抗体和抗胃壁细胞抗体相关；抗内因子抗体特异性较高。饮食缺乏在香港并非常见主因；Schilling test 属历史性检查，现已少用。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Anti-intrinsic factor and parietal cell diagnostic for pernicious anaemia"
+  },
+  "15": {
+    "answer": "B",
+    "confidence": "medium",
+    "explanation": "牙龈出血属黏膜出血，PT 正常、APTT 可轻度延长，较支持 von Willebrand disease。题干同时写血小板低，可能提示转录不完整或 type 2B vWD/其他鉴别；TTP 通常有 MAHA/神经肾脏线索。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "von Willebrand disease"
+  },
+  "16": {
+    "answer": "E",
+    "confidence": "high",
+    "explanation": "网织红细胞 8.8% 和多染性提示骨髓反应性增生，常见于溶血或失血。慢性肾衰竭因 EPO 不足通常为低网织红细胞性贫血，因此最不符合。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Chronic renal failure"
+  },
+  "17": {
+    "answer": "A",
+    "confidence": "high",
+    "explanation": "再生障碍性贫血是造血衰竭，不是溶血性贫血。G6PD 缺乏、遗传性球形细胞增多症、地中海贫血和 TTP 均可导致溶血。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Aplastic anaemia"
+  },
+  "18": {
+    "answer": "C",
+    "confidence": "medium",
+    "explanation": "痔疮可出血但通常不应轻易归因于重度缺铁性贫血，尤其需要排除妇科和胃肠道重大失血来源。多产、子宫肌瘤、消化性溃疡、反复血尿均可造成明显铁缺乏。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Haemorrhoid"
+  },
+  "19": {
+    "answer": "A",
+    "confidence": "high",
+    "explanation": "6 cm 脾大更常见于 CML、骨髓纤维化、NHL、Hb H disease 等。多发性骨髓瘤通常以骨痛、贫血、肾损害、高钙和单克隆蛋白为主，明显脾大不典型。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Multiple myeloma"
+  },
+  "20": {
+    "answer": "C",
+    "confidence": "high",
+    "explanation": "抗生素注射后气促、瘙痒、先兆晕厥符合过敏性休克（anaphylaxis），一线立即给肾上腺素（epinephrine/adrenaline），通常肌注。抗组胺和激素不能替代肾上腺素。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Epinephrine"
+  },
+  "21": {
+    "answer": "E",
+    "confidence": "high",
+    "explanation": "获得性 factor VIII inhibitor 造成获得性血友病 A，典型表现为出血和孤立 APTT 延长，不是血栓风险。Factor V Leiden、PNH、口服避孕药、lupus anticoagulant 均与血栓相关。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Acquired factor VIII inhibitor"
+  },
+  "22": {
+    "answer": "B",
+    "confidence": "high",
+    "explanation": "血友病 A 为 factor VIII 缺乏：APTT 延长、PT 正常、thrombin time 正常。vWF 不是多数血友病 A 患者的原发缺陷。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Thrombin time is normal"
+  },
+  "23": {
+    "answer": "B",
+    "confidence": "high",
+    "explanation": "自身免疫性溶血性贫血（AIHA）的关键确诊检查是直接抗人球蛋白试验（direct antiglobulin test, DAT/Coombs）阳性。通常网织红细胞升高，骨髓红系增生。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Direct antiglobulin test is positive"
+  },
+  "24": {
+    "answer": "E",
+    "confidence": "medium",
+    "explanation": "重型再障有效治疗包括同胞供者异基因造血干细胞移植、ATG、环孢素等。血浆置换不属于再障核心治疗。单用糖皮质激素也有限，但与血浆置换相比，E 更不合题意。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Plasmapheresis"
+  },
+  "25": {
+    "answer": "B",
+    "confidence": "high",
+    "explanation": "巨大脾大、WBC 133×10^9/L、血小板高、NAP/LAP 0，是 CML 慢性期典型表现。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Chronic myeloid leukaemia"
+  },
+  "26": {
+    "answer": "E",
+    "confidence": "high",
+    "explanation": "DIC 消耗凝血因子，常见 PT/APTT/TT 延长、D-dimer 升高、血小板低、纤维蛋白原降低。因此“fibrinogen increased”错误。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Fibrinogen levels are increased"
+  },
+  "27": {
+    "answer": "C",
+    "confidence": "medium",
+    "explanation": "非霍奇金淋巴瘤中弥漫大 B 细胞淋巴瘤（DLBCL）通常是最常见组织学类型。其他比例和骨髓移植治疗比例不符合常规流行病学。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Diffuse B-cell type are most common histology"
+  },
+  "28": {
+    "answer": "C",
+    "confidence": "high",
+    "explanation": "类风湿关节炎相关贫血多为慢性病贫血（anaemia of chronic disease/inflammation），铁被网状内皮系统滞留，骨髓铁正常或增加，TIBC 低，单纯补铁反应差。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Bone marrow iron is normal or increased"
+  },
+  "29": {
+    "answer": "B",
+    "confidence": "medium",
+    "explanation": "儿童特应性皮炎相关食物过敏中，鸡蛋（egg）是幼儿常见过敏原之一；在本题给定选项里最符合。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Egg"
+  },
+  "30": {
+    "answer": "D",
+    "confidence": "high",
+    "explanation": "Dapsone 可引起氧化性溶血和 Heinz bodies，即使无 G6PD 缺乏也可发生。网织红细胞升高和 MCV 增高可由溶血后网织红细胞增多解释。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Drug-induced haemolysis"
+  },
+  "31": {
+    "answer": "D",
+    "confidence": "high",
+    "explanation": "真性红细胞增多症（PV）常见 Hb 高、白细胞/血小板可升高、低 EPO、脾大、Ph 阴性。严重血小板减少与 PV 初诊不相容。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Severe thrombocytopenia"
+  },
+  "32": {
+    "answer": "B",
+    "confidence": "high",
+    "explanation": "PT 正常而 APTT >110 秒，最常见实验室情境是肝素污染（heparin contamination）。肝衰会更常同时延长 PT；血友病 A carrier 通常不至于如此极端。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Heparin contamination"
+  },
+  "33": {
+    "answer": "B",
+    "confidence": "high",
+    "explanation": "突发皮疹、呼吸困难、喘鸣提示 anaphylaxis，立即肌注肾上腺素是首要处理。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "IM epinephrine"
+  },
+  "34": {
+    "answer": "D",
+    "confidence": "high",
+    "explanation": "无症状低色素小细胞贫血的首要检查是铁状态，血清 ferritin 是最实用的缺铁筛查指标。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Serum ferritin"
+  },
+  "35": {
+    "answer": "B",
+    "confidence": "high",
+    "explanation": "Hb H disease 主要靠血红蛋白分析/包涵体检查/基因检测诊断，不靠骨髓活检。再障、淋巴瘤、骨髓瘤、AML 都常需骨髓评估。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "HbH disease"
+  },
+  "36": {
+    "answer": "B",
+    "confidence": "medium",
+    "explanation": "饮食和饮料可影响华法林抗凝强度，cranberry juice 等曾被提示可升高 INR。Aspirin 主要增加出血风险但不显著升 INR；rifampicin/carbamazepine/phenytoin 多诱导而非抑制代谢。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Food and drinks (e.g. cranberry juice) can influence INR"
+  },
+  "37": {
+    "answer": "E",
+    "confidence": "high",
+    "explanation": "老年新发 DVT 需考虑获得性危险因素，潜在恶性肿瘤是重要原因。遗传性血栓倾向在 85 岁首发 DVT 中通常不是最常见解释。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Underlying malignancy is a possible cause"
+  },
+  "38": {
+    "answer": "D",
+    "confidence": "medium",
+    "explanation": "重度溶血时骨髓强烈代偿，可出现有核红细胞（circulating normoblasts）。AIHA 多为血管外溶血，茶色尿、尿含铁血黄素和 methaemalbumin 更偏血管内溶血。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Circulating normoblast"
+  },
+  "39": {
+    "answer": "D",
+    "confidence": "high",
+    "explanation": "年轻女性白细胞和血小板均升高，明显脾大，最符合 CML。急性白血病通常不以长期巨大脾大和血小板增高为典型。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "CML"
+  },
+  "40": {
+    "answer": null,
+    "confidence": "low",
+    "explanation": "题目选项疑似转录不完整。62 岁男性复发小细胞贫血、补铁有效、粪便隐血曾阳性，核心诊断应首先考虑慢性胃肠道失血/结直肠癌，而给定选项未包含该答案。",
+    "needs_review": true,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。"
+  },
+  "41": {
+    "answer": "C",
+    "confidence": "high",
+    "explanation": "Hb 4.6、黄疸提示溶血；确认 AIHA 最佳检查是直接 Coombs/DAT。Haptoglobin 可支持溶血，但不能确定免疫性机制。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Direct Coombs’ test"
+  },
+  "42": {
+    "answer": "C",
+    "confidence": "high",
+    "explanation": "慢性肾衰竭因 EPO 生成不足导致贫血，最能从 erythropoietin replacement 获益。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Chronic renal failure"
+  },
+  "43": {
+    "answer": "E",
+    "confidence": "high",
+    "explanation": "AML 化疗后发热性中性粒细胞减少应及时取培养并立即经验性广谱抗生素；抗真菌用于持续发热等情况。G-CSF 不应“立即常规给予”作为标准第一步。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "G-CSF should be given immediately"
+  },
+  "44": {
+    "answer": "A",
+    "confidence": "high",
+    "explanation": "多发性骨髓瘤伴溶骨性病变可用双膦酸盐降低骨相关事件。常规不是异基因移植；IgE 升高、AIHA、冷球蛋白血症不是典型主轴。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "He will benefit from bisphosphonate treatment"
+  },
+  "45": {
+    "answer": "D",
+    "confidence": "high",
+    "explanation": "Rh 阴性母亲、Rh 阳性父亲时，胎儿可能遗传父亲 RhD 阳性，也可能为 Rh 阴性，取决于父亲基因型。首胎不必然患病。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "First child may be Rhesus negative"
+  },
+  "46": {
+    "answer": "E",
+    "confidence": "medium",
+    "explanation": "成功异基因造血干细胞移植后 ABO 血型可随供者造血转为供者型；O 受者、AB 供者后期可接受 AB 红细胞。实际输血策略需按移植后阶段和抗体滴度决定。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "She can accept blood in group AB"
+  },
+  "47": {
+    "answer": "D",
+    "confidence": "high",
+    "explanation": "牙龈肿胀/浸润是急性单核细胞白血病（acute monocytic leukaemia, AML M5）的经典提示。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Acute monocytic leukaemia"
+  },
+  "48": {
+    "answer": "D",
+    "confidence": "high",
+    "explanation": "严重贫血、肾功能损害、A/G 比倒置/球蛋白增高，最符合多发性骨髓瘤。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Multiple myeloma"
+  },
+  "49": {
+    "answer": "C",
+    "confidence": "high",
+    "explanation": "输血后急性呼吸困难、低氧，尤其无容量负荷证据时考虑输血相关急性肺损伤（TRALI）。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Transfusion-related acute lung injury"
+  },
+  "50": {
+    "answer": "D",
+    "confidence": "high",
+    "explanation": "反复流产、孤立 APTT 延长且无出血线索，最关键检查是 lupus anticoagulant，用于诊断抗磷脂抗体综合征。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Lupus anticoagulant"
+  },
+  "51": {
+    "answer": "E",
+    "confidence": "high",
+    "explanation": "多数灭鼠剂为香豆素类抗凝剂，抑制维生素 K 依赖凝血因子，最敏感监测为 PT/INR。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Prothrombin time"
+  },
+  "52": {
+    "answer": "C",
+    "confidence": "high",
+    "explanation": "Dapsone 可导致高铁血红蛋白血症（methaemoglobinaemia），表现为发绀且吸氧后 SpO2 不充分改善；诊断查 serum methaemoglobin。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Serum methaemoglobin"
+  },
+  "53": {
+    "answer": "E",
+    "confidence": "high",
+    "explanation": "长期使用 EPO 的 ESRF 患者 Hb 突然下降且无缺铁/甲旁亢等原因，应考虑抗 EPO 抗体导致纯红细胞再生障碍。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Anti-erythropoietin antibody"
+  },
+  "54": {
+    "answer": "C",
+    "confidence": "high",
+    "explanation": "Howell-Jolly bodies 反映脾功能缺如或低下，典型见于脾切除后。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Splenectomy"
+  },
+  "55": {
+    "answer": "A",
+    "confidence": "high",
+    "explanation": "高钙、肾损害、贫血、骨折/骨痛构成 CRAB 线索，支持多发性骨髓瘤；骨髓检查可显示克隆性浆细胞。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Bone marrow exam"
+  },
+  "56": {
+    "answer": "C",
+    "confidence": "high",
+    "explanation": "女性牙拔后出血、PT 正常、APTT 延长，最符合 von Willebrand disease；vWF 下降可继发 factor VIII 降低导致 APTT 延长。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Von Willebrand disease"
+  },
+  "57": {
+    "answer": "A",
+    "confidence": "high",
+    "explanation": "舌炎、共济失调/足麻、全血细胞减少、巨卵圆红细胞、LDH 和胆红素高，典型为维生素 B12 缺乏性恶性贫血。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Pernicious anaemia"
+  },
+  "58": {
+    "answer": "C",
+    "confidence": "high",
+    "explanation": "年轻低危 PV 基础治疗是放血（venesection/phlebotomy）控制红细胞压积，并加低剂量阿司匹林降低血栓风险；高危才考虑 hydroxyurea。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Venesection + aspirin"
+  },
+  "59": {
+    "answer": "A",
+    "confidence": "medium",
+    "explanation": "CML 慢性期可见粒细胞系列增多并伴嗜酸/嗜碱细胞增多；本题选项中 eosinophilia 最符合。若有 basophilia 选项通常更特异。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Eosinophilia"
+  },
+  "60": {
+    "answer": "A",
+    "confidence": "high",
+    "explanation": "香港/华南 α 地贫携带者最常见为 cis 双 α 基因缺失（--/αα），即同一条 16 号染色体缺失两个 α 基因，常见 --SEA deletion。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Deletion of two of the genes on one chromosome 16"
+  },
+  "61": {
+    "answer": "D",
+    "confidence": "high",
+    "explanation": "既往联合化疗后多年出现全血细胞减少，应高度考虑治疗相关 MDS/AML；本题最符合 MDS。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Myelodysplastic syndrome"
+  },
+  "62": {
+    "answer": "A",
+    "confidence": "high",
+    "explanation": "胃肠手术后出现疲乏、全血细胞减少、巨卵圆红细胞、LDH/胆红素高，提示 B12 缺乏；最有用检查是 vitamin B12 level。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Vitamin B12 level"
+  },
+  "63": {
+    "answer": "B",
+    "confidence": "high",
+    "explanation": "IgM 单克隆蛋白过多常指向 Waldenström macroglobulinaemia，其骨髓为 lymphoplasmacytic infiltration。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Lymphoplasmacytic cell infiltration"
+  },
+  "64": {
+    "answer": "D",
+    "confidence": "high",
+    "explanation": "CML 常见中性粒细胞增多、左移、嗜碱/嗜酸细胞增多和 myelocytes；淋巴细胞增多不是典型主轴。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Lymphocytosis"
+  },
+  "65": {
+    "answer": "A",
+    "confidence": "high",
+    "explanation": "球形红细胞（spherocytosis）提示溶血，尤其 AIHA 或遗传性球形细胞增多症。溶血通常 LDH 高、haptoglobin 低。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Spherocytosis"
+  },
+  "66": {
+    "answer": "E",
+    "confidence": "high",
+    "explanation": "高龄、体重下降、单侧下肢 DVT，应优先考虑潜在恶性肿瘤相关血栓。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Underlying malignancy"
+  },
+  "67": {
+    "answer": "A",
+    "confidence": "high",
+    "explanation": "异基因造血干细胞移植后 1 个月出现掌跖/躯干斑丘疹，典型为急性 GVHD 皮肤表现。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Acute graft versus host disease"
+  },
+  "68": {
+    "answer": "E",
+    "confidence": "high",
+    "explanation": "疑似淋巴瘤的无痛橡皮样全身淋巴结肿大，首选完整切除活检（excisional biopsy）以保留结构用于分型；FNA 不足。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Excisional biopsy of the lymph node"
+  },
+  "69": {
+    "answer": "A",
+    "confidence": "medium",
+    "explanation": "JAK2 V617F 在 PV 中阳性率最高，诊断价值最强；ET 和 PMF 也可阳性但比例较低。CML 应查 BCR-ABL。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Polycythemia rubra vera"
+  },
+  "70": {
+    "answer": "C",
+    "confidence": "high",
+    "explanation": "老年人淋巴细胞为主白细胞升高，涂片小成熟淋巴细胞，最符合 CLL。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "CLL"
+  },
+  "71": {
+    "answer": "C",
+    "confidence": "high",
+    "explanation": "混合试验不纠正提示抑制物存在；获得性血友病 A 中患者血浆含 factor VIII inhibitor，可抑制正常血浆中的凝血因子。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "There are inhibitors inside the plasma of the patient inhibiting the normal person’s clotting factor from acting"
+  },
+  "72": {
+    "answer": "C",
+    "confidence": "medium",
+    "explanation": "胸痛、多发肋骨骨折和 rouleaux formation 提示多发性骨髓瘤；在给定选项中 skeletal survey 是评估溶骨病变的传统下一步。现代也会做 SPEP/UPEP、游离轻链和骨髓。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Skeletal survey"
+  },
+  "73": {
+    "answer": "A",
+    "confidence": "medium",
+    "explanation": "严重出血伴 INR >5 需要快速补充凝血因子；理想为 PCC + IV vitamin K。PCC 不在选项中时，FFP 是最快可用的因子替代。IV vitamin K 起效较慢。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Fresh frozen plasma"
+  },
+  "74": {
+    "answer": "E",
+    "confidence": "high",
+    "explanation": "移植后使用 cyclosporin、血压升高、癫痫和枕叶影像异常，提示后部可逆性脑病综合征（PRES）。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Posterior reversible encephalopathy syndrome caused by cyclosporin"
+  },
+  "75": {
+    "answer": "C",
+    "confidence": "high",
+    "explanation": "WBC 120、粒系各阶段增多、嗜碱细胞升高、血小板高和脾大，符合 CML 慢性期。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Chronic myeloid leukaemia"
+  },
+  "76": {
+    "answer": "A",
+    "confidence": "high",
+    "explanation": "年轻重型再障若有 HLA 匹合同胞供者，首选异基因骨髓/造血干细胞移植。无合适供者才常用 ATG + cyclosporin。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Allogeneic bone marrow transplant if matched sibling donor is available"
+  },
+  "77": {
+    "answer": "B",
+    "confidence": "high",
+    "explanation": "贫血、黄疸、LDH 高、球形红细胞、多染性和有核红细胞提示溶血；下一步确认免疫性溶血应做 direct Coombs/DAT。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Direct Coombs’ test"
+  },
+  "78": {
+    "answer": "B",
+    "confidence": "high",
+    "explanation": "老年人自发大片瘀斑/出血、PT 正常、APTT 明显延长、血小板正常，典型为获得性 factor VIII inhibitor。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Factor VIII inhibitor"
+  },
+  "79": {
+    "answer": "D",
+    "confidence": "high",
+    "explanation": "碎片红细胞、LDH 极高、贫血和血小板低提示微血管病性溶血；深色尿来自血管内溶血导致血红蛋白尿。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Haemoglobulinuria from intravascular haemolysis"
+  },
+  "80": {
+    "answer": "E",
+    "confidence": "high",
+    "explanation": "PT 和 APTT 同时延长，且 PT 较敏感，最符合华法林作用。血友病 A/B 为孤立 APTT 延长；肝素多为 APTT 延长。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Warfarin use"
+  },
+  "81": {
+    "answer": "A",
+    "confidence": "high",
+    "explanation": "70 岁持续淋巴细胞增多 10×10^9/L，应考虑 CLL；其他感染性淋巴细胞增多需结合急性感染表现。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Chronic lymphocytic leukaemia"
+  },
+  "82": {
+    "answer": "D",
+    "confidence": "high",
+    "explanation": "舌痛、MCV 125、网织红细胞低和轻度白细胞/血小板低，符合巨幼细胞贫血，下一步查 serum vitamin B12 and folate。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Serum vitamin B12 and folate"
+  },
+  "83": {
+    "answer": "D",
+    "confidence": "high",
+    "explanation": "骨痛、贫血、肾损害、高钙、球蛋白升高和轻度蛋白尿提示多发性骨髓瘤；应查血清蛋白免疫电泳/免疫固定。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Check serum protein immunoelectrophoresis"
+  },
+  "84": {
+    "answer": "D",
+    "confidence": "high",
+    "explanation": "记忆 B 细胞（memory B cell）的常用表面标志之一是 CD27。CD3/CD4 为 T 细胞，CD16/CD56 多为 NK 细胞相关。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "CD27"
+  },
+  "85": {
+    "answer": "C",
+    "confidence": "high",
+    "explanation": "恶性贫血/B12 缺乏可造成无效造血和全血细胞减少（pancytopenia）。网织红细胞通常不高。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Pancytopenia"
+  },
+  "86": {
+    "answer": "B",
+    "confidence": "high",
+    "explanation": "输血后 2 周出现贫血、黄疸、LDH 高，提示迟发性溶血性输血反应；下一步查 DAT。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Direct antiglobulin test"
+  },
+  "87": {
+    "answer": "E",
+    "confidence": "high",
+    "explanation": "输血后 30 分钟内发热、急性低氧、双肺浸润且心功能正常，最符合 TRALI。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Transfusion-related acute lung injury"
+  },
+  "88": {
+    "answer": "A",
+    "confidence": "high",
+    "explanation": "I 型超敏反应效应阶段由肥大细胞/嗜碱细胞脱颗粒介导，组胺（histamine）是关键介质。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Histamine"
+  },
+  "89": {
+    "answer": "B",
+    "confidence": "high",
+    "explanation": "Carbamazepine 诱导 CYP 酶，加速 warfarin 代谢，使 INR 降低。Amiodarone、ciprofloxacin、clarithromycin、metronidazole 多升高 INR。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Carbamazepine"
+  },
+  "90": {
+    "answer": "A",
+    "confidence": "medium",
+    "explanation": "血小板极高首先应确认真实血小板增多并观察血涂片形态，排除假性增多和反应性线索；之后再做 JAK2 等 MPN 检查。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Peripheral blood smear"
+  },
+  "91": {
+    "answer": "A",
+    "confidence": "high",
+    "explanation": "多发肋骨骨折、高钙、贫血和肾衰提示多发性骨髓瘤；骨髓活检/涂片有直接诊断价值。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Bone marrow biopsy"
+  },
+  "92": {
+    "answer": "A",
+    "confidence": "medium",
+    "explanation": "白血病样淋巴细胞增多、smudge cells、CD20 伴典型 CLL 免疫表型线索且 FMC7 阴性，最支持 CLL。原文 CD 标志可能有转录错误。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "CLL"
+  },
+  "93": {
+    "answer": "A",
+    "confidence": "high",
+    "explanation": "孕 18 周偶然孤立血小板 80、涂片正常且无症状，常见为妊娠相关/轻度 ITP，通常密切观察随访；IVIG 用于更低血小板或出血/临产需求。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Observe every 4 weeks"
+  },
+  "94": {
+    "answer": "A",
+    "confidence": "high",
+    "explanation": "老年男性自发瘀斑、PT 正常、APTT 延长，最典型为获得性 factor VIII inhibitor。先天性血友病通常年轻起病。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Acquired factor VIII inhibitor"
+  },
+  "95": {
+    "answer": "C",
+    "confidence": "high",
+    "explanation": "双侧肺门淋巴结肿大、非干酪样上皮样肉芽肿伴多核巨细胞，最符合结节病（sarcoidosis）。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Sarcoidosis"
+  },
+  "96": {
+    "answer": "B",
+    "confidence": "high",
+    "explanation": "Dabigatran 主要经肾排泄，常规监测重点是肾功能（renal function test, RFT），INR 不用于疗效监测。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "RFT"
+  },
+  "97": {
+    "answer": "A",
+    "confidence": "high",
+    "explanation": "Warfarin 可致出血、皮肤坏死、经 CYP 代谢、致畸；不导致 QTc 延长。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Prolonged QTc"
+  },
+  "98": {
+    "answer": "C",
+    "confidence": "high",
+    "explanation": "Rituximab 靶向 CD20，用于 B 细胞淋巴瘤等，不是转移性乳腺癌常规药物。Anastrozole、docetaxel、tamoxifen、trastuzumab 均可用于乳腺癌特定情境。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Rituximab"
+  },
+  "99": {
+    "answer": "E",
+    "confidence": "high",
+    "explanation": "交叉配血（major crossmatch）是用受者血清与供者红细胞反应，检查是否存在会攻击供者红细胞的抗体。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Mix the recipient serum against donor’s red blood cells"
+  },
+  "100": {
+    "answer": "C",
+    "confidence": "high",
+    "explanation": "高钾、高磷、高尿酸/肌酐、低钙和 LDH 高是肿瘤溶解综合征（tumour lysis syndrome）的典型组合。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Tumour lysis syndrome"
+  },
+  "101": {
+    "answer": "D",
+    "confidence": "high",
+    "explanation": "骨科大手术后 VTE 风险通常高于一般外科手术。遗传性 protein S 纯合突变少见；癌症相关 VTE 不限于淋巴瘤。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Higher risk after orthopaedic surgery than general surgical operation"
+  },
+  "102": {
+    "answer": "B",
+    "confidence": "high",
+    "explanation": "家族性小细胞低色素贫血、靶形红细胞、铁正常，提示 β 地贫 trait；下一步看 HbA2 升高。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "HbA2"
+  },
+  "103": {
+    "answer": "B",
+    "confidence": "high",
+    "explanation": "骨髓纤维化外周血典型为泪滴红细胞（tear drop cells/dacrocytes）和幼粒幼红细胞反应。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Tear drop cells"
+  },
+  "104": {
+    "answer": "B",
+    "confidence": "high",
+    "explanation": "Hydroxyurea 可导致 MCV 升高，是治疗后常见药物效应，不代表马上转化。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Hydroxyurea"
+  },
+  "105": {
+    "answer": "D",
+    "confidence": "high",
+    "explanation": "年轻 ITP 患者血小板 76×10^9/L 且无症状，通常观察即可，不需立即激素、IVIG 或 TPO agonist。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "No treatment"
+  },
+  "106": {
+    "answer": "A",
+    "confidence": "high",
+    "explanation": "BCR-ABL1/Philadelphia chromosome 是 CML 的定义性异常。JAK2 支持 PV/ET/PMF 但不是单独绝对诊断；PML-RARA 是 APL 而非所有 AML。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "BCR/ABL in chronic myeloid leukaemia"
+  },
+  "107": {
+    "answer": "D",
+    "confidence": "high",
+    "explanation": "CVID 以低 IgG 伴 IgA/IgM 降低和反复感染为特征；B 细胞通常存在但分化为浆细胞/抗体产生受损。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "IgG level 1.5 g/L"
+  },
+  "108": {
+    "answer": "A",
+    "confidence": "medium",
+    "explanation": "老年患者贫血、极低血小板、白细胞偏低且伴肾功能问题，需评估骨髓衰竭/浸润或血液病，骨髓检查最能解释多系异常。题干转录不完整，需结合真实原题。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Bone marrow"
+  },
+  "109": {
+    "answer": "A",
+    "confidence": "high",
+    "explanation": "胃切除后内因子不足/吸收障碍可致维生素 B12 缺乏，出现舌炎、宏细胞增多、分叶过多中性粒细胞和轻度血小板低。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Vitamin B12 deficiency"
+  },
+  "110": {
+    "answer": "A",
+    "confidence": "high",
+    "explanation": "持续无痛颈部淋巴结肿大应取组织诊断；淋巴瘤疑诊首选活检而不是先做骨髓或血涂片。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Biopsy of the neck lump"
+  },
+  "111": {
+    "answer": "D",
+    "confidence": "medium",
+    "explanation": "多发肋骨骨折、肾损害、pancytopenia 和 rouleaux formation 提示浆细胞病；给定选项中血/尿蛋白电泳最能筛查单克隆蛋白。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Urine and serum protein electrophoresis"
+  },
+  "112": {
+    "answer": "D",
+    "confidence": "high",
+    "explanation": "肺癌和化疗均增加 VTE 风险；单侧下肢肿胀最应考虑深静脉血栓（DVT）。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Deep vein thrombosis"
+  },
+  "113": {
+    "answer": "B",
+    "confidence": "high",
+    "explanation": "低色素小细胞贫血伴 HbA2 4% 升高、HbF 轻升，典型为 β-thalassaemia trait。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Beta-thalassemia trait"
+  },
+  "114": {
+    "answer": "E",
+    "confidence": "high",
+    "explanation": "月经过多和瘀斑属黏膜皮肤出血，血小板和 PT 正常而 APTT 延长，最符合 von Willebrand disease。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Von Willebrand’s Disease"
+  },
+  "115": {
+    "answer": "B",
+    "confidence": "high",
+    "explanation": "小细胞贫血、pencil cells 和反应性血小板增多是缺铁性贫血的典型组合。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Iron deficiency anemia"
+  },
+  "116": {
+    "answer": "B",
+    "confidence": "high",
+    "explanation": "脾大、WBC 105、粒系左移、嗜碱细胞 10%、少量 blasts，符合 CML 慢性期。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Chronic myeloid leukaemia"
+  },
+  "117": {
+    "answer": "D",
+    "confidence": "high",
+    "explanation": "普通血小板输注通常不做 HLA matching；HLA 匹配主要用于血小板输注无效/免疫性抗 HLA 情况。血小板通常室温摇动保存。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Are not HLA-matched with the recipient"
+  },
+  "118": {
+    "answer": "E",
+    "confidence": "high",
+    "explanation": "严重小细胞贫血、低网织红细胞和反应性血小板增多提示缺铁；应做肛检、铁代谢和粪隐血以寻找消化道失血。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Per rectal exam, iron profile, fecal occult blood test"
+  },
+  "119": {
+    "answer": "A",
+    "confidence": "high",
+    "explanation": "低血清铁、低 TIBC、高 ferritin、MCV 正常，典型为慢性病贫血/炎症性贫血。缺铁通常 ferritin 低且 TIBC 高。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Anaemia of chronic disease"
+  },
+  "120": {
+    "answer": "B",
+    "confidence": "high",
+    "explanation": "孤立极重度血小板减少、骨髓巨核细胞正常/可见，伴黏膜出血，符合 ITP；一线治疗为 corticosteroids。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Corticosteroids"
+  },
+  "121": {
+    "answer": "B",
+    "confidence": "high",
+    "explanation": "发热、出血、全血细胞减少、PT/APTT 延长、低纤维蛋白原和多根 Auer rods，典型为急性早幼粒细胞白血病（APL/APML）伴 DIC。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Acute promyelocytic leukaemia"
+  },
+  "122": {
+    "answer": "D",
+    "confidence": "high",
+    "explanation": "CVID 主要治疗是免疫球蛋白替代（IVIG/SCIG）以减少反复感染。疫苗不能纠正抗体生成缺陷。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Intravenous immunoglobulin replacement therapy"
+  },
+  "123": {
+    "answer": "C",
+    "confidence": "high",
+    "explanation": "MDS 是无效造血导致一系或多系细胞减少，常见表现为 pancytopenia 或单/双系减少。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Pancytopenia"
+  },
+  "124": {
+    "answer": "B",
+    "confidence": "high",
+    "explanation": "SLE 患者 Coombs 阳性溶血，常见 LDH/间接胆红素升高、网织红细胞升高、haptoglobin 降低。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Decreased serum haptoglobin level"
+  },
+  "125": {
+    "answer": "E",
+    "confidence": "high",
+    "explanation": "脾切除后感染风险增高，尤其荚膜菌，因此需要 pneumococcal vaccine 等预防。Howell-Jolly bodies 常见，但选项写 nucleated RBC 不准确。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Pneumococcal vaccine is indicated"
+  },
+  "126": {
+    "answer": "D",
+    "confidence": "high",
+    "explanation": "巨大脾大典型见于骨髓纤维化、CML、某些淋巴瘤等；给定选项中 myelofibrosis 最典型。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Myelofibrosis"
+  },
+  "127": {
+    "answer": "C",
+    "confidence": "high",
+    "explanation": "CLL 患者出现贫血、黄疸、LDH 高、球形红细胞，提示继发 AIHA；确认用直接抗人球蛋白试验（DAT）。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Direct anti-globulin test"
+  },
+  "128": {
+    "answer": "A",
+    "confidence": "high",
+    "explanation": "AL amyloidosis 可吸附 factor X 导致获得性 factor X 缺乏，表现 PT 和 APTT 延长。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Acquired Factor X deficiency"
+  },
+  "129": {
+    "answer": "A",
+    "confidence": "high",
+    "explanation": "成人新诊断 ITP 伴显著出血/血小板 8×10^9/L，一线治疗为 corticosteroid；严重出血可加 IVIG/输板。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Corticosteroid"
+  },
+  "130": {
+    "answer": "D",
+    "confidence": "high",
+    "explanation": "反复输血后发热、无呼吸困难或过敏，符合发热性非溶血性输血反应；白细胞去除（leukocyte reduction）可降低风险。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Leukocyte reduction"
+  },
+  "131": {
+    "answer": "C",
+    "confidence": "high",
+    "explanation": "Rituximab 靶向 CD20，是 B 细胞淋巴瘤常用治疗。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Rituximab"
+  },
+  "132": {
+    "answer": "B",
+    "confidence": "high",
+    "explanation": "Nivolumab 为 PD-1 抑制剂，可导致免疫相关不良反应，包括免疫介导性结肠炎，出现严重便血/腹泻。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Immune related colitis due to anti-PD1"
+  },
+  "133": {
+    "answer": "D",
+    "confidence": "high",
+    "explanation": "术后 2 天疼痛性单侧下肢肿胀，最应先做下肢 Doppler ultrasound 评估 DVT。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Doppler ultrasound of leg"
+  },
+  "134": {
+    "answer": "A",
+    "confidence": "high",
+    "explanation": "化疗后 ANC 0.3 且发热，是中性粒细胞减少性脓毒症/发热性中性粒细胞减少，需立即经验性抗生素。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Neutropenic sepsis"
+  },
+  "135": {
+    "answer": "E",
+    "confidence": "high",
+    "explanation": "Rifampicin 强诱导 CYP 酶，显著降低 warfarin 抗凝效应，使 INR 亚治疗。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Rifampicin"
+  },
+  "136": {
+    "answer": "D",
+    "confidence": "medium",
+    "explanation": "老年人贫血伴白细胞和血小板低、黄疸和 LDH 极高，更符合 B12 缺乏/恶性贫血导致无效造血；若涂片有球形红细胞和网织红细胞高则转向 AIHA。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Pernicious anaemia"
+  },
+  "137": {
+    "answer": "B",
+    "confidence": "high",
+    "explanation": "老年人感染同时三系减少，需要排除 MDS、白血病或骨髓浸润，骨髓检查最关键。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Bone marrow"
+  },
+  "138": {
+    "answer": "C",
+    "confidence": "high",
+    "explanation": "老年人显著淋巴细胞增多、smudge/smear cells 线索和轻度单克隆带，最符合 CLL。MGUS 不会解释 WBC 36 的淋巴细胞增多。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "CLL"
+  },
+  "139": {
+    "answer": "C",
+    "confidence": "high",
+    "explanation": "骨科术后、胸痛气促、低氧、窦速、新 RBBB、肌钙蛋白轻升和清晰 CXR，最符合肺栓塞。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "PE"
+  },
+  "140": {
+    "answer": "A",
+    "confidence": "medium",
+    "explanation": "高龄、糖尿病肾病和缺血性心脏病患者输血后呼吸困难伴双肺浸润，最需考虑输血相关循环超负荷/心衰（TACO/CHF）。若有发热、低血压、无容量负荷证据才更支持 TRALI。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Congestive heart failure"
+  },
+  "141": {
+    "answer": "E",
+    "confidence": "high",
+    "explanation": "淋巴瘤化疗后高钾、高磷、高尿酸、高 LDH、低钙和急性肾损害，是肿瘤溶解综合征。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Tumour lysis syndrome"
+  },
+  "142": {
+    "answer": "B",
+    "confidence": "medium",
+    "explanation": "肺腺癌患者 CXR 球形心影、少尿/无尿、肝酶升高可由心包填塞导致低灌注和肝淤血解释。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Pericardial tamponade"
+  },
+  "143": {
+    "answer": "A",
+    "confidence": "high",
+    "explanation": "AIHA 常见间接胆红素升高、LDH 高、haptoglobin 低和网织红细胞升高。尿胆汁提示结合胆红素，不是典型 AIHA。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Indirect hyperbilirubinaemia"
+  },
+  "144": {
+    "answer": "A",
+    "confidence": "medium",
+    "explanation": "血小板接近 1000×10^9/L，Hb 和 WBC 无明显对应反应性原因，胸痛可为血栓表现，最符合 essential thrombocythaemia。急性 MI 可反应性升板但通常不作为此组合首选。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Essential thrombocythaemia"
+  },
+  "145": {
+    "answer": "E",
+    "confidence": "high",
+    "explanation": "肥胖男性 Hb 明显升高、WBC/血小板正常、无脾大，最符合 OSA 相关继发性红细胞增多。PV 常伴低 EPO、脾大或白细胞/血小板升高。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Secondary erythrocytosis due to OSA"
+  },
+  "146": {
+    "answer": "D",
+    "confidence": "high",
+    "explanation": "上肢肿胀、结膜充血、喘鸣和呼吸困难符合上腔静脉综合征（SVCO）。现代处理强调组织诊断并按需要支架快速缓解，而非未确认病理即一律放疗。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Superior vena cava syndrome, biopsy +/- surgical stent insertion"
+  },
+  "147": {
+    "answer": "A",
+    "confidence": "high",
+    "explanation": "亚洲肺腺癌中 EGFR mutation 最常见且临床最重要；ALK、ROS1、HER2 等比例低于 EGFR。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "EGFR"
+  },
+  "148": {
+    "answer": "A",
+    "confidence": "high",
+    "explanation": "花生过敏后荨麻疹和呼吸困难是 anaphylaxis，首选肌注 adrenaline/epinephrine。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "IM adrenaline"
+  },
+  "149": {
+    "answer": "A",
+    "confidence": "high",
+    "explanation": "获得性 factor VIII inhibitor 主要导致出血，不增加血栓风险。Factor V Leiden、肾病综合征、口服避孕药和 PNH 均为血栓风险。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Acquired factor VIII inhibitor"
+  },
+  "150": {
+    "answer": "B",
+    "confidence": "high",
+    "explanation": "EPO 对慢性肾衰竭贫血最有效，因为病因是 EPO 缺乏。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Chronic renal failure"
+  },
+  "151": {
+    "answer": "B",
+    "confidence": "high",
+    "explanation": "血友病 A 是 factor VIII deficiency。vWF 缺乏是 von Willebrand disease；血小板功能检查通常正常。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Factor VIII is deficient"
+  },
+  "152": {
+    "answer": "D",
+    "confidence": "high",
+    "explanation": "孤立显著血小板升高、无明显缺铁性小细胞贫血或感染证据，最符合 essential thrombocythaemia。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Essential thrombocythaemia"
+  },
+  "153": {
+    "answer": "E",
+    "confidence": "high",
+    "explanation": "PT 和 APTT 均延长，给定选项中 warfarin therapy 最符合；血友病 A/B 为孤立 APTT 延长，肝素污染通常 PT 影响较小。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Warfarin therapy"
+  },
+  "154": {
+    "answer": "D",
+    "confidence": "high",
+    "explanation": "肋缘下 15 cm 的巨大脾大，给定选项中最典型为 myelofibrosis。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Myelofibrosis"
+  },
+  "155": {
+    "answer": "B",
+    "confidence": "high",
+    "explanation": "溶血性贫血常见 haptoglobin 降低，LDH 和间接胆红素升高。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Decrease haptoglobin"
+  },
+  "156": {
+    "answer": "D",
+    "confidence": "high",
+    "explanation": "老年人淋巴细胞比例高、贫血、血小板低、smear/smudge cells、淋巴结和肝脾大，典型为 CLL。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "CLL"
+  },
+  "157": {
+    "answer": "D",
+    "confidence": "high",
+    "explanation": "Factor XII deficiency 可导致孤立 APTT 延长但临床无出血，是无症状体检发现 APTT 延长的经典原因。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "12"
+  },
+  "158": {
+    "answer": "D",
+    "confidence": "high",
+    "explanation": "IgM/kappa 单克隆蛋白显著升高、贫血和肾功能异常，最符合 Waldenström macroglobulinaemia，而非 IgM MGUS。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Waldenstrom macroglobulinemia"
+  },
+  "159": {
+    "answer": "C",
+    "confidence": "high",
+    "explanation": "食物依赖运动诱发性过敏反应寻找致敏食物，常用皮肤点刺试验（skin prick test）和特异 IgE；IgG food panel 无诊断价值。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Skin prick"
+  },
+  "160": {
+    "answer": "B",
+    "confidence": "high",
+    "explanation": "贫血、黄疸、LDH 高、球形红细胞和多染性提示 AIHA；pancytopenia 可与免疫性过程或严重病情相关。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Autoimmune haemolytic anaemia"
+  },
+  "161": {
+    "answer": "D",
+    "confidence": "high",
+    "explanation": "发热、贫血、严重血小板低、胆红素/LDH 高、裂红细胞且 PT/APTT 正常，典型 TTP。DIC 通常 PT/APTT 延长。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "TTP"
+  },
+  "162": {
+    "answer": "C",
+    "confidence": "high",
+    "explanation": "既往乳腺癌化疗多年后出现全血细胞减少、轻度大细胞和中性粒 hypogranular，提示治疗相关 MDS。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Myelodysplastic syndrome"
+  },
+  "163": {
+    "answer": "C",
+    "confidence": "high",
+    "explanation": "RA 慢性炎症背景下血清铁低、TIBC 低，符合慢性病贫血。缺铁性贫血通常 TIBC 高、ferritin 低。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Anemia of chronic illness"
+  },
+  "164": {
+    "answer": "D",
+    "confidence": "high",
+    "explanation": "t(9;22) 表示 BCR-ABL 阳性 CML，治疗为 BCR-ABL tyrosine kinase inhibitor，如 nilotinib。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Tyrosine kinase inhibitor, e.g. nilotinib"
+  },
+  "165": {
+    "answer": "A",
+    "confidence": "high",
+    "explanation": "孤立 APTT 延长且 1:1 mixing 不纠正提示抑制物；在无出血题干中最符合 lupus anticoagulant/antiphospholipid syndrome。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Antiphospholipid syndrome"
+  },
+  "166": {
+    "answer": "A",
+    "confidence": "high",
+    "explanation": "贫血、黄疸、球形红细胞、多染性和有核红细胞提示溶血；鉴别 AIHA 首选 DAT。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "DAT"
+  },
+  "167": {
+    "answer": "B",
+    "confidence": "high",
+    "explanation": "成人反复鼻窦炎/肺炎、支扩、IgG/IgA/IgM 低，最符合 CVID。XLA 通常儿童期起病且 B 细胞缺如。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "CVID"
+  },
+  "168": {
+    "answer": "B",
+    "confidence": "high",
+    "explanation": "慢性自发性荨麻疹经四倍剂量第二代 H1 抗组胺药仍控制不佳，下一步可加 omalizumab。长期系统激素不作为常规控制方案。",
+    "needs_review": false,
+    "source_note": "非官方参考答案；请结合最新版教材、指南和本地考试答案核对。",
+    "answer_text": "Omalizumab"
+  }
+};
+const STORAGE_KEY = 'lmchk-heme-drill-v1';
+const TOPIC_ORDER = [
+  'Anaemia/Thalassaemia', 'Acute Leukaemia', 'Chronic Leukaemia/MPN', 'MDS',
+  'Lymphoma', 'Myeloma/Paraprotein', 'Coagulation/Bleeding', 'Thrombosis/VTE',
+  'Transfusion', 'Oncology/Solid Tumour', 'Immunology/Autoimmune',
+  'Splenomegaly/LN', 'General Haematology'
+];
+const TOPIC_CN = {
+  'Anaemia/Thalassaemia': '贫血/地贫',
+  'Acute Leukaemia': '急性白血病',
+  'Chronic Leukaemia/MPN': '慢性白血病/MPN',
+  'MDS': 'MDS',
+  'Lymphoma': '淋巴瘤',
+  'Myeloma/Paraprotein': '骨髓瘤/副蛋白',
+  'Coagulation/Bleeding': '凝血/出血',
+  'Thrombosis/VTE': '血栓/VTE',
+  'Transfusion': '输血',
+  'Oncology/Solid Tumour': '实体瘤',
+  'Immunology/Autoimmune': '免疫/自免',
+  'Splenomegaly/LN': '脾大/淋巴结',
+  'General Haematology': '血液综合'
+};
+const BOX_INTERVAL_DAYS = [0, 2, 5, 10, 21]; // Box 1 -> 2 days, Box 2 -> 5 days, ...
+const ERROR_TAGS = [
+  { v: '', l: '— 选错因 —' },
+  { v: 'knowledge', l: '知识缺失 Knowledge gap' },
+  { v: 'confusion', l: '概念混淆 Confusion' },
+  { v: 'misread', l: '题干误读 Misread' },
+  { v: 'reasoning', l: '推理断链 Reasoning gap' },
+  { v: 'careless', l: '粗心 Careless' }
+];
+
+// ─── State ───
+let state = loadState();
+let filters = { years: new Set(), topics: new Set(), boxes: new Set(), statuses: new Set() };
+let currentIdx = 0; // index into filtered list
+let filteredList = [];
+let mode = 'drill';
+
+function defaultQuestionState() {
+  return { box: 0, lastSeen: null, nextDue: null, attempts: [], note: '', word: '' };
+}
+function loadState() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (!raw) return { q: {}, meta: { created: Date.now() } };
+    const parsed = JSON.parse(raw);
+    if (!parsed.q) parsed.q = {};
+    return parsed;
+  } catch (e) { return { q: {}, meta: { created: Date.now() } }; }
+}
+function saveState() {
+  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch (e) { console.error(e); }
+}
+function qState(num) {
+  if (!state.q[num]) state.q[num] = defaultQuestionState();
+  return state.q[num];
+}
+
+// ─── Filter ───
+function rebuildFilteredList() {
+  filteredList = QUESTIONS.filter(q => {
+    if (filters.years.size && !q.years.some(y => filters.years.has(y))) return false;
+    if (filters.topics.size && !q.topics.some(t => filters.topics.has(t))) return false;
+    const s = qState(q.num);
+    if (filters.boxes.size && !filters.boxes.has(String(s.box))) return false;
+    if (filters.statuses.size) {
+      const due = isDue(s);
+      const attempted = s.attempts.length > 0;
+      const lastWrong = attempted && !s.attempts[s.attempts.length-1].correct;
+      const graduated = s.box === 5;
+      const newQ = !attempted;
+      if (filters.statuses.has('due') && !due) return false;
+      if (filters.statuses.has('new') && !newQ) return false;
+      if (filters.statuses.has('lastwrong') && !lastWrong) return false;
+      if (filters.statuses.has('grad') && !graduated) return false;
+    }
+    return true;
+  });
+  if (currentIdx >= filteredList.length) currentIdx = 0;
+}
+
+function isDue(s) {
+  if (!s.nextDue) return s.attempts.length === 0; // new = always available
+  return new Date(s.nextDue).getTime() <= Date.now();
+}
+function dueCount() {
+  return QUESTIONS.filter(q => isDue(qState(q.num))).length;
+}
+
+// ─── Schedule (Leitner) ───
+function recordAttempt(num, picked, confidence, correct, errorTag) {
+  const s = qState(num);
+  const now = Date.now();
+  s.attempts.push({ at: new Date(now).toISOString(), picked, confidence, correct, errorTag: errorTag || null });
+  s.lastSeen = new Date(now).toISOString();
+  if (correct) {
+    s.box = Math.min(5, s.box + 1);
+  } else {
+    s.box = 1; // demote to Box 1
+  }
+  const interval = s.box === 0 ? 0 : (s.box === 5 ? 999 : BOX_INTERVAL_DAYS[s.box]);
+  s.nextDue = new Date(now + interval * 86400000).toISOString();
+  saveState();
+}
+
+// ─── Rendering ───
+function render() {
+  rebuildFilteredList();
+  renderTopBar();
+  renderToday();
+  renderCoverage();
+  renderRack();
+  renderFilters();
+  if (mode === 'drill') renderDrill();
+  else renderBrowse();
+}
+
+function renderTopBar() {
+  const due = dueCount();
+  const pill = document.getElementById('due-pill');
+  pill.textContent = `${due} 道到期 due`;
+  pill.classList.toggle('zero', due === 0);
+}
+
+function renderToday() {
+  const today = new Date().toISOString().slice(0, 10);
+  let attempted = 0, correct = 0, supercorrections = 0;
+  let totalAttempts = 0, totalCorrect = 0;
+  Object.values(state.q).forEach(s => {
+    s.attempts.forEach(a => {
+      totalAttempts++;
+      if (a.correct) totalCorrect++;
+      if (a.at.slice(0, 10) === today) {
+        attempted++;
+        if (a.correct) correct++;
+        if (!a.correct && a.confidence === 3) supercorrections++;
+      }
+    });
+  });
+  const due = dueCount();
+  const grad = QUESTIONS.filter(q => qState(q.num).box === 5).length;
+  const rate = totalAttempts ? Math.round(100 * totalCorrect / totalAttempts) : 0;
+  document.getElementById('today-grid').innerHTML = `
+    <div class="stat-tile"><div class="num">${attempted}</div><div class="lbl">今日做题</div></div>
+    <div class="stat-tile ${correct === attempted && attempted > 0 ? 'good' : ''}"><div class="num">${attempted ? Math.round(100*correct/attempted) : 0}%</div><div class="lbl">今日正确率</div></div>
+    <div class="stat-tile ${due > 30 ? 'alert' : ''}"><div class="num">${due}</div><div class="lbl">到期 due</div></div>
+    <div class="stat-tile good"><div class="num">${grad}</div><div class="lbl">毕业 / 168</div></div>
+    <div class="stat-tile"><div class="num">${rate}%</div><div class="lbl">累计正确率</div></div>
+    <div class="stat-tile ${supercorrections > 0 ? 'alert' : ''}"><div class="num">${supercorrections}</div><div class="lbl">🔥 超校正</div></div>
+  `;
+}
+
+function renderCoverage() {
+  const buckets = {};
+  TOPIC_ORDER.forEach(t => { buckets[t] = { total: 0, touched: 0, grad: 0 }; });
+  QUESTIONS.forEach(q => {
+    q.topics.forEach(t => {
+      if (!buckets[t]) buckets[t] = { total: 0, touched: 0, grad: 0 };
+      buckets[t].total++;
+      const s = qState(q.num);
+      if (s.attempts.length > 0) buckets[t].touched++;
+      if (s.box === 5) buckets[t].grad++;
+    });
+  });
+  document.getElementById('cov-list').innerHTML = TOPIC_ORDER.map(t => {
+    const b = buckets[t];
+    if (b.total === 0) return '';
+    const pct = Math.round(100 * b.touched / b.total);
+    return `<div class="cov-row">
+      <span class="name">${TOPIC_CN[t]}</span>
+      <span class="frac">${b.touched}/${b.total}</span>
+      <span class="bar"><span class="fill" style="width:${pct}%"></span></span>
+    </div>`;
+  }).join('');
+}
+
+function renderRack() {
+  // 6 columns (Box 0–5)
+  const cols = [[],[],[],[],[],[]];
+  QUESTIONS.forEach(q => {
+    const s = qState(q.num);
+    cols[s.box].push(q);
+  });
+  const labels = ['新 0', '1', '2', '3', '4', '✓ 5'];
+  const html = cols.map((items, b) => {
+    const tiles = items.map(q => {
+      const s = qState(q.num);
+      const due = isDue(s) && s.attempts.length > 0;
+      const current = filteredList[currentIdx] && filteredList[currentIdx].num === q.num;
+      return `<button class="rack-tile b${b} ${due ? 'due' : ''} ${current ? 'current' : ''}" data-num="${q.num}" title="MCQ${q.num} · ${q.year_info} · Box ${b}"></button>`;
+    }).join('');
+    return `<div class="rack-col"><div class="col-head">${labels[b]}</div><div class="col-head" style="font-size:9px">${items.length}</div>${tiles}</div>`;
+  }).join('');
+  document.getElementById('rack').innerHTML = html;
+  document.getElementById('rack').querySelectorAll('.rack-tile').forEach(el => {
+    el.addEventListener('click', e => {
+      const num = parseInt(e.currentTarget.dataset.num);
+      jumpToNum(num);
+    });
+  });
+}
+
+function renderFilters() {
+  const years = [...new Set(QUESTIONS.flatMap(q => q.years))].sort();
+  document.getElementById('year-chips').innerHTML = years.map(y => {
+    const on = filters.years.has(y);
+    return `<button class="chip ${on ? 'on' : ''}" data-year="${y}">${y}</button>`;
+  }).join('');
+
+  document.getElementById('topic-chips').innerHTML = TOPIC_ORDER.map(t => {
+    const count = QUESTIONS.filter(q => q.topics.includes(t)).length;
+    if (!count) return '';
+    const on = filters.topics.has(t);
+    return `<button class="chip zh ${on ? 'on' : ''}" data-topic="${t}">${TOPIC_CN[t]} <span style="opacity:.5">${count}</span></button>`;
+  }).join('');
+
+  document.getElementById('box-chips').innerHTML = [0,1,2,3,4,5].map(b => {
+    const count = QUESTIONS.filter(q => qState(q.num).box === b).length;
+    const on = filters.boxes.has(String(b));
+    return `<button class="chip ${on ? 'on' : ''}" data-box="${b}">Box ${b} <span style="opacity:.5">${count}</span></button>`;
+  }).join('');
+
+  const statusDefs = [
+    ['due', '到期'], ['new', '未做'], ['lastwrong', '上次错'], ['grad', '已毕业']
+  ];
+  document.getElementById('status-chips').innerHTML = statusDefs.map(([v, l]) => {
+    const on = filters.statuses.has(v);
+    return `<button class="chip zh ${on ? 'on' : ''}" data-status="${v}">${l}</button>`;
+  }).join('');
+
+  // Wire
+  document.querySelectorAll('#year-chips .chip').forEach(c => c.onclick = () => toggleFilter('years', c.dataset.year));
+  document.querySelectorAll('#topic-chips .chip').forEach(c => c.onclick = () => toggleFilter('topics', c.dataset.topic));
+  document.querySelectorAll('#box-chips .chip').forEach(c => c.onclick = () => toggleFilter('boxes', c.dataset.box));
+  document.querySelectorAll('#status-chips .chip').forEach(c => c.onclick = () => toggleFilter('statuses', c.dataset.status));
+}
+function toggleFilter(group, val) {
+  if (filters[group].has(val)) filters[group].delete(val);
+  else filters[group].add(val);
+  currentIdx = 0;
+  render();
+}
+
+// ─── Drill view ───
+function renderDrill() {
+  const root = document.getElementById('drill-content');
+  if (!filteredList.length) {
+    root.innerHTML = `<div class="empty"><h3>当前筛选下没有题目</h3><p>试试清除筛选，或者放宽条件。</p></div>`;
+    return;
+  }
+  const q = filteredList[currentIdx];
+  const ans = answerFor(q);
+  const s = qState(q.num);
+  const due = isDue(s);
+  const lastAttempt = s.attempts[s.attempts.length - 1];
+  const isSuperCorrection = lastAttempt && !lastAttempt.correct && lastAttempt.confidence === 3;
+
+  const yearsHtml = q.year_info.split(',').map(y => `<strong>${y.trim()}</strong>`).join(' · ');
+  const topicsHtml = q.topics.map(t => `<span class="tag">${TOPIC_CN[t] || t}</span>`).join('');
+  const optionsHtml = Object.entries(q.options).map(([k, v]) =>
+    `<li><button class="opt" data-letter="${k}"><span class="letter">${k}</span><span class="text">${escapeHtml(v)}</span></button></li>`
+  ).join('');
+
+  const recentAttempts = s.attempts.slice(-5).map(a => {
+    const conf = ['', '①', '②', '③'][a.confidence] || '';
+    return `<span class="attempt ${a.correct ? 'c' : 'w'}" title="${a.at.slice(0,10)} · 选了${a.picked} · ${conf}">${a.picked}${conf}</span>`;
+  }).join('');
+
+  const interval = s.box === 0 ? '—' : s.box === 5 ? '毕业 ✓' : `${BOX_INTERVAL_DAYS[s.box]}d`;
+  const nextDue = s.nextDue ? new Date(s.nextDue).toISOString().slice(0,10) : '—';
+
+  root.innerHTML = `
+    <header class="q-meta">
+      <span class="q-num">#${currentIdx + 1} / ${filteredList.length} · MCQ${q.num}</span>
+      <span class="q-years">${yearsHtml}</span>
+      <span class="q-box-pill b${s.box} ${due && s.attempts.length>0 ? 'due' : ''}">Box ${s.box}${s.box === 5 ? ' 毕业' : ''} · 下次 ${interval}${due && s.attempts.length>0 ? ' · 到期' : ''}</span>
+      <div class="q-topics">${topicsHtml}</div>
+    </header>
+
+    ${s.attempts.length > 0 ? `<div class="history-strip"><strong>历史 (${s.attempts.length} 次)</strong>${recentAttempts}${s.attempts.length > 5 ? ` <span style="opacity:.6">… +${s.attempts.length - 5} earlier</span>` : ''}</div>` : ''}
+
+    ${isSuperCorrection ? `<div class="super-flag"><span class="icon">🔥</span><div><strong>超校正黄金时刻 Super-correction</strong>——上次自信③却答错。本题账本最高优先级，下一节热身必考。</div></div>` : ''}
+
+    <div class="q-stem">${escapeHtml(q.stem)}</div>
+
+    <ol class="q-options" id="opt-list">${optionsHtml}</ol>
+
+    <div class="answer-panel">
+      <div class="answer-head">
+        <div class="lbl">参考答案与解析<small>Reference answer · non-official</small></div>
+        <button class="answer-toggle" id="reveal-answer">显示参考答案</button>
+      </div>
+      <div id="answer-content" hidden>${answerContentHtml(q, ans)}</div>
+    </div>
+
+    <div class="conf-row" id="conf-row" style="display:none">
+      <div class="lbl">信心 Confidence<small>How sure?</small></div>
+      <button class="conf-btn" data-conf="1"><span class="ord">①</span>蒙的 Guess</button>
+      <button class="conf-btn" data-conf="2"><span class="ord">②</span>不太确定 Unsure</button>
+      <button class="conf-btn" data-conf="3"><span class="ord">③</span>很确定 Sure</button>
+    </div>
+
+    <div class="mark-row" id="mark-row" style="display:none">
+      <div class="lbl">自评 Self-mark<small>参考答案已内置 · 仍建议核对</small></div>
+      <button class="mark-btn correct" data-mark="1">✓ 我答对了<span class="key">Y</span></button>
+      <button class="mark-btn wrong" data-mark="0">✗ 我答错了<span class="key">N</span></button>
+    </div>
+
+    <div class="tag-row" id="tag-row" style="display:none">
+      <div class="lbl">错因 Error type<small>归类一下</small></div>
+      <select id="error-select">
+        ${ERROR_TAGS.map(t => `<option value="${t.v}">${t.l}</option>`).join('')}
+      </select>
+    </div>
+
+    <div class="note-box">
+      <label>笔记 · 官方答案 · 临床珍珠 · 单词收割 <span class="helper">Note · official ans · vocab</span> <span id="saved-tick" class="saved-tick">✓ 已保存</span></label>
+      <textarea id="note-area" placeholder="• 官方答案: &#10;• Mechanism: &#10;• 单词: e.g. petechiae 瘀点 / ecchymosis 瘀斑 / haematuria 血尿 / ..." >${escapeHtml(s.note || '')}</textarea>
+    </div>
+
+    <div class="action-row">
+      <span class="lbl">Tools</span>
+      <button class="action-btn" id="copy-prompt"><span class="icon">📋</span>复制 11 步分析 prompt → Claude</button>
+      <button class="action-btn" id="copy-q"><span class="icon">⎘</span>复制题干 + 选项</button>
+      <button class="action-btn" id="reset-q"><span class="icon">↺</span>重置本题</button>
+    </div>
+
+    <nav class="q-nav">
+      <button class="nav-btn" id="btn-prev">← 上一题<span class="key">←</span></button>
+      <div style="display:flex; gap:8px;">
+        <button class="nav-btn" id="btn-random">🎲 随机<span class="key">0</span></button>
+        <button class="nav-btn primary" id="btn-next">下一题 →<span class="key">→</span></button>
+      </div>
+    </nav>
+  `;
+
+  // Wire interactions
+  let picked = null, confidence = null;
+  const revealBtn = document.getElementById('reveal-answer');
+  if (revealBtn) revealBtn.onclick = () => revealAnswer(q, picked);
+
+  document.querySelectorAll('#opt-list .opt').forEach(el => {
+    el.onclick = () => {
+      document.querySelectorAll('#opt-list .opt').forEach(o => o.classList.remove('picked'));
+      el.classList.add('picked');
+      picked = el.dataset.letter;
+      if (!document.getElementById('answer-content')?.hidden) revealAnswer(q, picked);
+      document.getElementById('conf-row').style.display = 'flex';
+    };
+  });
+
+  document.querySelectorAll('.conf-btn').forEach(el => {
+    el.onclick = () => {
+      document.querySelectorAll('.conf-btn').forEach(c => c.classList.remove('on'));
+      el.classList.add('on');
+      confidence = parseInt(el.dataset.conf);
+      document.getElementById('mark-row').style.display = 'flex';
+    };
+  });
+
+  document.querySelectorAll('.mark-btn').forEach(el => {
+    el.onclick = () => {
+      const correct = el.dataset.mark === '1';
+      if (!correct) {
+        document.getElementById('tag-row').style.display = 'flex';
+        const sel = document.getElementById('error-select');
+        sel.onchange = () => {
+          recordAttempt(q.num, picked, confidence, false, sel.value);
+          toast(`记入错题 · Box ${qState(q.num).box} · 下次 ${BOX_INTERVAL_DAYS[1]} 天后`);
+          setTimeout(() => render(), 300);
+        };
+        toast('🔥 标个错因，下面继续');
+      } else {
+        recordAttempt(q.num, picked, confidence, true, null);
+        const newBox = qState(q.num).box;
+        toast(newBox === 5 ? `🎓 毕业 Box 5！` : `✓ 升 Box ${newBox} · 下次 ${BOX_INTERVAL_DAYS[newBox]} 天后`);
+        setTimeout(() => render(), 300);
+      }
+    };
+  });
+
+  // Note autosave
+  const noteArea = document.getElementById('note-area');
+  let noteSaveTimer = null;
+  noteArea.addEventListener('input', () => {
+    clearTimeout(noteSaveTimer);
+    noteSaveTimer = setTimeout(() => {
+      s.note = noteArea.value;
+      saveState();
+      const tick = document.getElementById('saved-tick');
+      tick.classList.add('on');
+      setTimeout(() => tick.classList.remove('on'), 1200);
+    }, 500);
+  });
+
+  // Action buttons
+  document.getElementById('copy-prompt').onclick = () => copyAnalysisPrompt(q);
+  document.getElementById('copy-q').onclick = () => copyQuestionText(q);
+  document.getElementById('reset-q').onclick = () => {
+    if (confirm(`重置 MCQ${q.num}（清空历史 + 回到 Box 0 + 保留笔记）？`)) {
+      const note = s.note;
+      state.q[q.num] = { ...defaultQuestionState(), note };
+      saveState();
+      render();
+    }
+  };
+  document.getElementById('btn-prev').onclick = () => { currentIdx = (currentIdx - 1 + filteredList.length) % filteredList.length; render(); };
+  document.getElementById('btn-next').onclick = () => { currentIdx = (currentIdx + 1) % filteredList.length; render(); };
+  document.getElementById('btn-random').onclick = () => { currentIdx = Math.floor(Math.random() * filteredList.length); render(); };
+}
+
+// ─── Browse view ───
+function renderBrowse() {
+  const root = document.getElementById('browse-content');
+  if (!filteredList.length) {
+    root.innerHTML = `<div class="empty"><h3>当前筛选下没有题目</h3></div>`;
+    return;
+  }
+  root.innerHTML = filteredList.map((q, i) => {
+    const s = qState(q.num);
+    const due = isDue(s);
+    return `<div class="browse-item" data-idx="${i}">
+      <div class="browse-item-head">
+        <span class="q-num" style="font-size:11px; padding:2px 8px;">MCQ${q.num}</span>
+        <span style="color:var(--ink-mute)">${q.year_info}</span>
+        <span class="q-box-pill b${s.box} ${due && s.attempts.length>0 ? 'due' : ''}" style="font-size:10px; padding:2px 8px;">Box ${s.box}</span>
+        ${answerFor(q)?.answer ? `<span class="browse-ans">Ans ${answerFor(q).answer}</span>` : `<span class="browse-ans">Review</span>`}
+        <span style="color:var(--ink-mute); margin-left:auto;">${q.topics.map(t => TOPIC_CN[t]||t).join(' · ')}</span>
+      </div>
+      <div class="browse-item-stem truncate">${escapeHtml(q.stem)}</div>
+    </div>`;
+  }).join('');
+  root.querySelectorAll('.browse-item').forEach(el => {
+    el.onclick = () => {
+      currentIdx = parseInt(el.dataset.idx);
+      mode = 'drill';
+      document.getElementById('mode-drill').classList.add('active');
+      document.getElementById('mode-browse').classList.remove('active');
+      document.getElementById('drill-view').hidden = false;
+      document.getElementById('browse-view').hidden = true;
+      render();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+  });
+}
+
+// ─── Helpers ───
+function escapeHtml(s) {
+  return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+}
+
+
+function answerFor(q) {
+  return ANSWERS[String(q.num)] || null;
+}
+
+function answerContentHtml(q, ans) {
+  if (!ans) {
+    return `<div class="answer-body"><div class="answer-warn">本题暂未录入参考答案。</div></div>`;
+  }
+  const label = ans.answer ? `${ans.answer}. ${escapeHtml(q.options[ans.answer] || ans.answer_text || '')}` : '原始选项疑似缺失，无法给出单一字母答案';
+  const warn = ans.needs_review ? `<div class="answer-warn">需复核：本题原始转录、选项或措辞可能不完整；请以官方答案/教材为最终标准。</div>` : '';
+  const confMap = { high: 'HIGH', medium: 'MEDIUM', low: 'LOW' };
+  return `<div class="answer-body">
+    <div class="answer-line">参考答案：<strong>${escapeHtml(label)}</strong></div>
+    <div class="answer-explain">${escapeHtml(ans.explanation)}</div>
+    ${warn}
+    <div class="answer-confidence">confidence: ${confMap[ans.confidence] || escapeHtml(ans.confidence || '—')} · 非官方参考答案</div>
+  </div>`;
+}
+
+function revealAnswer(q, picked) {
+  const ans = answerFor(q);
+  const box = document.getElementById('answer-content');
+  const btn = document.getElementById('reveal-answer');
+  if (!box || !ans) return;
+  box.hidden = false;
+  if (btn) btn.textContent = '已显示参考答案';
+  document.querySelectorAll('#opt-list .opt').forEach(o => {
+    o.classList.remove('correct-ref', 'wrong-pick');
+    if (ans.answer && o.dataset.letter === ans.answer) o.classList.add('correct-ref');
+    if (picked && ans.answer && o.dataset.letter === picked && picked !== ans.answer) o.classList.add('wrong-pick');
+  });
+}
+
+function jumpToNum(num) {
+  const fIdx = filteredList.findIndex(q => q.num === num);
+  if (fIdx >= 0) {
+    currentIdx = fIdx;
+  } else {
+    // not in filtered — clear filters, then jump
+    filters = { years: new Set(), topics: new Set(), boxes: new Set(), statuses: new Set() };
+    rebuildFilteredList();
+    currentIdx = filteredList.findIndex(q => q.num === num);
+  }
+  mode = 'drill';
+  document.getElementById('mode-drill').classList.add('active');
+  document.getElementById('mode-browse').classList.remove('active');
+  document.getElementById('drill-view').hidden = false;
+  document.getElementById('browse-view').hidden = true;
+  render();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function toast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 1800);
+}
+
+function copyAnalysisPrompt(q) {
+  const opts = Object.entries(q.options).map(([k, v]) => `   ${k}. ${v}`).join('\n');
+  const txt = `请严格按 \`lmchk-clinical-study\` 技能的 MCQ 11 步框架解析这道 LMCHK 真题：
+
+【MCQ${q.num} · ${q.year_info}】
+${q.stem}
+
+${opts}
+
+要求：
+1️⃣ 考题思路 · 关键信息提取 + 考纲对应
+2️⃣ 选项 A–${Object.keys(q.options).slice(-1)[0]} 逐一解析（英→中翻译 + 正确性判断 + 详细解析 + 干扰项命题意图，禁止省略任何选项）
+3️⃣ 图表/数据翻译（如有）
+4️⃣ 病理生理机制 · 逻辑链 A→B→C→D
+5️⃣ 哨兵信号与考点识别（"看到 X 想到 Y"）
+6️⃣ 鉴别诊断矩阵表格（疾病 / 支持点 / 反对点 / 关键区分检查，≥3 个）
+7️⃣ LMCHK 备考策略 + 常见陷阱 + 与 MRCP/USMLE 区别
+8️⃣ 最强记忆口诀（中英对照）
+9️⃣ 输出格式：Markdown 表格 + 加粗关键词
+🔟 知识点汇总表（知识点 / 中 / English / 考点等级）
+1️⃣1️⃣ 同类疾病横向对比延伸表
+
+我此前的尝试：[填入你选的答案和信心]
+我标的错因：[填入]
+`;
+  navigator.clipboard.writeText(txt).then(() => toast('11 步分析 prompt 已复制 · 粘到 Claude'));
+}
+
+function copyQuestionText(q) {
+  const opts = Object.entries(q.options).map(([k, v]) => `   ${k}. ${v}`).join('\n');
+  navigator.clipboard.writeText(`MCQ${q.num} (${q.year_info})\n${q.stem}\n\n${opts}`).then(() => toast('题干已复制'));
+}
+
+// ─── Exports ───
+function downloadMd(filename, content) {
+  const blob = new Blob([content], { type: 'text/markdown;charset=utf-8' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = filename;
+  document.body.appendChild(a); a.click(); a.remove();
+  URL.revokeObjectURL(url);
+}
+
+function exportMistakes() {
+  const today = new Date().toISOString().slice(0, 10);
+  const errorTagLabel = (v) => (ERROR_TAGS.find(t => t.v === v) || {l: v}).l;
+  let lines = [`# LMCHK 血液系统 · 错题本`, ``, `> 生成于 ${today} · 共 168 道真题`, ``];
+  const items = [];
+  QUESTIONS.forEach(q => {
+    const s = qState(q.num);
+    const wrongs = s.attempts.filter(a => !a.correct);
+    if (wrongs.length === 0) return;
+    const last = wrongs[wrongs.length - 1];
+    items.push({ q, s, wrongs, last, supercount: wrongs.filter(a => a.confidence === 3).length });
+  });
+  // sort: super-corrections first, then by wrong count
+  items.sort((a, b) => b.supercount - a.supercount || b.wrongs.length - a.wrongs.length);
+  if (items.length === 0) lines.push(`目前没有错题。`);
+  else lines.push(`共 **${items.length}** 道错过的题，按 🔥 超校正 → 错次降序：`, ``);
+  items.forEach(({q, s, wrongs, last, supercount}) => {
+    lines.push(`## ${supercount > 0 ? '🔥 ' : ''}MCQ${q.num} · ${q.year_info}`, ``);
+    lines.push(`- **盒位**: Box ${s.box} ${s.box === 5 ? '(毕业 ✓)' : ''}`);
+    lines.push(`- **错次**: ${wrongs.length} / 总尝试 ${s.attempts.length}`);
+    if (supercount > 0) lines.push(`- **🔥 超校正次数**: ${supercount}（信心③却答错）`);
+    lines.push(`- **主题**: ${q.topics.map(t => TOPIC_CN[t]||t).join(' · ')}`);
+    lines.push(`- **最近错因**: ${errorTagLabel(last.errorTag || '')}`);
+    lines.push(``, `**题干**:`, ``, q.stem, ``, `**选项**:`, ``);
+    Object.entries(q.options).forEach(([k, v]) => lines.push(`- ${k}. ${v}`));
+    if (s.note && s.note.trim()) lines.push(``, `**笔记**:`, ``, '```', s.note.trim(), '```');
+    lines.push(``, `---`, ``);
+  });
+  downloadMd(`LMCHK-Heme-错题本-${today}.md`, lines.join('\n'));
+  toast(`错题本已下载 · ${items.length} 道`);
+}
+
+function exportVocab() {
+  const today = new Date().toISOString().slice(0, 10);
+  let lines = [`# LMCHK 血液系统 · 医学单词收割`, ``, `> 来自笔记中标记的术语 · 生成于 ${today}`, ``];
+  let count = 0;
+  QUESTIONS.forEach(q => {
+    const s = qState(q.num);
+    if (!s.note || !s.note.trim()) return;
+    // Extract lines that look like vocab (contain 单词 / vocab / : / 中英对照)
+    const noteLines = s.note.split('\n').filter(l => l.trim());
+    const vocabLines = noteLines.filter(l => /单词|vocab|术语|term|^\s*[a-zA-Z]+[\s\-]*[\u4e00-\u9fa5]/.test(l));
+    if (vocabLines.length === 0) return;
+    lines.push(`## MCQ${q.num} · ${q.year_info}`, ``);
+    vocabLines.forEach(l => { lines.push(`- ${l.trim()}`); count++; });
+    lines.push(``);
+  });
+  if (count === 0) lines.push(`目前笔记里没有标准格式的单词条目。在笔记里写 "petechiae 瘀点 - 出血点" 这类格式即可被抓取。`);
+  downloadMd(`LMCHK-Heme-单词-${today}.md`, lines.join('\n'));
+  toast(`单词表已下载 · ${count} 条`);
+}
+
+function exportLedger() {
+  const today = new Date().toISOString().slice(0, 10);
+  let lines = [`# LMCHK 血液系统 · 学习账本`, ``, `> Leitner 5 盒完整状态 · 生成于 ${today}`, ``];
+  // Stats
+  const stats = { total: QUESTIONS.length, touched: 0, grad: 0, due: 0, attempts: 0, correct: 0 };
+  const byBox = [0,0,0,0,0,0];
+  QUESTIONS.forEach(q => {
+    const s = qState(q.num);
+    byBox[s.box]++;
+    if (s.attempts.length > 0) stats.touched++;
+    if (s.box === 5) stats.grad++;
+    if (isDue(s) && s.attempts.length > 0) stats.due++;
+    stats.attempts += s.attempts.length;
+    stats.correct += s.attempts.filter(a => a.correct).length;
+  });
+  lines.push(`## 总览`, ``);
+  lines.push(`- 总题数: **${stats.total}**`);
+  lines.push(`- 已触碰: **${stats.touched}** (${Math.round(100*stats.touched/stats.total)}%)`);
+  lines.push(`- 已毕业 Box 5: **${stats.grad}**`);
+  lines.push(`- 今日到期: **${stats.due}**`);
+  lines.push(`- 累计正确率: **${stats.attempts ? Math.round(100*stats.correct/stats.attempts) : 0}%** (${stats.correct}/${stats.attempts})`);
+  lines.push(``, `## Leitner 分布`, ``);
+  lines.push(`| 盒 | 含义 | 题数 |`);
+  lines.push(`|---|------|-----|`);
+  ['Box 0 新题','Box 1 (2 天)','Box 2 (5 天)','Box 3 (10 天)','Box 4 (21 天)','Box 5 毕业 ✓'].forEach((l, i) => {
+    lines.push(`| ${i} | ${l} | ${byBox[i]} |`);
+  });
+  // Coverage by topic
+  lines.push(``, `## 主题覆盖`, ``);
+  lines.push(`| 主题 | 触碰 / 总数 | 毕业 |`);
+  lines.push(`|------|-----------|------|`);
+  TOPIC_ORDER.forEach(t => {
+    let total = 0, touched = 0, grad = 0;
+    QUESTIONS.forEach(q => {
+      if (!q.topics.includes(t)) return;
+      total++;
+      const s = qState(q.num);
+      if (s.attempts.length > 0) touched++;
+      if (s.box === 5) grad++;
+    });
+    if (total === 0) return;
+    lines.push(`| ${TOPIC_CN[t]} | ${touched}/${total} | ${grad} |`);
+  });
+  // Per-question table
+  lines.push(``, `## 全题状态`, ``);
+  lines.push(`| MCQ | 年份 | 主题 | Box | 尝试 | 正确 | 下次到期 |`);
+  lines.push(`|-----|------|------|-----|------|------|---------|`);
+  QUESTIONS.forEach(q => {
+    const s = qState(q.num);
+    const correct = s.attempts.filter(a => a.correct).length;
+    const due = s.nextDue ? new Date(s.nextDue).toISOString().slice(0,10) : '—';
+    lines.push(`| MCQ${q.num} | ${q.year_info} | ${q.topics.map(t => TOPIC_CN[t]||t).join(',')} | ${s.box} | ${s.attempts.length} | ${correct} | ${due} |`);
+  });
+  downloadMd(`LMCHK-Heme-账本-${today}.md`, lines.join('\n'));
+  toast(`账本已下载`);
+}
+
+function exportDue() {
+  const today = new Date().toISOString().slice(0, 10);
+  const due = QUESTIONS.filter(q => isDue(qState(q.num)));
+  let lines = [`# LMCHK 血液系统 · 今日到期清单 ${today}`, ``, `> ${due.length} 道到期 · 按盒位从低到高排序（新题最末）`, ``];
+  // Sort: due first, by box ascending, then by num
+  due.sort((a, b) => {
+    const sa = qState(a.num), sb = qState(b.num);
+    if (sa.box !== sb.box) return sa.box - sb.box;
+    return a.num - b.num;
+  });
+  due.forEach(q => {
+    const s = qState(q.num);
+    lines.push(`## MCQ${q.num} · ${q.year_info} · Box ${s.box}`);
+    lines.push(``, q.stem, ``);
+    Object.entries(q.options).forEach(([k, v]) => lines.push(`- ${k}. ${v}`));
+    if (s.note && s.note.trim()) lines.push(``, `> ${s.note.trim().split('\n').join('\n> ')}`);
+    lines.push(``, `---`, ``);
+  });
+  downloadMd(`LMCHK-Heme-到期-${today}.md`, lines.join('\n'));
+  toast(`到期清单已下载 · ${due.length} 道`);
+}
+
+// ─── Wiring ───
+document.getElementById('mode-drill').onclick = () => {
+  mode = 'drill';
+  document.getElementById('mode-drill').classList.add('active');
+  document.getElementById('mode-browse').classList.remove('active');
+  document.getElementById('drill-view').hidden = false;
+  document.getElementById('browse-view').hidden = true;
+  render();
+};
+document.getElementById('mode-browse').onclick = () => {
+  mode = 'browse';
+  document.getElementById('mode-browse').classList.add('active');
+  document.getElementById('mode-drill').classList.remove('active');
+  document.getElementById('drill-view').hidden = true;
+  document.getElementById('browse-view').hidden = false;
+  render();
+};
+document.getElementById('help-btn').onclick = () => document.getElementById('help-modal').classList.add('show');
+document.getElementById('reset-filters').onclick = () => {
+  filters = { years: new Set(), topics: new Set(), boxes: new Set(), statuses: new Set() };
+  currentIdx = 0;
+  render();
+};
+document.getElementById('reset-all').onclick = () => {
+  if (confirm('清空所有进度、错题、笔记？此操作不可撤销。')) {
+    state = { q: {}, meta: { created: Date.now() } };
+    saveState();
+    render();
+    toast('已重置');
+  }
+};
+document.getElementById('exp-mistakes').onclick = exportMistakes;
+document.getElementById('exp-vocab').onclick = exportVocab;
+document.getElementById('exp-ledger').onclick = exportLedger;
+document.getElementById('exp-due').onclick = exportDue;
+
+// Keyboard shortcuts
+document.addEventListener('keydown', e => {
+  if (mode !== 'drill') return;
+  if (document.activeElement && (document.activeElement.tagName === 'TEXTAREA' || document.activeElement.tagName === 'INPUT' || document.activeElement.tagName === 'SELECT')) return;
+  if (e.target.closest('.modal-bg.show')) return;
+  if (e.key === '?' || e.key === '/') { e.preventDefault(); document.getElementById('help-modal').classList.add('show'); return; }
+  if (e.key === 'Escape') { document.getElementById('help-modal').classList.remove('show'); return; }
+  if (e.key === 'ArrowLeft')  { document.getElementById('btn-prev')?.click(); e.preventDefault(); }
+  if (e.key === 'ArrowRight') { document.getElementById('btn-next')?.click(); e.preventDefault(); }
+  if (e.key === '0')          { document.getElementById('btn-random')?.click(); e.preventDefault(); }
+  if (['1','2','3','4','5'].includes(e.key)) {
+    const letter = ['A','B','C','D','E'][parseInt(e.key) - 1];
+    document.querySelector(`#opt-list .opt[data-letter="${letter}"]`)?.click();
+    e.preventDefault();
+  }
+  if (e.key === 'y' || e.key === 'Y') { document.querySelector('.mark-btn.correct')?.click(); e.preventDefault(); }
+  if (e.key === 'n' || e.key === 'N') { document.querySelector('.mark-btn.wrong')?.click(); e.preventDefault(); }
+});
+
+// First load
+render();
+</script>
+</body>
+</html>
