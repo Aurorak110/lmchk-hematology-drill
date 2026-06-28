@@ -1,0 +1,1165 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Surgery OSCE 题库 · CUHK Med 3 &amp; 5 · 2005–2017</title>
+<style>
+  :root {
+    --bg: #f5f3ee;
+    --bg-card: #ffffff;
+    --bg-soft: #ecebe4;
+    --ink: #1c2024;
+    --ink-soft: #5a5f66;
+    --ink-muted: #8a8f96;
+    --rule: #d9d6cc;
+    --accent: #6b2737;        /* 深酒红，临床但不医学蓝 */
+    --accent-soft: #f0e0e3;
+    --tag-year: #2b3a4a;
+    --tag-topic: #4a5d3a;
+    --tag-bg: #e7e5dd;
+    --hi: #fff4c2;
+    --code: "SF Mono", "JetBrains Mono", Menlo, Consolas, monospace;
+    --serif: "Source Han Serif SC", "Noto Serif CJK SC", "Songti SC", Georgia, "Times New Roman", serif;
+    --sans: "Inter", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", system-ui, -apple-system, sans-serif;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ─── Header ─────────────────────────────────── */
+  header.page {
+    padding: 40px 32px 28px;
+    border-bottom: 1px solid var(--rule);
+    background: var(--bg);
+    position: relative;
+  }
+  header.page h1 {
+    font-family: var(--serif);
+    font-size: 34px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    margin: 0 0 4px;
+  }
+  header.page .subtitle {
+    font-family: var(--code);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    margin: 0 0 14px;
+  }
+  header.page .meta {
+    font-size: 13px;
+    color: var(--ink-soft);
+    margin: 0;
+    max-width: 760px;
+  }
+  header.page .meta strong { color: var(--accent); font-weight: 600; }
+
+  /* ─── Controls bar (sticky) ─────────────────── */
+  .controls {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(245, 243, 238, 0.96);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--rule);
+    padding: 14px 32px;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .controls input[type=search] {
+    flex: 1 1 280px;
+    min-width: 220px;
+    padding: 8px 12px;
+    font-size: 14px;
+    font-family: var(--sans);
+    background: var(--bg-card);
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    color: var(--ink);
+  }
+  .controls input[type=search]:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-soft);
+  }
+  .controls button, .controls select {
+    padding: 7px 12px;
+    font-size: 13px;
+    font-family: var(--sans);
+    background: var(--bg-card);
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    color: var(--ink);
+    cursor: pointer;
+    transition: all 0.12s;
+  }
+  .controls button:hover { background: var(--bg-soft); }
+  .controls .count {
+    font-family: var(--code);
+    font-size: 12px;
+    color: var(--ink-muted);
+    margin-left: auto;
+    letter-spacing: 0.05em;
+  }
+
+  /* ─── TOC ──────────────────────────────────── */
+  nav.toc {
+    padding: 18px 32px;
+    background: var(--bg);
+    border-bottom: 1px solid var(--rule);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  nav.toc a {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 6px;
+    padding: 4px 10px;
+    font-family: var(--code);
+    font-size: 12px;
+    text-decoration: none;
+    color: var(--ink-soft);
+    border: 1px solid var(--rule);
+    border-radius: 3px;
+    background: var(--bg-card);
+    transition: all 0.12s;
+  }
+  nav.toc a:hover { color: var(--accent); border-color: var(--accent); }
+  nav.toc a .pt { color: var(--ink-muted); font-size: 11px; }
+
+  /* ─── Main / Parts ─────────────────────────── */
+  main { padding: 24px 32px 80px; max-width: 1200px; margin: 0 auto; }
+  section.part {
+    margin: 48px 0;
+    scroll-margin-top: 80px;
+  }
+  section.part:first-child { margin-top: 24px; }
+  section.part > header {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    padding-bottom: 12px;
+    margin-bottom: 24px;
+    border-bottom: 2px solid var(--ink);
+  }
+  section.part > header .num {
+    font-family: var(--code);
+    font-size: 13px;
+    color: var(--accent);
+    letter-spacing: 0.08em;
+  }
+  section.part > header h2 {
+    font-family: var(--serif);
+    font-size: 26px;
+    font-weight: 600;
+    margin: 0;
+    letter-spacing: -0.01em;
+  }
+  section.part > header .subhead {
+    font-size: 13px;
+    color: var(--ink-muted);
+    margin-left: auto;
+  }
+
+  /* ─── Station card ─────────────────────────── */
+  article.station {
+    background: var(--bg-card);
+    border: 1px solid var(--rule);
+    border-radius: 6px;
+    margin: 14px 0;
+    overflow: hidden;
+    transition: border-color 0.12s, box-shadow 0.12s;
+  }
+  article.station:hover { border-color: #c4c0b3; }
+  article.station.hit { border-color: var(--accent); box-shadow: 0 0 0 2px var(--accent-soft); }
+
+  article.station > header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 18px;
+    cursor: pointer;
+    background: var(--bg-card);
+    border-bottom: 1px solid transparent;
+    transition: background 0.12s, border-color 0.12s;
+    flex-wrap: wrap;
+  }
+  article.station > header:hover { background: var(--bg-soft); }
+  article.station[open] > header { border-bottom-color: var(--rule); background: var(--bg-soft); }
+  article.station > header h3 {
+    font-family: var(--serif);
+    font-size: 17px;
+    font-weight: 600;
+    margin: 0;
+    flex: 1 1 auto;
+    color: var(--ink);
+  }
+  article.station > header h3 .en {
+    font-family: var(--sans);
+    font-weight: 400;
+    color: var(--ink-soft);
+    font-size: 15px;
+    margin-left: 6px;
+  }
+
+  /* tags */
+  .tag {
+    display: inline-block;
+    padding: 2px 8px;
+    font-family: var(--code);
+    font-size: 11px;
+    border-radius: 3px;
+    background: var(--tag-bg);
+    color: var(--ink-soft);
+    white-space: nowrap;
+    letter-spacing: 0.02em;
+  }
+  .tag-year { background: var(--tag-year); color: #f0eee5; }
+  .tag-topic { background: var(--tag-topic); color: #f0eee5; }
+  .tag-dx { background: var(--accent); color: #fff; }
+
+  /* station body */
+  .station-body {
+    padding: 18px 24px 22px;
+    display: none;
+  }
+  article.station[open] .station-body { display: block; }
+
+  .station-body h4 {
+    font-family: var(--sans);
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    margin: 16px 0 8px;
+  }
+  .station-body h4:first-child { margin-top: 0; }
+  .station-body p { margin: 6px 0; }
+  .station-body ul, .station-body ol { margin: 6px 0 6px; padding-left: 24px; }
+  .station-body li { margin: 3px 0; }
+  .station-body li > strong:first-child { color: var(--ink); }
+
+  .station-body .scenario {
+    background: var(--bg-soft);
+    border-left: 3px solid var(--ink-soft);
+    padding: 10px 14px;
+    border-radius: 0 4px 4px 0;
+    font-size: 14px;
+    color: var(--ink);
+  }
+  .station-body .scenario.cn { font-family: var(--serif); }
+
+  .station-body .ans {
+    margin-left: 8px;
+    color: var(--ink);
+  }
+  .station-body .ans::before {
+    content: "→ ";
+    color: var(--accent);
+    font-weight: 600;
+  }
+
+  .station-body .note {
+    margin: 10px 0;
+    padding: 8px 12px;
+    background: #fff8e0;
+    border-left: 3px solid #d4a017;
+    font-size: 13px;
+    border-radius: 0 4px 4px 0;
+  }
+  .station-body .note::before {
+    content: "📝 ";
+  }
+
+  .station-body .pearl {
+    margin: 10px 0;
+    padding: 8px 12px;
+    background: var(--accent-soft);
+    border-left: 3px solid var(--accent);
+    font-size: 13px;
+    border-radius: 0 4px 4px 0;
+  }
+  .station-body .pearl::before { content: "🏥 "; }
+
+  .station-body table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 8px 0;
+    font-size: 13px;
+  }
+  .station-body th, .station-body td {
+    border: 1px solid var(--rule);
+    padding: 6px 10px;
+    text-align: left;
+    vertical-align: top;
+  }
+  .station-body th { background: var(--bg-soft); font-weight: 600; }
+
+  .station-body code, .station-body kbd {
+    font-family: var(--code);
+    font-size: 12.5px;
+    background: var(--bg-soft);
+    padding: 1px 5px;
+    border-radius: 3px;
+  }
+
+  /* search highlight */
+  mark { background: var(--hi); color: var(--ink); padding: 0 1px; }
+
+  /* hidden by filter */
+  .filtered-out { display: none !important; }
+
+  /* mobile */
+  @media (max-width: 720px) {
+    header.page { padding: 24px 18px 18px; }
+    header.page h1 { font-size: 26px; }
+    .controls { padding: 12px 18px; }
+    nav.toc { padding: 14px 18px; }
+    main { padding: 16px 18px 60px; }
+    article.station > header { padding: 10px 14px; }
+    article.station > header h3 { font-size: 15px; }
+    .station-body { padding: 14px 16px; }
+  }
+
+  /* print */
+  @media print {
+    .controls, nav.toc { display: none; }
+    article.station { break-inside: avoid; border: 1px solid #999; }
+    article.station .station-body { display: block !important; }
+    body { background: #fff; font-size: 11pt; }
+  }
+</style>
+</head>
+<body>
+
+<header class="page">
+  <h1>Surgery OSCE 题库</h1>
+  <p class="subtitle">CUHK Final MB · Med 3 &amp; 5 · 2005 – 2017</p>
+  <p class="meta">
+    完整提取自 <em>Surgery OSCE Past Paper</em>（Vinci Wu, Ivy Liu, KS Lau · CU Med 2017 整理）。
+    <strong>12 个部分 · 全部 OSCE 站</strong>，按照 <code>lmchk-clinical-study</code> 系统化分类，
+    用于 LMCHK Part 3 OSCE 备考。点击卡片标题展开。Cmd/Ctrl+F 浏览器原生搜索亦可用。
+  </p>
+</header>
+
+<div class="controls">
+  <input type="search" id="search" placeholder="搜索：疾病名 / 年份 / 关键词（中英皆可）…" autocomplete="off">
+  <select id="filter-part">
+    <option value="">全部部分</option>
+    <option value="1">Part 1 · History</option>
+    <option value="2">Part 2 · P/E</option>
+    <option value="3">Part 3 · Resus</option>
+    <option value="4">Part 4 · Skills</option>
+    <option value="5">Part 5 · Comms</option>
+    <option value="6">Part 6 · Surg Rad</option>
+    <option value="7">Part 7 · O&amp;T Rad</option>
+    <option value="8">Part 8 · Data</option>
+    <option value="9">Part 9 · Pic/Scenario</option>
+    <option value="10">Part 10 · Video</option>
+    <option value="11">Part 11 · Tubes</option>
+    <option value="12">Part 12 · Ethics</option>
+  </select>
+  <button id="expand-all">全部展开</button>
+  <button id="collapse-all">全部收起</button>
+  <span class="count" id="count"></span>
+</div>
+
+<nav class="toc">
+  <a href="#part-1"><span class="pt">01</span>History</a>
+  <a href="#part-2"><span class="pt">02</span>Physical Exam</a>
+  <a href="#part-3"><span class="pt">03</span>Resuscitation</a>
+  <a href="#part-4"><span class="pt">04</span>Skills</a>
+  <a href="#part-5"><span class="pt">05</span>Communication</a>
+  <a href="#part-6"><span class="pt">06</span>Surgery Radiology</a>
+  <a href="#part-7"><span class="pt">07</span>O&amp;T Radiology</a>
+  <a href="#part-8"><span class="pt">08</span>Data Interp</a>
+  <a href="#part-9"><span class="pt">09</span>Clinical Picture</a>
+  <a href="#part-10"><span class="pt">10</span>Video</a>
+  <a href="#part-11"><span class="pt">11</span>Tubes &amp; Instr.</a>
+  <a href="#part-12"><span class="pt">12</span>Ethics</a>
+</nav>
+
+<main>
+
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<!-- PART 1 · HISTORY TAKING + FOLLOW-UP WRITTEN STATION -->
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<section class="part" id="part-1" data-part="1">
+  <header>
+    <span class="num">PART 01</span>
+    <h2>History Taking + Follow-Up Written Station</h2>
+    <span class="subhead">15 站 · 取病史 4 min + 提问 1 min</span>
+  </header>
+
+  <!-- 通用考站结构说明 -->
+  <article class="station" data-topic="format" data-year="meta">
+    <header>
+      <span class="tag">Format</span>
+      <h3>General Format · 通用考站结构</h3>
+    </header>
+    <div class="station-body">
+      <h4>History Taking Station — Instruction to candidates</h4>
+      <p>Take a focused history from the patient who is just admitted to the surgical ward via the AED and then answer the questions at the next station. Components:</p>
+      <ol>
+        <li>Personal details</li>
+        <li>Chief complaint</li>
+        <li>Past medical history</li>
+        <li>General health status (weight, height, appetite, bowel habit, constitutional)</li>
+        <li>Social history</li>
+      </ol>
+      <p><em>Total 10 marks. Usually 0.5 marks per point. Follow-up written station 5 minutes.</em></p>
+
+      <h4>Marking scheme (考官参照)</h4>
+      <table>
+        <tr><th>Performance</th><th>Marks</th></tr>
+        <tr><td>Total disaster, couldn't figure out what to do</td><td>1</td></tr>
+        <tr><td>Barely get crucial history, particularly of HPI</td><td>2</td></tr>
+        <tr><td>Marginally failed situation</td><td>3</td></tr>
+        <tr><td>Satisfactory but not very proficient</td><td>4</td></tr>
+        <tr><td>Excellent junior MO level</td><td>5</td></tr>
+        <tr><td>Surgical specialist level</td><td>6</td></tr>
+      </table>
+      <p class="note">Pass mark = 4. 3 considered failure.</p>
+    </div>
+  </article>
+
+  <!-- ─── Hepatobiliary ───────────────────────── -->
+  <article class="station" data-topic="hepatobiliary jaundice" data-year="2012">
+    <header>
+      <span class="tag tag-year">2012 Med 5/3</span>
+      <span class="tag tag-topic">Hepatobiliary</span>
+      <span class="tag tag-dx">Obstructive Jaundice 阻塞性黄疸</span>
+      <h3>Obstructive Jaundice · 黄疸 (Pancreatic head CA)</h3>
+    </header>
+    <div class="station-body">
+      <h4>Scenario</h4>
+      <div class="scenario">Take a focused history from the patient referred to the surgical OPD. The patient will also ask you some questions.</div>
+
+      <h4>Patient script (surrogate)</h4>
+      <ul>
+        <li>黄大城, M/75, 退休地盘工人 (15 years), c/o 皮肤变黄 × 3 个月</li>
+        <li>HPI: 越黄越深, 无发烧; 偶有右上腹隐隐痛, 食欲下降; 2 周前小便变 "茶色"; 2 个月口味变差, 近 4 周体重↓~15 lb</li>
+        <li>PMH: 缺血性心脏病, 服阿斯匹灵, 现在无心绞痛; 无肝炎史</li>
+        <li>DH: Aspirin; 对 Augmentin 安灭菌 过敏</li>
+        <li>SH: 吸烟 45 年 (1 包/日), 1 年前因心脏病戒烟; 间中饮啤酒, 一月一次</li>
+        <li>FH: 无肝癌或黄疸</li>
+      </ul>
+
+      <h4>Surrogate 必问的两个问题 (4-min mark)</h4>
+      <ol>
+        <li>想知道点解皮肤变黄？ <span class="ans">Obstructive jaundice (2 分 = 满分; 1 分 = 不够清楚)</span></li>
+        <li>如果需要做检查, 想知道呢啲检查会唔会有风险？ <span class="ans">影像 &amp; 血液测试风险不大, 但 ERCP 有一定风险 (2 / 1 分)</span></li>
+      </ol>
+
+      <h4>Follow-Up Written Station</h4>
+      <ol>
+        <li>What is your diagnosis? <span class="ans">Pancreatic head cancer 胰头癌</span></li>
+        <li>With understanding of physiology, explain why does the skin turn yellow in simple English? <span class="ans">Obstructive jaundice — CBD compressed by pancreatic head tumour</span></li>
+        <li>USG shows pancreatic head mass; what other signs would you ask radiologist to tell you? <span class="ans">Dilated CBD, distended gallbladder (Courvoisier's law)</span></li>
+      </ol>
+
+      <div class="pearl">Courvoisier's Law: painless jaundice + palpable gallbladder ⇒ not gallstones (most likely pancreatic head CA / cholangioCA).</div>
+    </div>
+  </article>
+
+  <article class="station" data-topic="hepatobiliary pancreatitis" data-year="2010">
+    <header>
+      <span class="tag tag-year">2010 Med 5</span>
+      <span class="tag tag-topic">Hepatobiliary</span>
+      <span class="tag tag-dx">Chronic Pancreatitis 慢性胰腺炎</span>
+      <h3>Epigastric pain · Chronic Pancreatitis</h3>
+    </header>
+    <div class="station-body">
+      <h4>Scenario</h4>
+      <div class="scenario">Take a history from a man presented to the surgical OPD with abdominal pain.</div>
+      <h4>History</h4>
+      <ul>
+        <li>40/M, bartender, c/o abdominal pain × 1 year</li>
+        <li>Pain in epigastrium, <strong>exacerbated by eating, radiates to back, relieved by OTC analgesics</strong></li>
+        <li>Weight loss 20 lb</li>
+        <li>Chronic smoker &amp; drinker; lives alone; father died of HCC</li>
+      </ul>
+      <h4>Diagnosis</h4>
+      <p><span class="ans">Chronic pancreatitis (alcoholic etiology)</span></p>
+      <div class="pearl">Classic triad of chronic pancreatitis: epigastric pain radiating to back + steatorrhoea + diabetes. Risk factors mnemonic <strong>TIGAR-O</strong> (Toxic-metabolic / Idiopathic / Genetic / Autoimmune / Recurrent acute / Obstructive).</div>
+    </div>
+  </article>
+
+  <article class="station" data-topic="UGI gastric outlet obstruction" data-year="2009">
+    <header>
+      <span class="tag tag-year">2009 Med 5</span>
+      <span class="tag tag-topic">UGI</span>
+      <span class="tag tag-dx">Gastric Outlet Obstruction 幽门梗阻</span>
+      <h3>Colicky epigastric pain · Gastric Outlet Obstruction</h3>
+    </header>
+    <div class="station-body">
+      <h4>Scenario</h4>
+      <p>Patient with colicky epigastric pain. Change of bowel habit and haematemesis. Partial gastrectomy done.</p>
+      <h4>Follow-Up Written Station</h4>
+      <ol>
+        <li>What are the symptoms? <span class="ans">Postprandial vomiting (undigested food), early satiety, weight loss, succussion splash</span></li>
+        <li>State one blood test to correlate the symptoms. <span class="ans">ABG → hypochloraemic hypokalaemic metabolic alkalosis</span></li>
+        <li>Differential diagnoses? <span class="ans">Gastric CA, peptic ulcer scarring, pancreatic head CA invasion, GIST</span></li>
+        <li>Other surgically-treatable DDx? <span class="ans">Pyloric stenosis 2° to PUD, malignant infiltration</span></li>
+        <li>How does the surgical history correlate with the chief complaint? <span class="ans">Recurrent disease at anastomotic site / post-gastrectomy stenosis</span></li>
+      </ol>
+    </div>
+  </article>
+
+  <!-- ─── Dysphagia (multi-year) ─────────────── -->
+  <article class="station" data-topic="UGI dysphagia oesophageal CA" data-year="2017 2016 2011 2009">
+    <header>
+      <span class="tag tag-year">2017, 2011 Med 5 · 2016, 2011, 2009 Med 3</span>
+      <span class="tag tag-topic">UGI</span>
+      <span class="tag tag-dx">CA Oesophagus 食管癌 / Achalasia 贲门失弛缓</span>
+      <h3>Progressive Dysphagia · 进行性吞咽困难</h3>
+    </header>
+    <div class="station-body">
+      <h4>Scenario (surrogate "吳樂格")</h4>
+      <ul>
+        <li>M/70, painless <strong>progressive dysphagia</strong> × 6 weeks</li>
+        <li>Tolerate congee, not solids</li>
+        <li>LOW 10 lb in 3 weeks</li>
+        <li>Hypertension, emphysema; on anti-HT drugs</li>
+        <li>Smoker 50 yrs, 1 pack/d, quit 2 yrs ago; <strong>1–2 bottles Chinese wine/day</strong></li>
+        <li>Retired civil servant/clerk</li>
+      </ul>
+      <p class="note">Surrogate instruction: 不问不答. Must elicit each point yourself.</p>
+
+      <h4>Follow-Up Written 2016 (Barium swallow + OGD shown)</h4>
+      <ol>
+        <li>Physical signs to look for? (2) <span class="ans">Cachexia, hydration; metastases — hepatomegaly, bone tenderness, <strong>Virchow's node (left supraclavicular LN)</strong></span></li>
+        <li>4 risk factors? (4) <span class="ans">Smoking, drinking, achalasia, preserved/salted food, family history</span></li>
+        <li>Investigation shown + findings? (2+2) <span class="ans">Barium swallow — irregular narrowing of oesophagus (apple-core)</span></li>
+        <li>Most likely diagnosis? (1) <span class="ans">CA oesophagus</span></li>
+        <li>Treatment advice? (1) <span class="ans">Confirm dx (OGD + biopsy) → stage (EUS, CT, PET-CT) → curative (oesophagectomy + lymphadenectomy) vs palliative (stent, RT, chemo)</span></li>
+      </ol>
+
+      <h4>Follow-Up Written 2011</h4>
+      <ol>
+        <li>DDx (1 mark each): <span class="ans">CA oesophagus, CA cardia, motility disorder (achalasia)</span></li>
+        <li>Investigation of choice (1 mark each): <span class="ans">Barium swallow (<em>NOT water-soluble — causes severe chemical pneumonitis if aspirated</em>), OGD</span></li>
+      </ol>
+
+      <h4>Follow-Up Written 2009 (Bird's beak barium shown)</h4>
+      <ol>
+        <li>What is this? <span class="ans">Barium swallow — <strong>bird's beak sign</strong></span></li>
+        <li>Diagnosis? <span class="ans">Achalasia 贲门失弛缓</span></li>
+        <li>Other methods to confirm? <span class="ans">Manometry</span></li>
+        <li>Expected manometric findings? <span class="ans">LES fails to relax on wet swallow (&lt;75 % relaxation); LES pressure &gt;100 mmHg = achalasia, &gt;200 = nutcracker; aperistalsis in body; relative ↑ intraoesophageal pressure vs intragastric</span></li>
+      </ol>
+      <div class="pearl">⚠ Use barium, <em>not</em> Gastrografin, for suspected obstruction without leak — water-soluble contrast aspirated → fatal pneumonitis.</div>
+    </div>
+  </article>
+
+  <!-- ─── RLQ pain / Acute Appendicitis ──── -->
+  <article class="station" data-topic="LGI appendicitis" data-year="2016">
+    <header>
+      <span class="tag tag-year">2016 Med 5</span>
+      <span class="tag tag-topic">LGI</span>
+      <span class="tag tag-dx">Acute Appendicitis 急性阑尾炎</span>
+      <h3>RLQ Pain · Acute Appendicitis</h3>
+    </header>
+    <div class="station-body">
+      <h4>Scenario</h4>
+      <div class="scenario">19/F presented with right lower quadrant pain.</div>
+      <h4>History</h4>
+      <ul>
+        <li>Pain × 1–2 days, <strong>initially central → migrated to RLQ</strong>, increasing intensity, constant, 6/10</li>
+        <li>No specific aggravating/relieving factors</li>
+        <li>Low grade fever; nausea but no vomiting; no diarrhoea</li>
+        <li>LMP end of last month</li>
+        <li>NSND, NKDA, good past health, FH unremarkable</li>
+      </ul>
+      <h4>Examiner's questions</h4>
+      <ol>
+        <li>Diagnosis? <span class="ans">Acute appendicitis</span></li>
+        <li>Investigation? <span class="ans"><strong>Pregnancy test</strong> (β-hCG), CBC, CRP, ESR, septic workup; USG/CT if uncertain</span></li>
+        <li>Treatment? <span class="ans">Resuscitation, monitor vitals; IV antibiotics (Ampicillin + Cefuroxime + Metronidazole); appendicectomy — laparoscopic vs open</span></li>
+      </ol>
+      <div class="pearl">Alvarado score (<strong>MANTRELS</strong>): Migration, Anorexia, Nausea, Tenderness RLQ, Rebound, Elevated temp, Leucocytosis, Shift to left. ≥7 → high probability.</div>
+    </div>
+  </article>
+
+  <!-- ─── Blood in Stool ─────────────────────── -->
+  <article class="station" data-topic="LGI blood in stool colorectal CA" data-year="2007">
+    <header>
+      <span class="tag tag-year">2007 Med 5</span>
+      <span class="tag tag-topic">LGI</span>
+      <span class="tag tag-dx">CA Colon · 大肠癌</span>
+      <h3>Blood in Stool (王強 case)</h3>
+    </header>
+    <div class="station-body">
+      <h4>Patient script (王強)</h4>
+      <ul>
+        <li>M/55, born in Mainland, in HK ~30 yrs, 菜販 in 沙田街市</li>
+        <li>已婚, 妻 (酒樓洗碗工人), 兩子女 (25 地盤 / 17 中六)</li>
+        <li>SH: 吸烟 30 年 1 包/日; 偶飲啤酒; 每日工作十幾小時, 無時間運動; 鍾意食煎炸食物</li>
+        <li>HPI: 肚痛、肚漲、無大便 5 日 → AED 入院; 半年前起有便秘問題, 3 日一次; 大便最近變幼, 帶血絲及黏液 (黏液好似鼻涕); 2 個月體重↓10 磅; 入院前一星期無胃口、無精神</li>
+        <li>PMH: 1997 HT + ↑cholesterol 控制中; 1980 — 盲腸炎灌膿 (Princess Margaret Hospital), 1982 — 腸塞再開刀 (PMH)</li>
+        <li>FH: <strong>父親 60 歲死於大腸癌; 家姐 48 歲患子宮癌, 切除存活</strong></li>
+      </ul>
+
+      <h4>Follow-Up Written</h4>
+      <ol>
+        <li>Main reason for emergency admission? (1) <span class="ans">Intestinal obstruction (肚痛 + 肚漲 + 無大便 5 日)</span></li>
+        <li>Patient's main problems (with duration) prior to admission? (1.5) <span class="ans">Constipation 6 m, change of bowel habit + blood/mucus PR, LOW 10 lb in 2 m, fatigue 1 wk</span></li>
+        <li>Risk factors? (2) <span class="ans">Family history (1° relatives x2), smoking, diet (fried foods, low fibre)</span></li>
+        <li>Clinical significance of father &amp; sister's history? (1.5) <span class="ans">Suggest <strong>HNPCC/Lynch syndrome</strong> — colorectal + endometrial CA at young age</span></li>
+        <li>Advice to patient's children? (1) <span class="ans">Early surveillance colonoscopy (start age 25 or 10 yrs before youngest affected relative, q1-2 y); consider genetic counselling</span></li>
+        <li>Investigation done after admission? Findings? (1.5) <span class="ans">Contrast enema (or sigmoidoscopy) — apple-core stricture / mass at recto-sigmoid</span></li>
+        <li>Patient asks for laparoscopic surgery — possible? Why? (1.5) <span class="ans">Possible in elective setting; in acute obstruction with sepsis/distended bowel — open Hartmann's or resection + table lavage usually safer; assess after decompression</span></li>
+      </ol>
+    </div>
+  </article>
+
+  <article class="station" data-topic="LGI FAP blood in stool" data-year="2015">
+    <header>
+      <span class="tag tag-year">2015 Med 3</span>
+      <span class="tag tag-topic">LGI</span>
+      <span class="tag tag-dx">FAP · 家族性腺瘤性息肉病</span>
+      <h3>Blood in Stool · Familial Adenomatous Polyposis</h3>
+    </header>
+    <div class="station-body">
+      <h4>Patient info (recall)</h4>
+      <ul>
+        <li>CC: Blood in stool; fresh, few months, abdominal cramping, sudden LOW, LOA</li>
+        <li>PMH: GPH · DH: Penicillin allergy · FH: <strong>Dad &amp; grandpa with CA colon</strong> · SH: chronic smoker, social drinker</li>
+        <li>Patient's question: 「醫生, 我究竟咩事呀？」</li>
+      </ul>
+      <h4>Marking key points</h4>
+      <ul>
+        <li>Self-introduction · Consent · CC · Associated symptoms · PMH · DH · FH · SH</li>
+      </ul>
+      <h4>Follow-Up Written (colonoscopy showing multiple polyps)</h4>
+      <ol>
+        <li>Most likely diagnosis? <span class="ans">CA colon</span></li>
+        <li>3 signs in P/E? <span class="ans">Pallor, palpable abdominal mass, rectal mass, cervical LN, hepatomegaly, jaundice, ascites (peritoneal mets), pleural effusion (lung mets)</span></li>
+        <li>2 risk factors for CA colon? <span class="ans">Smoking, positive family history</span></li>
+        <li>Investigation shown (Fig 1, 2)? <span class="ans">Colonoscopy</span></li>
+        <li>Finding? <span class="ans">Multiple polyps / polyposis</span></li>
+        <li>Diagnosis based on history + findings? <span class="ans"><strong>Familial Adenomatous Polyposis (FAP)</strong> — APC gene, 5q21, AD, ~100 % cancer risk by age 40, requires prophylactic proctocolectomy</span></li>
+      </ol>
+    </div>
+  </article>
+
+  <!-- ─── Vascular: Leriche & PVD ─────────────────── -->
+  <article class="station" data-topic="vascular leriche claudication" data-year="2015 2008">
+    <header>
+      <span class="tag tag-year">2015, 2008 Med 5</span>
+      <span class="tag tag-topic">Vascular</span>
+      <span class="tag tag-dx">Leriche Syndrome 主髂动脉闭塞综合征</span>
+      <h3>Bilateral leg + buttock pain · Leriche Syndrome</h3>
+    </header>
+    <div class="station-body">
+      <h4>Scenario</h4>
+      <div class="scenario">40-yr-old gentleman referred to surgical OPD with 1-year history of bilateral leg pain and buttock pain.</div>
+      <h4>Surrogate (巫能, M/44)</h4>
+      <ul>
+        <li>Previously construction worker, unemployed × 6 m; recently divorced (jobless + sexual impotence); 1 son, 10 yrs; lives in public estate, poor social support</li>
+        <li>Chronic smoker 25 y, 1–2 packs/d; chronic drinker 25 y, beer; known HT + hyperlipidaemia, FU PWH, poor compliance; loves fried/fatty food</li>
+        <li>c/o bilateral <strong>buttock + thigh pain × 1 yr</strong>, also bilateral leg pain × 6 m</li>
+        <li>Pain after walking 5 min on level ground; worse upstairs; relieved by standing still; no rest pain, no ulcer</li>
+        <li><strong>Erectile dysfunction × 6 m</strong> (don't mention unless asked)</li>
+      </ul>
+      <h4>Follow-Up Written</h4>
+      <ol>
+        <li>Name of syndrome? (1) <span class="ans">Leriche syndrome</span></li>
+        <li>Anatomical level + pathophysiology? (2) <span class="ans">Aortoiliac occlusive disease 2° to atherosclerosis</span></li>
+        <li>3 risk factors? (2) <span class="ans">Chronic smoking (1), HT, hyperlipidaemia (0.5 each)</span></li>
+        <li>Typical P/E finding? (1) <span class="ans">Absent bilateral femoral pulses</span></li>
+        <li>Reasons for divorce? (2) <span class="ans">Sexual impotence + jobless</span></li>
+        <li>One investigation? (1) <span class="ans">Angiogram (CTA / DSA / MRA)</span></li>
+        <li>One surgical option? (1) <span class="ans">Aortobifemoral bypass</span></li>
+      </ol>
+      <div class="pearl"><strong>Leriche triad</strong>: claudication of buttocks/thighs + impotence + absent femoral pulses.</div>
+    </div>
+  </article>
+
+  <article class="station" data-topic="vascular PVD claudication" data-year="2014 2009 2005">
+    <header>
+      <span class="tag tag-year">2014, 2009, 2005 Med 5 · 2009 Med 3</span>
+      <span class="tag tag-topic">Vascular</span>
+      <span class="tag tag-dx">PVD 周围血管病</span>
+      <h3>Calf pain + gangrenous toes · Peripheral Vascular Disease</h3>
+    </header>
+    <div class="station-body">
+      <h4>Scenario</h4>
+      <p>Patient c/o calf pain; photos showing erythematous foot with gangrenous toes.</p>
+      <h4>Approach</h4>
+      <ul>
+        <li>HPI — calf pain:
+          <ul>
+            <li>Intermittent claudication: muscle pain only on exercise, gone with rest</li>
+            <li><strong>Claudication distance</strong> (how far before stopping)</li>
+            <li><strong>Rest pain</strong>: hangs legs out of bed at night (severity)</li>
+            <li>r/o DDx: DVT, MSK, infection, trauma, sciatica</li>
+          </ul>
+        </li>
+        <li>Risk factors: smoking, DM, HT, HL</li>
+        <li>PMH</li>
+      </ul>
+      <h4>Follow-Up Written</h4>
+      <ol>
+        <li>P/E? <span class="ans">PVD exam — inspection (atrophic skin, hair loss, ulcer, gangrene), palpation (temp, cap refill, pulses DP/PT/Pop/Fem), Buerger's test (pallor + Buerger's angle), <strong>ABPI &lt;0.9 abnormal</strong></span></li>
+        <li>Treatment? <span class="ans">Conservative — smoking cessation, exercise, control DM/HT/HL, foot care · Medical — antiplatelet (aspirin), cilostazol/naftidrofuryl/pentoxifylline · Surgical — angioplasty, bypass graft</span></li>
+      </ol>
+      <div class="pearl"><strong>Fontaine classification</strong>: I asymp · IIa &gt;200m · IIb &lt;200m · III rest pain · IV ulcer/gangrene. ABPI &lt;0.4 = critical limb ischaemia.</div>
+    </div>
+  </article>
+
+  <!-- ─── Urology: Haematuria & BPH ─────────────────── -->
+  <article class="station" data-topic="urology haematuria bladder CA" data-year="2014 2013">
+    <header>
+      <span class="tag tag-year">2014 Med 5 · 2013 Med 3</span>
+      <span class="tag tag-topic">Urology</span>
+      <span class="tag tag-dx">CA Bladder 膀胱癌</span>
+      <h3>Painless Haematuria · Bladder Cancer</h3>
+    </header>
+    <div class="station-body">
+      <h4>Chief complaint</h4>
+      <p>Painless haematuria. All ROS negative except <strong>smoking</strong> and <strong>occupation (dye factory)</strong>.</p>
+      <h4>Follow-Up Written</h4>
+      <ol>
+        <li>Diagnosis? <span class="ans">Bladder cancer / urinary tract cancer</span></li>
+        <li>Occupational risk factor most concerning? <span class="ans">Hairdresser, dye/rubber/leather factory — <strong>aromatic amines</strong> (β-naphthylamine, benzidine)</span></li>
+        <li>2 relevant P/E? <span class="ans">Pallor; abdominal mass (mass itself / enlarged LN / liver mets); palpation of supraclavicular fossa (Virchow's)</span></li>
+        <li>Relevant investigations &amp; how? <span class="ans"><strong>Flexible cystoscopy</strong> — aseptic, LA + lubricant, into urethral meatus, clear view inside bladder; also urine cytology, CT urogram</span></li>
+        <li>If haematuria now associated with pain — change DDx? Why? <span class="ans">No — UTI can coexist with CA bladder; still need workup</span></li>
+      </ol>
+    </div>
+  </article>
+
+  <article class="station" data-topic="urology BPH prostate" data-year="2014 2010">
+    <header>
+      <span class="tag tag-year">2014, 2010 Med 3</span>
+      <span class="tag tag-topic">Urology</span>
+      <span class="tag tag-dx">BPH 良性前列腺增生 / CA Prostate 前列腺癌</span>
+      <h3>Difficulty Passing Urine · BPH / Prostate Cancer</h3>
+    </header>
+    <div class="station-body">
+      <h4>Scenario</h4>
+      <p>65/M with difficulty in passing urine.</p>
+      <p class="note">Marked by surrogate (they are nice; most scored 7 or 8). Take full history; leave time for questions. Common surrogate worry: prognosis.</p>
+      <h4>Follow-Up Written</h4>
+      <ol>
+        <li>Most worrying diagnosis? (2) <span class="ans">CA prostate</span></li>
+        <li>Other conditions that ↑ PSA? (2) <span class="ans">BPH, prostatitis, UTI (also recent DRE, ejaculation, urinary retention, cycling)</span></li>
+        <li>2 P/E findings to look for? (2) <span class="ans">DRE: size, shape, consistency of prostate, presence of median groove (lost in CA), nodules</span></li>
+        <li>Most important investigation to confirm diagnosis? (1) <span class="ans"><strong>TRUS + biopsy</strong></span></li>
+        <li>3 complications of TRUS biopsy? (2) <span class="ans">Haematuria, haematospermia, PR bleeding, UTI, sepsis, urinary retention</span></li>
+        <li>If CA prostate confirmed — 2 further investigations? (1) <span class="ans">CT, bone scan, MRI; CXR; ?PET-CT</span></li>
+      </ol>
+      <p class="note">⚠ If Q4 wrong, you lose downstream marks.</p>
+    </div>
+  </article>
+
+  <!-- ─── Breast: Paget's ─────────────────── -->
+  <article class="station" data-topic="breast paget" data-year="2008">
+    <header>
+      <span class="tag tag-year">2008 Med 3</span>
+      <span class="tag tag-topic">Breast</span>
+      <span class="tag tag-dx">Paget's Disease of the Nipple</span>
+      <h3>Nipple lesion · Paget's Disease</h3>
+    </header>
+    <div class="station-body">
+      <h4>Scenario</h4>
+      <p>Picture: Ho Tai Kam, F/82, A123456(X), lives with son in Shatin City One. Lesion at nipple. List the questions you would ask before examining.</p>
+      <h4>Marking scheme</h4>
+      <table>
+        <tr><th>Section</th><th>Sample questions</th><th>Marks</th></tr>
+        <tr><td>C/O</td><td>How long have you noticed the change?</td><td>1</td></tr>
+        <tr><td>HPI + symptoms</td><td>Any mass? Itchy? Bleeding? Painful? Nipple discharge?</td><td>3</td></tr>
+        <tr><td>Risk factors</td><td>Age of menarche; pregnancy/child birth; breast feeding; FH breast CA; smoking</td><td>3</td></tr>
+        <tr><td>General condition</td><td>Major medical illness? Long-term medication? Limitations to ADL? Previous surgery?</td><td>3</td></tr>
+      </table>
+      <div class="pearl">Paget's of nipple → look for underlying DCIS / invasive CA in 90 %; do mammogram + biopsy of nipple skin.</div>
+    </div>
+  </article>
+
+  <!-- ─── O&T: Low Back Pain / Sciatica ─────────────────── -->
+  <article class="station" data-topic="O&amp;T low back pain sciatica PID" data-year="2012 2010 2007 2005 2009 2008">
+    <header>
+      <span class="tag tag-year">2012, 2010, 2007, 2005 Med 5 · 2009, 2008 Med 3</span>
+      <span class="tag tag-topic">O&amp;T</span>
+      <span class="tag tag-dx">Sciatica · L5/S1 PID</span>
+      <h3>Low Back Pain · Sciatica (Prolapsed Intervertebral Disc)</h3>
+    </header>
+    <div class="station-body">
+      <h4>Scenario</h4>
+      <div class="scenario">40-yr-old lady with low back pain after moving a sofa 1 week ago. The pain is associated with numbness over left lateral leg and weakness of big toe.</div>
+      <h4>Key history points (16-item template)</h4>
+      <ol>
+        <li>Acute onset 1 wk ago, lifting heavy furniture; sudden severe pain (8/10) at lumbosacral junction, electrifying/tingling</li>
+        <li>First episode; severity same all week; worse evenings; still able to sleep</li>
+        <li><strong>Increased with sitting, squatting, bending forward, coughing; better with standing; best supine</strong></li>
+        <li>Worse on exertion, better with rest</li>
+        <li>Radiates to lateral border + sole of left foot, with numbness over same site</li>
+        <li>No sphincter disturbance; left big toe felt weak</li>
+        <li>No red flags: fever, weight loss, anorexia, trauma, night sweats, joint pain, TB contact, steroid use, cancer history</li>
+        <li>Retired teacher; spouse + lives at home; non-smoker, non-drinker</li>
+        <li>Expectation: "just want to get rid of the pain"; tried Panadol — not useful; mood OK</li>
+      </ol>
+      <h4>Diagnosis required at 4.5/5.5-min mark</h4>
+      <ul>
+        <li>✓ PID, spinal stenosis (2 marks each)</li>
+        <li>✓ Spondylolisthesis, degenerative spine disease (1 mark)</li>
+        <li>✗ TB spine, spinal metastasis, osteoporotic vertebral collapse (no mark — no red flags)</li>
+      </ul>
+      <div class="pearl"><strong>Red flags</strong> for back pain (TUNAFISH): Trauma · Unexplained weight loss · Neurological deficit · Age &gt;50 or &lt;20 · Fever · IV drug use / Immunosuppression · Steroids · History of cancer.</div>
+    </div>
+  </article>
+
+  <!-- ─── O&T: Osteosarcoma ─────────────────── -->
+  <article class="station" data-topic="O&amp;T osteosarcoma" data-year="2014 2011">
+    <header>
+      <span class="tag tag-year">2014, 2011 Med 5</span>
+      <span class="tag tag-topic">O&amp;T</span>
+      <span class="tag tag-dx">Osteosarcoma 骨肉瘤</span>
+      <h3>Right distal medial thigh pain · Osteosarcoma</h3>
+    </header>
+    <div class="station-body">
+      <h4>Scenario</h4>
+      <p>A patient complains of right distal medial thigh pain.</p>
+      <h4>Key history to elicit</h4>
+      <ul>
+        <li>Pain — site (around knee, distal femur metaphysis), character (constant, worse at <strong>night</strong>), duration</li>
+        <li>Swelling, lump growing</li>
+        <li>Constitutional: weight loss, fever, fatigue</li>
+        <li>Loss of function, limp</li>
+        <li>FH: retinoblastoma (Rb gene), Li-Fraumeni syndrome (p53)</li>
+        <li>PMH: previous Paget's disease, radiation, retinoblastoma</li>
+      </ul>
+      <div class="pearl">Osteosarcoma — bimodal age peak (adolescents + elderly with Paget's). Sites: <strong>distal femur (most common), proximal tibia, proximal humerus</strong>. X-ray: <strong>Codman's triangle, sunburst periosteal reaction</strong>. Mets to lung.</div>
+    </div>
+  </article>
+
+  <!-- ─── O&T: Cervical Myelopathy ─────────────────── -->
+  <article class="station" data-topic="O&amp;T cervical myelopathy" data-year="2009">
+    <header>
+      <span class="tag tag-year">2009 Med 5</span>
+      <span class="tag tag-topic">O&amp;T</span>
+      <span class="tag tag-dx">Cervical Myelopathy 颈髓病</span>
+      <h3>Cervical Myelopathy</h3>
+    </header>
+    <div class="station-body">
+      <h4>Key features to elicit</h4>
+      <ul>
+        <li>Neck pain, stiffness</li>
+        <li><strong>UMN signs below lesion</strong>: clumsy hands, difficulty with fine motor (buttons, chopsticks), unsteady gait, falls</li>
+        <li>Sensory: glove-and-stocking or dermatomal</li>
+        <li>Sphincter disturbance (late, ominous)</li>
+        <li>Lhermitte's sign: electric shock down spine on neck flexion</li>
+      </ul>
+      <div class="pearl">Hoffmann's sign, hyperreflexia below level + hyporeflexia at level — cervical myelopathy. MRI is investigation of choice.</div>
+    </div>
+  </article>
+
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<!-- PART 2 · PHYSICAL EXAMINATION (空壳 — 待填) -->
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<section class="part" id="part-2" data-part="2">
+  <header>
+    <span class="num">PART 02</span>
+    <h2>Physical Examination</h2>
+    <span class="subhead">~19 站 · 待填充</span>
+  </header>
+  <p style="color:var(--ink-muted); font-style:italic; padding:12px 0;">
+    覆盖：Splenomegaly · Jaundice · Thyroid · Breast · PVD · PR · Cranial Nerve · Wound / Burns · Eye · Hip AVN · Trendelenberg · Knee · Lower Limb Neuro · Peroneal · Cervical · Lumbar (Schober) · Shoulder · Radial Nerve · Ulnar Nerve
+  </p>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<!-- PART 3 · RESUSCITATION -->
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<section class="part" id="part-3" data-part="3">
+  <header>
+    <span class="num">PART 03</span>
+    <h2>Resuscitation</h2>
+    <span class="subhead">~7 站 · 待填充</span>
+  </header>
+  <p style="color:var(--ink-muted); font-style:italic; padding:12px 0;">
+    覆盖：Post-Whipple desaturation / hypotension · Post-RTA bicycle trauma · Comatose patient + GCS + CT brain · AF with hypotension · CPR + intubation · Post-op morphine overdose
+  </p>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<!-- PART 4 · SKILLS STATION -->
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<section class="part" id="part-4" data-part="4">
+  <header>
+    <span class="num">PART 04</span>
+    <h2>Skills Station</h2>
+    <span class="subhead">~11 站 · 待填充</span>
+  </header>
+  <p style="color:var(--ink-muted); font-style:italic; padding:12px 0;">
+    覆盖：Suturing (drain securing) · Hand washing (WHO 5 moments) · Surgical scrubbing · Needle stick injury · Blood taking · Foley insertion · Local anaesthesia · CVP set · PPE (H3N2 isolation) · Time-out procedure (WHO checklist)
+  </p>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<!-- PART 5 · COMMUNICATION SKILLS -->
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<section class="part" id="part-5" data-part="5">
+  <header>
+    <span class="num">PART 05</span>
+    <h2>Communication Skills</h2>
+    <span class="subhead">~9 站 · 待填充</span>
+  </header>
+  <p style="color:var(--ink-muted); font-style:italic; padding:12px 0;">
+    覆盖：SBAR consult (post-ERCP sepsis · PPU post-OGD) · Breaking bad news (AROU post-haemorrhoidectomy · inoperable CA) · Informed consent (hemithyroidectomy · hernia repair · OGD · colonoscopy · sigmoidoscopy · ERCP)
+  </p>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<!-- PART 6 · SURGERY RADIOLOGY -->
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<section class="part" id="part-6" data-part="6">
+  <header>
+    <span class="num">PART 06</span>
+    <h2>Surgery Radiology</h2>
+    <span class="subhead">~15 站 · 待填充</span>
+  </header>
+  <p style="color:var(--ink-muted); font-style:italic; padding:12px 0;">
+    覆盖：CT Brain (SAH + aneurysm) · CT Abdomen (renal stone) · Aortic dissection · Free gas (PPU / necrotising fasciitis) · Achalasia · AAA · CA liver (HCC) · Intestinal obstruction (SBO / sigmoid volvulus) · Adrenal adenoma (Conn's) · Retained gauze · Pneumothorax · Intussusception · Hydrocephalus · Macroadenoma
+  </p>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<!-- PART 7 · O&T RADIOLOGY -->
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<section class="part" id="part-7" data-part="7">
+  <header>
+    <span class="num">PART 07</span>
+    <h2>O&amp;T Radiology</h2>
+    <span class="subhead">~13 站 · 待填充</span>
+  </header>
+  <p style="color:var(--ink-muted); font-style:italic; padding:12px 0;">
+    覆盖：Colle's fracture · Monteggia (+ PIN palsy) · Pelvic fracture (RTA) · Spondyloarthropathy · Multiple lytic lesions (myeloma / mets) · Vertebral collapse · Fracture NOF · Olecranon fracture · Humeral shaft (radial nerve) · C5/6 dislocation · OA knee → infected TKR
+  </p>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<!-- PART 8 · DATA INTERPRETATION -->
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<section class="part" id="part-8" data-part="8">
+  <header>
+    <span class="num">PART 08</span>
+    <h2>Data Interpretation</h2>
+    <span class="subhead">~8 站 · 待填充</span>
+  </header>
+  <p style="color:var(--ink-muted); font-style:italic; padding:12px 0;">
+    覆盖：Post-ERCP sepsis (vital chart) · Hypercalcaemia + MIBI scan · Pyloric stenosis ABG · Acute pancreatitis (Ranson's) · Post-op fever (PMC) · Gouty arthritis · Acute cholangitis · Post-op reactionary haemorrhage
+  </p>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<!-- PART 9 · CLINICAL PICTURE / SCENARIO -->
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<section class="part" id="part-9" data-part="9">
+  <header>
+    <span class="num">PART 09</span>
+    <h2>Clinical Picture / Scenario</h2>
+    <span class="subhead">~13 站 · 待填充</span>
+  </header>
+  <p style="color:var(--ink-muted); font-style:italic; padding:12px 0;">
+    覆盖：Anaphylaxis (penicillin cross-reactivity) · Oesophageal CA + chylothorax · CA prostate hormone Tx · BCG bladder · Burns + Parkland formula · Lund &amp; Browder chart · Blood transfusion reaction · Lateral neck cystic lesion · Venous ulcer / Marjolin's · Peutz-Jeghers · Dry gangrene · FAP · Thrombosed piles · BCC / Xeroderma pigmentosa · Acute limb ischaemia (6 P's)
+  </p>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<!-- PART 10 · VIDEO -->
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<section class="part" id="part-10" data-part="10">
+  <header>
+    <span class="num">PART 10</span>
+    <h2>Video / Procedural</h2>
+    <span class="subhead">~4 站 · 待填充</span>
+  </header>
+  <p style="color:var(--ink-muted); font-style:italic; padding:12px 0;">
+    覆盖：Lap cholecystectomy (cystic artery + GB perforation) · Chest drain mechanics · Colonoscopy with tumour biopsy · OGD with UGIB
+  </p>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<!-- PART 11 · TUBES & DRAINS, INSTRUMENTS -->
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<section class="part" id="part-11" data-part="11">
+  <header>
+    <span class="num">PART 11</span>
+    <h2>Tubes &amp; Drains, Instruments</h2>
+    <span class="subhead">~10 站 · 待填充</span>
+  </header>
+  <p style="color:var(--ink-muted); font-style:italic; padding:12px 0;">
+    覆盖：Chest drain (28 Fr · 4-chamber) · Sengstaken-Blakemore · CVP manometer · Proctoscope · TPN bag · OGD scope · Laparoscope set (light source · CO₂ · Veress · camera) · Ryle's tube · EDTA blood tube · ETT · T-tube · 3-way Foley · Corrugated drain · Sure-fit stoma bag · Mesh · Pulse oximeter · Arterial line · Pile ligator
+  </p>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<!-- PART 12 · ETHICS -->
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<section class="part" id="part-12" data-part="12">
+  <header>
+    <span class="num">PART 12</span>
+    <h2>Medical Ethics</h2>
+    <span class="subhead">~4 站 · 待填充</span>
+  </header>
+  <p style="color:var(--ink-muted); font-style:italic; padding:12px 0;">
+    覆盖：Advertising violations (Medical Council) · Kickback for referrals · Overseas organ transplant (Human Organ Transplant Ordinance) · Houseman trauma resus dilemma
+  </p>
+  <p style="color:var(--ink-muted); font-style:italic; padding:6px 0;">
+    Note: 自 2017 起 Ethics 成为独立单卷, 12 月考。
+  </p>
+</section>
+
+</main>
+
+<script>
+(function () {
+  'use strict';
+
+  const stations  = Array.from(document.querySelectorAll('article.station'));
+  const parts     = Array.from(document.querySelectorAll('section.part'));
+  const $search   = document.getElementById('search');
+  const $part     = document.getElementById('filter-part');
+  const $expand   = document.getElementById('expand-all');
+  const $collapse = document.getElementById('collapse-all');
+  const $count    = document.getElementById('count');
+
+  /* ── Build searchable text per station ── */
+  stations.forEach(s => {
+    s.dataset.search = (s.innerText || '').toLowerCase();
+  });
+
+  /* ── Toggle station body on header click ── */
+  stations.forEach(s => {
+    const header = s.querySelector(':scope > header');
+    if (!header) return;
+    header.addEventListener('click', () => {
+      s.toggleAttribute('open');
+    });
+  });
+
+  /* ── Filter + search ── */
+  function applyFilter () {
+    const q       = $search.value.trim().toLowerCase();
+    const partVal = $part.value;
+    let visible   = 0;
+
+    stations.forEach(s => {
+      const partMatch   = !partVal || s.closest('section.part').dataset.part === partVal;
+      const searchMatch = !q || s.dataset.search.includes(q);
+      const show        = partMatch && searchMatch;
+      s.classList.toggle('filtered-out', !show);
+      if (show) {
+        visible++;
+        if (q) s.setAttribute('open', '');
+      } else {
+        s.removeAttribute('open');
+      }
+    });
+
+    /* hide empty parts */
+    parts.forEach(p => {
+      if (partVal && p.dataset.part !== partVal) {
+        p.classList.add('filtered-out');
+      } else {
+        p.classList.remove('filtered-out');
+      }
+    });
+
+    $count.textContent = q || partVal
+      ? `${visible} / ${stations.length}`
+      : `${stations.length} 站`;
+
+    /* highlight matches (light) */
+    stations.forEach(s => unwrapMarks(s));
+    if (q && q.length >= 2) {
+      stations.forEach(s => {
+        if (!s.classList.contains('filtered-out')) highlight(s, q);
+      });
+    }
+  }
+
+  /* ── Highlight helpers ── */
+  function highlight (root, term) {
+    const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+      acceptNode: n => {
+        if (!n.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
+        if (n.parentElement.closest('mark, script, style')) return NodeFilter.FILTER_REJECT;
+        return n.nodeValue.toLowerCase().includes(term)
+          ? NodeFilter.FILTER_ACCEPT
+          : NodeFilter.FILTER_REJECT;
+      }
+    });
+    const targets = [];
+    while (walker.nextNode()) targets.push(walker.currentNode);
+    const re = new RegExp(term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'gi');
+    targets.forEach(node => {
+      const frag = document.createDocumentFragment();
+      const html = node.nodeValue.replace(re, m => `\u0000${m}\u0000`);
+      html.split('\u0000').forEach((piece, i) => {
+        if (i % 2 === 1) {
+          const m = document.createElement('mark');
+          m.textContent = piece;
+          frag.appendChild(m);
+        } else if (piece) {
+          frag.appendChild(document.createTextNode(piece));
+        }
+      });
+      node.parentNode.replaceChild(frag, node);
+    });
+  }
+
+  function unwrapMarks (root) {
+    root.querySelectorAll('mark').forEach(m => {
+      const t = document.createTextNode(m.textContent);
+      m.parentNode.replaceChild(t, m);
+      t.parentNode.normalize();
+    });
+  }
+
+  /* ── Wire up controls ── */
+  $search.addEventListener('input', applyFilter);
+  $part.addEventListener('change', applyFilter);
+  $expand.addEventListener('click',   () => stations.forEach(s => s.setAttribute('open', '')));
+  $collapse.addEventListener('click', () => stations.forEach(s => s.removeAttribute('open')));
+
+  /* Keyboard: ⌘/Ctrl+K focus search */
+  document.addEventListener('keydown', e => {
+    if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+      e.preventDefault();
+      $search.focus();
+      $search.select();
+    }
+    if (e.key === 'Escape' && document.activeElement === $search) {
+      $search.value = '';
+      applyFilter();
+      $search.blur();
+    }
+  });
+
+  applyFilter();
+})();
+</script>
+
+</body>
+</html>
